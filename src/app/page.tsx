@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { WealthCalculator } from "@/components/wealth-calculator";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { CalculatorGuide } from "@/components/calculator-guide";
 
 export default function Home() {
   const bgImage = PlaceHolderImages.find(p => p.id === "1");
@@ -30,6 +31,7 @@ export default function Home() {
           </p>
         </div>
         <WealthCalculator />
+        <CalculatorGuide />
       </div>
     </main>
   );
