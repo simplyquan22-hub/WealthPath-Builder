@@ -12,7 +12,8 @@ import {
   Briefcase,
   TrendingUp,
   PiggyBank,
-  ArrowRight
+  ArrowRight,
+  Scale
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -40,6 +41,7 @@ const formSchema = z.object({
   initialInvestment: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Value must be positive."),
   monthlyContribution: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Value must be positive."),
   interestRate: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Rate must be positive.").max(100, "Rate cannot exceed 100."),
+  marginalTaxRate: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Rate must be positive.").max(100, "Rate cannot exceed 100."),
   years: z.coerce.number({invalid_type_error: "Please enter a number."}).int().min(1, "Must be at least 1 year.").max(100, "Cannot exceed 100 years."),
   accountType: z.enum(["roth", "traditional"]),
 });
@@ -68,6 +70,7 @@ export function WealthCalculator() {
       initialInvestment: 10000,
       monthlyContribution: 500,
       interestRate: 7,
+      marginalTaxRate: 25,
       years: 30,
       accountType: "roth",
     },
@@ -80,10 +83,22 @@ export function WealthCalculator() {
   }
 
   const generateInvestmentData = (inputs: FormData): InvestmentData[] => {
-    const { initialInvestment, monthlyContribution, interestRate, years } = inputs;
+    const { initialInvestment, monthlyContribution, interestRate, years, accountType, marginalTaxRate } = inputs;
     const monthlyRate = interestRate / 100 / 12;
+    const taxRate = marginalTaxRate / 100;
     const result: InvestmentData[] = [];
     let lastYearEndValue = initialInvestment;
+
+    const calculateTaxes = (value: number, totalInvestment: number) => {
+      if (accountType === 'traditional') {
+        const gains = value - totalInvestment;
+        // Assuming contributions are pre-tax and entire withdrawal is taxed. A simplification.
+        if (value > totalInvestment) {
+             return value * (1 - taxRate);
+        }
+      }
+      return value;
+    }
 
     result.push({
       year: 0,
@@ -98,12 +113,21 @@ export function WealthCalculator() {
       const months = year * 12;
       const fvInitial = initialInvestment * Math.pow(1 + monthlyRate, months);
       const fvContributions = monthlyContribution > 0 ? monthlyContribution * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) : 0;
-
-      const projectedValue = fvInitial + fvContributions;
+      
+      const preTaxValue = fvInitial + fvContributions;
       const totalInvestment = initialInvestment + (monthlyContribution * months);
-      const totalReturns = projectedValue - totalInvestment;
+
+      const projectedValue = calculateTaxes(preTaxValue, totalInvestment);
+
       const annualContributions = monthlyContribution * 12;
-      const annualReturns = projectedValue - lastYearEndValue - annualContributions;
+      const lastYearTotalInvestment = initialInvestment + (monthlyContribution * (months - 12));
+      const lastYearPreTaxValue = lastYearEndValue > 0 ? (fvInitial / Math.pow(1 + monthlyRate, 12)) + (fvContributions - annualContributions * ((Math.pow(1+monthlyRate, 12)-1)/monthlyRate) ) / Math.pow(1+monthlyRate,12) : 0;
+      const lastYearProjectedValue = calculateTaxes(lastYearPreTaxValue, lastYearTotalInvestment);
+
+
+      const annualReturns = projectedValue - lastYearProjectedValue - annualContributions;
+      const totalReturns = projectedValue - totalInvestment;
+
 
       result.push({
         year,
@@ -114,7 +138,7 @@ export function WealthCalculator() {
         annualReturns,
       });
 
-      lastYearEndValue = projectedValue;
+      lastYearEndValue = preTaxValue;
     }
     return result;
   };
@@ -179,7 +203,7 @@ export function WealthCalculator() {
                 )}
               />
               <div className="grid grid-cols-2 gap-4">
-                <FormField
+                 <FormField
                   control={form.control}
                   name="interestRate"
                   render={({ field }) => (
@@ -206,6 +230,19 @@ export function WealthCalculator() {
                   )}
                 />
               </div>
+               <FormField
+                  control={form.control}
+                  name="marginalTaxRate"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Marginal Tax Rate (%)</FormLabel>
+                      <FormControl>
+                        <IconInput icon={<Scale />} type="number" placeholder="25" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               <FormField
                 control={form.control}
                 name="accountType"
@@ -277,3 +314,5 @@ export function WealthCalculator() {
     </div>
   );
 }
+
+    
