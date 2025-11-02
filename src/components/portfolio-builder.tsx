@@ -132,7 +132,7 @@ const availableTickers = [
     { value: 'UGA', label: 'United States Gasoline Fund', category: 'alternatives', group: 'Commodities' },
     { value: 'WEAT', label: 'Teucrium Wheat Fund', category: 'alternatives', group: 'Commodities' },
     { value: 'CORN', label: 'Teucrium Corn Fund', category: 'alternatives', group: 'Commodities' },
-    { value: 'SOYB', label: 'Teucrium Soybean Fund', category: 'alternatives', group: 'Commodatives' },
+    { value: 'SOYB', label: 'Teucrium Soybean Fund', category: 'alternatives', group: 'Commodities' },
     { value: 'CPER', label: 'United States Copper Index Fund', category: 'alternatives', group: 'Commodities' },
     { value: 'COMT', label: 'iShares GSCI Commodity ETF', category: 'alternatives', group: 'Commodities' },
     { value: 'GLDM', label: 'SPDR Gold MiniShares Trust', category: 'alternatives', group: 'Commodities' },
