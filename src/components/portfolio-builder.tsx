@@ -28,7 +28,7 @@ const availableTickers = [
     { value: 'META', label: 'Meta Platforms Inc.', category: 'stocks', group: 'Stocks' },
     { value: 'TSLA', label: 'Tesla Inc.', category: 'stocks', group: 'Stocks' },
     { value: 'JPM', label: 'JPMorgan Chase & Co.', category: 'stocks', group: 'Stocks' },
-    { value伴: 'UNH', label: 'UnitedHealth Group', category: 'stocks', group: 'Stocks' },
+    { value: 'UNH', label: 'UnitedHealth Group', category: 'stocks', group: 'Stocks' },
     { value: 'XOM', label: 'Exxon Mobil Corp.', category: 'stocks', group: 'Stocks' },
     { value: 'V', label: 'Visa Inc.', category: 'stocks', group: 'Stocks' },
     { value: 'PG', label: 'Procter & Gamble', category: 'stocks', group: 'Stocks' },
