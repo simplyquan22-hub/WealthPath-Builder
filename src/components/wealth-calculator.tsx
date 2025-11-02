@@ -41,7 +41,7 @@ const formSchema = z.object({
   monthlyContribution: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Value must be positive."),
   interestRate: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Rate must be positive.").max(100, "Rate cannot exceed 100."),
   years: z.coerce.number({invalid_type_error: "Please enter a number."}).int().min(1, "Must be at least 1 year.").max(100, "Cannot exceed 100 years."),
-  accountType: z.enum(["taxable", "roth", "traditional"]),
+  accountType: z.enum(["roth", "traditional"]),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -59,6 +59,8 @@ const glassCardClasses = "bg-background/50 backdrop-blur-xl border border-white/
 
 export function WealthCalculator() {
   const [data, setData] = React.useState<InvestmentData[] | null>(null);
+  const [submittedValues, setSubmittedValues] = React.useState<FormData | null>(null);
+
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -67,13 +69,14 @@ export function WealthCalculator() {
       monthlyContribution: 500,
       interestRate: 7,
       years: 30,
-      accountType: "taxable",
+      accountType: "roth",
     },
   });
 
   function onSubmit(values: FormData) {
     const generatedData = generateInvestmentData(values);
     setData(generatedData);
+    setSubmittedValues(values);
   }
 
   const generateInvestmentData = (inputs: FormData): InvestmentData[] => {
@@ -126,6 +129,19 @@ export function WealthCalculator() {
       maximumFractionDigits: 0,
     }).format(value);
   };
+  
+  const getAccountTypeName = (type: string | undefined) => {
+    if (!type) return "";
+    switch (type) {
+      case "roth":
+        return "Roth IRA";
+      case "traditional":
+        return "Traditional IRA";
+      default:
+        return "";
+    }
+  };
+
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
@@ -204,7 +220,6 @@ export function WealthCalculator() {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="taxable">Taxable Account</SelectItem>
                         <SelectItem value="roth">Roth IRA</SelectItem>
                         <SelectItem value="traditional">Traditional IRA</SelectItem>
                       </SelectContent>
@@ -227,7 +242,7 @@ export function WealthCalculator() {
         <Card className={glassCardClasses}>
           <CardHeader>
             <CardTitle className="text-2xl font-headline">
-              Projected Growth
+              {`Projected Growth for ${getAccountTypeName(submittedValues?.accountType)}`}
             </CardTitle>
              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-center">
                 <div className="rounded-lg p-4 bg-background/40">
