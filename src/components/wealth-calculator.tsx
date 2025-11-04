@@ -17,6 +17,7 @@ import {
   ArrowRight,
   Scale,
   ArrowLeft,
+  Info,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -39,6 +40,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { IconInput } from "@/components/icon-input";
 import { InvestmentChart } from "@/components/investment-chart";
 import { AnnualBreakdown } from "@/components/annual-breakdown";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "./ui/label";
 
 const formSchema = z.object({
   initialInvestment: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Value must be positive."),
@@ -47,6 +50,8 @@ const formSchema = z.object({
   marginalTaxRate: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Rate must be positive.").max(100, "Rate cannot exceed 100."),
   years: z.coerce.number({invalid_type_error: "Please enter a number."}).int().min(1, "Must be at least 1 year.").max(100, "Cannot exceed 100 years."),
   accountType: z.enum(["roth", "traditional"]),
+  adjustForInflation: z.boolean().default(false),
+  inflationRate: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0).max(20).default(3),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -78,6 +83,8 @@ export function WealthCalculator() {
       marginalTaxRate: 25,
       years: 30,
       accountType: "roth",
+      adjustForInflation: false,
+      inflationRate: 3,
     },
   });
 
@@ -94,6 +101,7 @@ export function WealthCalculator() {
   }, [form]);
 
   const formValues = form.watch();
+  const adjustForInflation = form.watch("adjustForInflation");
 
   React.useEffect(() => {
     const handleSave = () => {
@@ -113,14 +121,16 @@ export function WealthCalculator() {
     const generatedData = generateInvestmentData(values);
     setData(generatedData);
     setSubmittedValues(values);
-    window.scrollTo(0, 0);
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 
   const generateInvestmentData = (inputs: FormData): InvestmentData[] => {
-    const { initialInvestment, monthlyContribution, interestRate, years, accountType, marginalTaxRate } = inputs;
+    const { initialInvestment, monthlyContribution, interestRate, years, accountType, marginalTaxRate, adjustForInflation, inflationRate } = inputs;
     const annualRate = interestRate / 100;
-    const monthlyRate = annualRate / 12;
     const taxRate = marginalTaxRate / 100;
+    const inflationDecimal = (inflationRate || 0) / 100;
     const result: InvestmentData[] = [];
   
     const calculateTaxes = (value: number) => {
@@ -130,41 +140,42 @@ export function WealthCalculator() {
       return value;
     };
   
-    // Year 0
     let lastYearEndValue = initialInvestment;
-    result.push({
-      year: 0,
-      totalInvestment: initialInvestment,
-      projectedValue: calculateTaxes(initialInvestment),
-      totalReturns: 0,
-      annualContributions: initialInvestment,
-      annualReturns: 0,
-    });
   
-    for (let year = 1; year <= years; year++) {
-      let endOfYearValue = lastYearEndValue;
-      const annualContributions = monthlyContribution * 12;
+    for (let year = 0; year <= years; year++) {
+      let currentYearValue;
+      let totalInvestment;
+      let annualContributions;
+  
+      if (year === 0) {
+        currentYearValue = initialInvestment;
+        totalInvestment = initialInvestment;
+        annualContributions = initialInvestment;
+      } else {
+        const monthlyRate = annualRate / 12;
+        currentYearValue = lastYearEndValue * (1 + annualRate) + (monthlyContribution * 12 * (1 + annualRate / 2));
+        totalInvestment = initialInvestment + year * monthlyContribution * 12;
+        annualContributions = monthlyContribution * 12;
+      }
+  
+      const inflationFactor = adjustForInflation ? Math.pow(1 + inflationDecimal, year) : 1;
       
-      const principalGrowth = lastYearEndValue * (1 + annualRate);
-      const contributionsGrowth = monthlyContribution * ( (Math.pow(1 + monthlyRate, 12) - 1) / monthlyRate );
-      endOfYearValue = principalGrowth + contributionsGrowth;
+      const projectedValue = calculateTaxes(currentYearValue / inflationFactor);
+      const inflationAdjustedTotalInvestment = totalInvestment / inflationFactor;
 
-      const totalInvestment = initialInvestment + year * annualContributions;
-      const projectedValue = calculateTaxes(endOfYearValue);
-      const totalReturns = projectedValue - calculateTaxes(totalInvestment);
-
-      const annualReturns = (endOfYearValue - lastYearEndValue) - annualContributions;
+      const totalReturns = projectedValue - calculateTaxes(inflationAdjustedTotalInvestment);
+      const annualReturns = (year > 0) ? (currentYearValue - lastYearEndValue - annualContributions) : 0;
       
       result.push({
         year,
-        totalInvestment,
+        totalInvestment: calculateTaxes(inflationAdjustedTotalInvestment),
         projectedValue: projectedValue,
         totalReturns,
-        annualContributions: calculateTaxes(annualContributions),
-        annualReturns: calculateTaxes(annualReturns),
+        annualContributions: calculateTaxes(annualContributions / inflationFactor),
+        annualReturns: calculateTaxes(annualReturns / inflationFactor),
       });
   
-      lastYearEndValue = endOfYearValue;
+      lastYearEndValue = currentYearValue;
     }
     return result;
   };
@@ -292,6 +303,45 @@ export function WealthCalculator() {
                   </FormItem>
                 )}
               />
+              <Card className="bg-background/30 border-white/10 p-4 space-y-4">
+                 <FormField
+                    control={form.control}
+                    name="adjustForInflation"
+                    render={({ field }) => (
+                        <FormItem className="flex flex-row items-center justify-between">
+                            <Label htmlFor="inflation-switch" className="flex flex-col space-y-1">
+                                <span>Adjust for Inflation</span>
+                                <span className="font-normal text-xs text-muted-foreground">
+                                    Project values in today's dollars.
+                                </span>
+                            </Label>
+                            <FormControl>
+                                <Switch
+                                    id="inflation-switch"
+                                    checked={field.value}
+                                    onCheckedChange={field.onChange}
+                                />
+                            </FormControl>
+                        </FormItem>
+                    )}
+                    />
+                {adjustForInflation && (
+                    <FormField
+                        control={form.control}
+                        name="inflationRate"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Assumed Inflation (%)</FormLabel>
+                                <FormControl>
+                                    <IconInput icon={<Percent />} type="number" placeholder="3" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                )}
+              </Card>
+
               <div className="flex items-center gap-4">
                  <Button onClick={() => router.back()} variant="outline" size="lg" type="button">
                     <ArrowLeft className="mr-2 h-5 w-5" />
@@ -308,11 +358,12 @@ export function WealthCalculator() {
       </Card>
       
       <div className="lg:col-span-2">
-      {data && finalData ? (
+      {data && finalData && submittedValues ? (
         <Card className={glassCardClasses}>
           <CardHeader>
             <CardTitle className="text-2xl font-headline">
               {`Projected Growth for ${getAccountTypeName(submittedValues?.accountType)}`}
+              {submittedValues.adjustForInflation && <span className="text-base font-normal text-muted-foreground ml-2">(Adjusted for Inflation)</span>}
             </CardTitle>
              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-center">
                 <div className="rounded-lg p-4 bg-background/40">
@@ -347,5 +398,3 @@ export function WealthCalculator() {
     </div>
   );
 }
-
-    

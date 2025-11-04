@@ -11,6 +11,7 @@ import { Slider } from "@/components/ui/slider";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowLeft, ArrowRight, Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { AllocationChart } from "@/components/allocation-chart";
 
 const glassCardClasses = "bg-background/50 backdrop-blur-xl border border-white/10 shadow-xl shadow-black/10";
 
@@ -31,6 +32,12 @@ const categoryBgColors = {
     bonds: "bg-green-900/20",
     alternatives: "bg-purple-900/20",
 };
+
+const categoryHexColors: Record<string, string[]> = {
+  stocks: ["#2563eb", "#3b82f6", "#60a5fa", "#93c5fd", "#bfdbfe"],
+  bonds: ["#16a34a", "#22c55e", "#4ade80", "#86efac", "#bbf7d0"],
+  alternatives: ["#7c3aed", "#8b5cf6", "#a78bfa", "#c4b5fd", "#ddd6fe"],
+}
 
 const availableTickers = [
     { value: 'AAPL', label: 'Apple Inc.', category: 'stocks', group: 'Stocks' },
@@ -256,9 +263,6 @@ export function PortfolioBuilder() {
   const handleAddTicker = (tickerValue: string) => {
     const tickerData = availableTickers.find(t => t.value === tickerValue);
     if (tickerData && !selectedTickers.find(t => t.id === tickerData.value)) {
-      const categoryTickers = selectedTickers.filter(t => t.category === tickerData.category);
-      const newAllocation = categoryTickers.length > 0 ? 0 : 100;
-
       setSelectedTickers(prev => [
         ...prev,
         { id: tickerData.value, name: tickerData.label, category: tickerData.category as any, allocation: 0 }
@@ -279,6 +283,52 @@ export function PortfolioBuilder() {
   const getCategoryTotalAllocation = (category: keyof Allocation) => {
     return getCategoryTickers(category).reduce((total, ticker) => total + ticker.allocation, 0);
   };
+
+  const renderCategorySection = (category: keyof Allocation, title: string) => {
+      const tickers = getCategoryTickers(category);
+      const chartData = tickers.map(t => ({ name: t.id, value: t.allocation }));
+      const totalAllocation = getCategoryTotalAllocation(category);
+
+      return (
+        <div>
+            <div className="flex justify-between items-center mb-4">
+                <h4 className={cn("font-semibold text-lg", categoryColors[category])}>{title}</h4>
+                <div className="flex items-center gap-4">
+                    <span className={cn("text-sm", totalAllocation > 100 ? "text-destructive" : "text-muted-foreground")}>
+                        Total: {totalAllocation}%
+                    </span>
+                    <span className={cn("text-lg font-bold", categoryColors[category])}>{allocation[category]}%</span>
+                </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+              <div className="space-y-2">
+                  {tickers.map(t => (
+                      <div key={t.id} className={cn("flex items-center justify-between p-2 rounded-md gap-2", categoryBgColors[category])}>
+                          <span className="flex-1 truncate text-sm">{t.name} ({t.id})</span>
+                          <div className="flex items-center gap-2">
+                            <Input 
+                                type="number" 
+                                value={t.allocation}
+                                onChange={(e) => handleTickerAllocationChange(t.id, parseInt(e.target.value) || 0)}
+                                className="w-20 h-8 text-right"
+                                max={100}
+                                min={0}
+                            />
+                            <span className="text-muted-foreground">%</span>
+                            <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-destructive" onClick={() => handleRemoveTicker(t.id)}>
+                                <Trash2 className="h-4 w-4" />
+                            </Button>
+                          </div>
+                      </div>
+                  ))}
+              </div>
+              <div className="h-40">
+                  <AllocationChart data={chartData} colors={categoryHexColors[category]} />
+              </div>
+            </div>
+        </div>
+      );
+  }
 
 
   return (
@@ -362,97 +412,10 @@ export function PortfolioBuilder() {
           <CardTitle className="text-2xl font-headline">5. Portfolio Summary</CardTitle>
         </CardHeader>
         <CardContent>
-            <div className="space-y-6">
-                <div>
-                    <div className="flex justify-between items-center mb-2">
-                        <h4 className={cn("font-semibold text-lg", categoryColors.stocks)}>Stocks</h4>
-                        <div className="flex items-center gap-4">
-                            <span className="text-sm text-muted-foreground">Total: {getCategoryTotalAllocation("stocks")}%</span>
-                            <span className={cn("text-lg font-bold", categoryColors.stocks)}>{allocation.stocks}%</span>
-                        </div>
-                    </div>
-                    <div className="pl-4 space-y-2">
-                        {getCategoryTickers("stocks").map(t => (
-                            <div key={t.id} className={cn("flex items-center justify-between p-2 rounded-md gap-2", categoryBgColors.stocks)}>
-                                <span className="flex-1 truncate">{t.name} ({t.id})</span>
-                                <div className="flex items-center gap-2">
-                                  <Input 
-                                      type="number" 
-                                      value={t.allocation}
-                                      onChange={(e) => handleTickerAllocationChange(t.id, parseInt(e.target.value) || 0)}
-                                      className="w-20 h-8 text-right"
-                                      max={100}
-                                      min={0}
-                                  />
-                                  <span className="text-muted-foreground">%</span>
-                                  <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-destructive" onClick={() => handleRemoveTicker(t.id)}>
-                                      <Trash2 className="h-4 w-4" />
-                                  </Button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                 <div>
-                    <div className="flex justify-between items-center mb-2">
-                        <h4 className={cn("font-semibold text-lg", categoryColors.bonds)}>Bonds</h4>
-                        <div className="flex items-center gap-4">
-                           <span className="text-sm text-muted-foreground">Total: {getCategoryTotalAllocation("bonds")}%</span>
-                           <span className={cn("text-lg font-bold", categoryColors.bonds)}>{allocation.bonds}%</span>
-                        </div>
-                    </div>
-                    <div className="pl-4 space-y-2">
-                        {getCategoryTickers("bonds").map(t => (
-                             <div key={t.id} className={cn("flex items-center justify-between p-2 rounded-md gap-2", categoryBgColors.bonds)}>
-                                <span className="flex-1 truncate">{t.name} ({t.id})</span>
-                                 <div className="flex items-center gap-2">
-                                  <Input 
-                                      type="number" 
-                                      value={t.allocation}
-                                      onChange={(e) => handleTickerAllocationChange(t.id, parseInt(e.target.value) || 0)}
-                                      className="w-20 h-8 text-right"
-                                      max={100}
-                                      min={0}
-                                  />
-                                   <span className="text-muted-foreground">%</span>
-                                  <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-destructive" onClick={() => handleRemoveTicker(t.id)}>
-                                      <Trash2 className="h-4 w-4" />
-                                  </Button>
-                                 </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                 <div>
-                    <div className="flex justify-between items-center mb-2">
-                        <h4 className={cn("font-semibold text-lg", categoryColors.alternatives)}>Alternatives</h4>
-                        <div className="flex items-center gap-4">
-                            <span className="text-sm text-muted-foreground">Total: {getCategoryTotalAllocation("alternatives")}%</span>
-                            <span className={cn("text-lg font-bold", categoryColors.alternatives)}>{allocation.alternatives}%</span>
-                        </div>
-                    </div>
-                    <div className="pl-4 space-y-2">
-                        {getCategoryTickers("alternatives").map(t => (
-                             <div key={t.id} className={cn("flex items-center justify-between p-2 rounded-md gap-2", categoryBgColors.alternatives)}>
-                                <span className="flex-1 truncate">{t.name} ({t.id})</span>
-                                 <div className="flex items-center gap-2">
-                                  <Input 
-                                      type="number" 
-                                      value={t.allocation}
-                                      onChange={(e) => handleTickerAllocationChange(t.id, parseInt(e.target.value) || 0)}
-                                      className="w-20 h-8 text-right"
-                                      max={100}
-                                      min={0}
-                                  />
-                                  <span className="text-muted-foreground">%</span>
-                                  <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-destructive" onClick={() => handleRemoveTicker(t.id)}>
-                                      <Trash2 className="h-4 w-4" />
-                                  </Button>
-                                 </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+            <div className="space-y-8">
+                {renderCategorySection("stocks", "Stocks")}
+                {renderCategorySection("bonds", "Bonds")}
+                {renderCategorySection("alternatives", "Alternatives")}
             </div>
         </CardContent>
       </Card>
@@ -470,7 +433,3 @@ export function PortfolioBuilder() {
     </div>
   );
 }
-
-    
-
-    
