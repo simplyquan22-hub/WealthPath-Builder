@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -9,7 +10,7 @@ interface IconInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const IconInput = React.forwardRef<HTMLInputElement, IconInputProps>(
-  ({ className, icon, ...props }, ref) => {
+  ({ className, icon, value, ...props }, ref) => {
     return (
       <div className="relative">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
@@ -19,6 +20,7 @@ const IconInput = React.forwardRef<HTMLInputElement, IconInputProps>(
         </div>
         <Input
           ref={ref}
+          value={value ?? ""}
           className={cn("pl-10 h-12 text-base md:text-sm", className)}
           {...props}
         />
