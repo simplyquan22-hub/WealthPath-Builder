@@ -217,7 +217,7 @@ export function RiskMindsetQuiz() {
               <h2 className="text-2xl md:text-3xl font-bold font-headline mb-2">{resultData.title}</h2>
               <p className="text-muted-foreground text-lg mb-8">{resultData.message}</p>
               <a href="/portfolio-builder" 
-                className={cn(buttonVariants({ variant: 'default' }), "h-12 text-lg px-8")}
+                className={cn(buttonVariants({ variant: 'default' }), "h-12 text-lg px-4 sm:px-8")}
               >
                   {resultData.buttonText}
                   <ArrowRight className="ml-2 h-5 w-5" />
