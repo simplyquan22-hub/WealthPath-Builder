@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -148,7 +149,7 @@ export function RiskMindsetQuiz() {
                     {q.options.map((opt) => (
                       <div key={opt.id} className="flex items-center space-x-3">
                         <RadioGroupItem value={String(opt.value)} id={`${q.id}-${opt.id}`} />
-                        <Label htmlFor={`${q.id}-${opt.id}`} className="text-base font-normal">
+                        <Label htmlFor={`${q.id}-${opt.id}`} className="text-base font-normal cursor-pointer">
                           {opt.text}
                         </Label>
                       </div>
@@ -184,5 +185,3 @@ export function RiskMindsetQuiz() {
     </Card>
   );
 }
-
-    

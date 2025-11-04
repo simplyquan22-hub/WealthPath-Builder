@@ -395,7 +395,7 @@ export function PortfolioBuilder() {
                         {tickers.map(t => (
                             <SelectItem key={t.value} value={t.value}>
                                 <div className="flex items-center gap-2">
-                                    <span className={cn("w-2 h-2 rounded-full", categoryBgColors[t.category as keyof typeof categoryBgColors])} />
+                                    <span className={cn("w-2 h-2 rounded-full", t.category === 'stocks' ? 'bg-blue-500' : t.category === 'bonds' ? 'bg-green-500' : 'bg-purple-500')} />
                                     <span>{t.label} ({t.value})</span>
                                 </div>
                             </SelectItem>
@@ -420,12 +420,12 @@ export function PortfolioBuilder() {
         </CardContent>
       </Card>
 
-      <div className="flex justify-between">
-         <Button onClick={() => router.back()} variant="outline" size="lg">
+      <div className="flex flex-col sm:flex-row justify-between gap-4">
+         <Button onClick={() => router.back()} variant="outline" size="lg" className="w-full sm:w-auto">
             <ArrowLeft className="mr-2 h-5 w-5" />
             Back
         </Button>
-        <Button onClick={() => router.push("/calculator")} size="lg">
+        <Button onClick={() => router.push("/calculator")} size="lg" className="w-full sm:w-auto">
           Project My Growth
           <ArrowRight className="ml-2 h-5 w-5" />
         </Button>

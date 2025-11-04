@@ -106,8 +106,10 @@ export function WealthCalculator() {
   React.useEffect(() => {
     const handleSave = () => {
       try {
-        const stateToSave = JSON.stringify(formValues);
-        localStorage.setItem(STORAGE_KEY, stateToSave);
+        if(form.formState.isDirty){
+          const stateToSave = JSON.stringify(formValues);
+          localStorage.setItem(STORAGE_KEY, stateToSave);
+        }
       } catch (error) {
         console.error("Failed to save calculator state to localStorage", error);
       }
@@ -115,7 +117,7 @@ export function WealthCalculator() {
     
     const debounceSave = setTimeout(handleSave, 500);
     return () => clearTimeout(debounceSave);
-  }, [formValues]);
+  }, [formValues, form.formState.isDirty]);
 
   function onSubmit(values: FormData) {
     const generatedData = generateInvestmentData(values);
@@ -141,30 +143,28 @@ export function WealthCalculator() {
     };
   
     let lastYearEndValue = initialInvestment;
+    let endOfYearValue = initialInvestment;
   
     for (let year = 0; year <= years; year++) {
-      let currentYearValue;
-      let totalInvestment;
-      let annualContributions;
+      let annualContributions = 0;
+      let totalInvestment = 0;
   
       if (year === 0) {
-        currentYearValue = initialInvestment;
+        endOfYearValue = initialInvestment;
         totalInvestment = initialInvestment;
         annualContributions = initialInvestment;
       } else {
-        const monthlyRate = annualRate / 12;
-        currentYearValue = lastYearEndValue * (1 + annualRate) + (monthlyContribution * 12 * (1 + annualRate / 2));
-        totalInvestment = initialInvestment + year * monthlyContribution * 12;
         annualContributions = monthlyContribution * 12;
+        endOfYearValue = lastYearEndValue * (1 + annualRate) + annualContributions;
+        totalInvestment = initialInvestment + year * annualContributions;
       }
   
       const inflationFactor = adjustForInflation ? Math.pow(1 + inflationDecimal, year) : 1;
-      
-      const projectedValue = calculateTaxes(currentYearValue / inflationFactor);
+      const projectedValue = calculateTaxes(endOfYearValue / inflationFactor);
       const inflationAdjustedTotalInvestment = totalInvestment / inflationFactor;
 
       const totalReturns = projectedValue - calculateTaxes(inflationAdjustedTotalInvestment);
-      const annualReturns = (year > 0) ? (currentYearValue - lastYearEndValue - annualContributions) : 0;
+      const annualReturns = (year > 0) ? (endOfYearValue - lastYearEndValue - annualContributions) : 0;
       
       result.push({
         year,
@@ -175,11 +175,10 @@ export function WealthCalculator() {
         annualReturns: calculateTaxes(annualReturns / inflationFactor),
       });
   
-      lastYearEndValue = currentYearValue;
+      lastYearEndValue = endOfYearValue;
     }
     return result;
   };
-  
   
   const finalData = data ? data[data.length - 1] : null;
 
@@ -203,7 +202,6 @@ export function WealthCalculator() {
         return "";
     }
   };
-
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
@@ -240,7 +238,7 @@ export function WealthCalculator() {
                   </FormItem>
                 )}
               />
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                  <FormField
                   control={form.control}
                   name="interestRate"
@@ -342,8 +340,8 @@ export function WealthCalculator() {
                 )}
               </Card>
 
-              <div className="flex items-center gap-4">
-                 <Button onClick={() => router.back()} variant="outline" size="lg" type="button">
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                 <Button onClick={() => router.back()} variant="outline" size="lg" type="button" className="w-full sm:w-auto">
                     <ArrowLeft className="mr-2 h-5 w-5" />
                     Back
                 </Button>
