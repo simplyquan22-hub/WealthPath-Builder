@@ -145,18 +145,18 @@ export function WealthCalculator() {
     } = inputs;
 
     const results: InvestmentData[] = [];
-    const r = interestRate / 100 / 12; // Monthly interest rate
-    const i = (adjustForInflation ? inflationRate : 0) / 100 / 12; // Monthly inflation rate
+    const monthlyRate = interestRate / 100 / 12;
+    const inflationMonthlyRate = (adjustForInflation ? inflationRate : 0) / 100 / 12;
 
-    const effective_contribution =
+    const effectiveContribution =
       accountType === 'roth'
         ? monthlyContribution * (1 - marginalTaxRate / 100)
         : monthlyContribution;
 
-    let currentBalance = initialInvestment;
-    let totalGrossContributions = initialInvestment;
+    let futureValue = initialInvestment;
+    let totalInvestment = initialInvestment;
 
-    // Year 0
+    // Year 0 data
     results.push({
       year: 0,
       projectedValue: initialInvestment,
@@ -166,41 +166,40 @@ export function WealthCalculator() {
       annualReturns: 0,
     });
 
+    let lastYearEndValue = initialInvestment;
+
     for (let year = 1; year <= years; year++) {
-      let yearStartBalance = currentBalance;
-      let annualGrossContributions = 0;
-      
+      let annualContributions = 0;
       for (let month = 1; month <= 12; month++) {
-        currentBalance += effective_contribution;
-        currentBalance *= (1 + r);
-        annualGrossContributions += monthlyContribution;
+        futureValue += effectiveContribution;
+        futureValue *= (1 + monthlyRate);
+        annualContributions += monthlyContribution;
       }
       
-      totalGrossContributions += annualGrossContributions;
-
-      let projectedValue = currentBalance;
-
+      totalInvestment += annualContributions;
+      
+      let finalFV = futureValue;
       if (accountType === 'traditional') {
-        projectedValue = currentBalance * (1 - marginalTaxRate / 100);
+        finalFV = futureValue * (1 - marginalTaxRate / 100);
       }
+      
+      const inflationDivisor = Math.pow(1 + inflationMonthlyRate, year * 12);
+      const realFV = finalFV / inflationDivisor;
+      const realTotalInvestment = totalInvestment / inflationDivisor;
+      const realAnnualContributions = annualContributions / inflationDivisor;
 
-      const n = year * 12;
-      const inflationDivisor = Math.pow(1 + i, n);
-      const real_FV = projectedValue / inflationDivisor;
-
-      const previousYearValue = results[year - 1].projectedValue;
-
-      const annualReturns = real_FV - previousYearValue - (annualGrossContributions / inflationDivisor);
-
+      const annualReturns = realFV - lastYearEndValue - realAnnualContributions;
 
       results.push({
         year: year,
-        projectedValue: real_FV,
-        totalInvestment: totalGrossContributions / inflationDivisor,
-        totalReturns: real_FV - totalGrossContributions / inflationDivisor,
-        annualContributions: annualGrossContributions / inflationDivisor,
+        projectedValue: realFV,
+        totalInvestment: realTotalInvestment,
+        totalReturns: realFV - realTotalInvestment,
+        annualContributions: realAnnualContributions,
         annualReturns: annualReturns,
       });
+
+      lastYearEndValue = realFV;
     }
 
     return results;
@@ -232,49 +231,22 @@ export function WealthCalculator() {
 
   return (
     <TooltipProvider>
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-      <Card className={`lg:col-span-1 ${glassCardClasses}`}>
-        <CardHeader>
-          <CardTitle className="text-2xl font-headline">Investment Details</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="initialInvestment"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Initial Investment</FormLabel>
-                    <FormControl>
-                      <IconInput icon={<Landmark />} type="number" placeholder="10,000" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="monthlyContribution"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Monthly Contribution</FormLabel>
-                    <FormControl>
-                      <IconInput icon={<Repeat />} type="number" placeholder="500" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                 <FormField
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <Card className={`lg:col-span-1 ${glassCardClasses}`}>
+          <CardHeader>
+            <CardTitle className="text-2xl font-headline">Investment Details</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
                   control={form.control}
-                  name="interestRate"
+                  name="initialInvestment"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Interest Rate (%)</FormLabel>
+                      <FormLabel>Initial Investment</FormLabel>
                       <FormControl>
-                        <IconInput icon={<Percent />} type="number" placeholder="7" {...field} />
+                        <IconInput icon={<Landmark />} type="number" placeholder="10,000" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -282,157 +254,184 @@ export function WealthCalculator() {
                 />
                 <FormField
                   control={form.control}
-                  name="years"
+                  name="monthlyContribution"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Years</FormLabel>
+                      <FormLabel>Monthly Contribution</FormLabel>
                       <FormControl>
-                        <IconInput icon={<CalendarClock />} type="number" placeholder="30" {...field} />
+                        <IconInput icon={<Repeat />} type="number" placeholder="500" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-              </div>
-               <FormField
-                  control={form.control}
-                  name="marginalTaxRate"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Marginal Tax Rate (%)</FormLabel>
-                      <FormControl>
-                        <IconInput icon={<Scale />} type="number" placeholder="25" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              <FormField
-                control={form.control}
-                name="accountType"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Account Type</FormLabel>
-                    <Select onValueChange={field.onChange} value={field.value}>
-                      <FormControl>
-                        <SelectTrigger className="h-12 text-base md:text-sm">
-                           <Briefcase className="mr-2 h-4 w-4" />
-                           <SelectValue placeholder="Select an account type" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="roth">Roth IRA</SelectItem>
-                        <SelectItem value="traditional">Traditional IRA</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Card className="bg-background/30 border-white/10 p-4 space-y-4">
-                 <FormField
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <FormField
                     control={form.control}
-                    name="adjustForInflation"
+                    name="interestRate"
                     render={({ field }) => (
-                        <FormItem className="flex flex-row items-center justify-between">
-                            <Label htmlFor="inflation-switch" className="flex flex-col space-y-1">
-                                <span>Adjust for Inflation</span>
-                                <span className="font-normal text-xs text-muted-foreground">
-                                    Project values in today's dollars.
-                                </span>
-                            </Label>
-                            <FormControl>
-                                <Switch
-                                    id="inflation-switch"
-                                    checked={field.value}
-                                    onCheckedChange={field.onChange}
-                                />
-                            </FormControl>
-                        </FormItem>
+                      <FormItem>
+                        <FormLabel>Interest Rate (%)</FormLabel>
+                        <FormControl>
+                          <IconInput icon={<Percent />} type="number" placeholder="7" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
                     )}
-                    />
-                {adjustForInflation && (
-                    <FormField
-                        control={form.control}
-                        name="inflationRate"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Assumed Inflation (%)</FormLabel>
-                                <FormControl>
-                                    <IconInput icon={<Percent />} type="number" placeholder="3" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                )}
-              </Card>
+                  />
+                  <FormField
+                    control={form.control}
+                    name="years"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Years</FormLabel>
+                        <FormControl>
+                          <IconInput icon={<CalendarClock />} type="number" placeholder="30" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <FormField
+                    control={form.control}
+                    name="marginalTaxRate"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Marginal Tax Rate (%)</FormLabel>
+                        <FormControl>
+                          <IconInput icon={<Scale />} type="number" placeholder="25" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                <FormField
+                  control={form.control}
+                  name="accountType"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Account Type</FormLabel>
+                      <Select onValueChange={field.onChange} value={field.value}>
+                        <FormControl>
+                          <SelectTrigger className="h-12 text-base md:text-sm">
+                            <Briefcase className="mr-2 h-4 w-4" />
+                            <SelectValue placeholder="Select an account type" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="roth">Roth IRA</SelectItem>
+                          <SelectItem value="traditional">Traditional IRA</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Card className="bg-background/30 border-white/10 p-4 space-y-4">
+                  <FormField
+                      control={form.control}
+                      name="adjustForInflation"
+                      render={({ field }) => (
+                          <FormItem className="flex flex-row items-center justify-between">
+                              <Label htmlFor="inflation-switch" className="flex flex-col space-y-1">
+                                  <span>Adjust for Inflation</span>
+                                  <span className="font-normal text-xs text-muted-foreground">
+                                      Project values in today's dollars.
+                                  </span>
+                              </Label>
+                              <FormControl>
+                                  <Switch
+                                      id="inflation-switch"
+                                      checked={field.value}
+                                      onCheckedChange={field.onChange}
+                                  />
+                              </FormControl>
+                          </FormItem>
+                      )}
+                      />
+                  {adjustForInflation && (
+                      <FormField
+                          control={form.control}
+                          name="inflationRate"
+                          render={({ field }) => (
+                              <FormItem>
+                                  <FormLabel>Assumed Inflation (%)</FormLabel>
+                                  <FormControl>
+                                      <IconInput icon={<Percent />} type="number" placeholder="3" {...field} />
+                                  </FormControl>
+                                  <FormMessage />
+                              </FormItem>
+                          )}
+                      />
+                  )}
+                </Card>
 
-              <div className="flex flex-col sm:flex-row items-center gap-4">
-                 <Button onClick={() => router.back()} variant="outline" size="lg" type="button" className="w-full sm:w-auto">
-                    <ArrowLeft className="mr-2 h-5 w-5" />
-                    Back
-                </Button>
-                <Button type="submit" className="w-full h-12 text-lg">
-                    Calculate
-                    <ArrowRight className="ml-2 h-5 w-5"/>
-                </Button>
-              </div>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
-      
-      <div className="lg:col-span-2">
-      {data && finalData && submittedValues ? (
-        <Card className={glassCardClasses}>
-          <CardHeader>
-            <CardTitle className="text-2xl font-headline">
-              {`Projected Growth for ${getAccountTypeName(submittedValues?.accountType)}`}
-              {submittedValues.adjustForInflation && <span className="text-base font-normal text-muted-foreground ml-2">(Adjusted for Inflation)</span>}
-            </CardTitle>
-             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-center">
-                <div className="rounded-lg p-4 bg-background/40">
-                  <div className="text-sm text-muted-foreground flex items-center justify-center gap-2">
-                    <TrendingUp className="h-4 w-4"/>
-                    <span>Future Value</span>
-                     <Tooltip>
-                        <TooltipTrigger asChild>
-                          <Info className="h-4 w-4 cursor-pointer" />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>All returns are estimates — actual results will vary. This calculator is for educational purposes only.</p>
-                        </TooltipContent>
-                      </Tooltip>
-                  </div>
-                  <p className="text-2xl font-bold text-primary">{formatCurrency(finalData.projectedValue)}</p>
+                <div className="flex flex-col sm:flex-row items-center gap-4">
+                  <Button onClick={() => router.back()} variant="outline" size="lg" type="button" className="w-full sm:w-auto">
+                      <ArrowLeft className="mr-2 h-5 w-5" />
+                      Back
+                  </Button>
+                  <Button type="submit" className="w-full h-12 text-lg">
+                      Calculate
+                      <ArrowRight className="ml-2 h-5 w-5"/>
+                  </Button>
                 </div>
-                <div className="rounded-lg p-4 bg-background/40">
-                  <p className="text-sm text-muted-foreground flex items-center justify-center gap-2"><PiggyBank className="h-4 w-4"/> Total Invested</p>
-                  <p className="text-2xl font-bold">{formatCurrency(finalData.totalInvestment)}</p>
-                </div>
-                <div className="rounded-lg p-4 bg-background/40">
-                  <p className="text-sm text-muted-foreground flex items-center justify-center gap-2"><TrendingUp className="h-4 w-4 text-green-400"/> Total Returns</p>
-                  <p className="text-2xl font-bold text-green-400">{formatCurrency(finalData.totalReturns)}</p>
-                </div>
-              </div>
-          </CardHeader>
-          <CardContent>
-            <InvestmentChart data={data} />
-            <AnnualBreakdown data={data.filter(d => d.year > 0)} />
+              </form>
+            </Form>
           </CardContent>
         </Card>
-      ) : (
-         <Card className={`flex flex-col items-center justify-center text-center p-8 lg:p-16 min-h-[300px] lg:min-h-[600px] ${glassCardClasses}`}>
-            <div className="p-4 bg-primary/20 rounded-full mb-4">
-              <TrendingUp className="h-10 w-10 text-primary" />
-            </div>
-            <h3 className="text-xl font-semibold font-headline">Your financial projection awaits.</h3>
-            <p className="text-muted-foreground mt-2">Fill out the form to visualize your investment journey.</p>
+        
+        <div className="lg:col-span-2">
+        {data && finalData && submittedValues ? (
+          <Card className={glassCardClasses}>
+            <CardHeader>
+              <CardTitle className="text-2xl font-headline">
+                {`Projected Growth for ${getAccountTypeName(submittedValues?.accountType)}`}
+                {submittedValues.adjustForInflation && <span className="text-base font-normal text-muted-foreground ml-2">(Adjusted for Inflation)</span>}
+              </CardTitle>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-center">
+                  <div className="rounded-lg p-4 bg-background/40">
+                    <div className="text-sm text-muted-foreground flex items-center justify-center gap-2">
+                      <TrendingUp className="h-4 w-4"/>
+                      <span>Future Value</span>
+                      <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Info className="h-4 w-4 cursor-pointer" />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>All returns are estimates — actual results will vary. This calculator is for educational purposes only.</p>
+                          </TooltipContent>
+                        </Tooltip>
+                    </div>
+                    <p className="text-2xl font-bold text-primary">{formatCurrency(finalData.projectedValue)}</p>
+                  </div>
+                  <div className="rounded-lg p-4 bg-background/40">
+                    <p className="text-sm text-muted-foreground flex items-center justify-center gap-2"><PiggyBank className="h-4 w-4"/> Total Invested</p>
+                    <p className="text-2xl font-bold">{formatCurrency(finalData.totalInvestment)}</p>
+                  </div>
+                  <div className="rounded-lg p-4 bg-background/40">
+                    <p className="text-sm text-muted-foreground flex items-center justify-center gap-2"><TrendingUp className="h-4 w-4 text-green-400"/> Total Returns</p>
+                    <p className="text-2xl font-bold text-green-400">{formatCurrency(finalData.totalReturns)}</p>
+                  </div>
+                </div>
+            </CardHeader>
+            <CardContent>
+              <InvestmentChart data={data} />
+              <AnnualBreakdown data={data.filter(d => d.year > 0)} />
+            </CardContent>
           </Card>
-      )}
+        ) : (
+          <Card className={`flex flex-col items-center justify-center text-center p-8 lg:p-16 min-h-[300px] lg:min-h-[600px] ${glassCardClasses}`}>
+              <div className="p-4 bg-primary/20 rounded-full mb-4">
+                <TrendingUp className="h-10 w-10 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold font-headline">Your financial projection awaits.</h3>
+              <p className="text-muted-foreground mt-2">Fill out the form to visualize your investment journey.</p>
+            </Card>
+        )}
+        </div>
       </div>
-    </div>
     </TooltipProvider>
   );
 }
