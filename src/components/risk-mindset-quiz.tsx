@@ -2,15 +2,12 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { ArrowRight } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-
 
 const glassCardClasses = "bg-background/50 backdrop-blur-xl border border-white/10 shadow-xl shadow-black/10";
 
@@ -84,6 +81,7 @@ type Answers = { [key: string]: string };
 const STORAGE_KEY = 'wealthpath-quiz-state';
 
 export function RiskMindsetQuiz() {
+  const router = useRouter();
   const [answers, setAnswers] = React.useState<Answers>({});
   const [score, setScore] = React.useState<number | null>(null);
 
@@ -173,10 +171,13 @@ export function RiskMindsetQuiz() {
             <div className="text-center">
               <h2 className="text-2xl md:text-3xl font-bold font-headline mb-2">{resultData.title}</h2>
               <p className="text-muted-foreground text-lg mb-8">{resultData.message}</p>
-              <Link href="/portfolio-builder" className={cn(buttonVariants({ className: "h-12 text-lg px-8" }))}>
+              <Button
+                onClick={() => router.push('/portfolio-builder')}
+                className="h-12 text-lg px-8"
+              >
                   {resultData.buttonText}
                   <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+              </Button>
             </div>
           )
         )}
