@@ -139,43 +139,78 @@ export function WealthCalculator() {
       return value;
     };
   
-    let lastYearEndValue = initialInvestment;
-    let endOfYearValue = initialInvestment;
+    let currentBalance = initialInvestment;
+    let totalInvested = initialInvestment;
   
-    for (let year = 0; year <= years; year++) {
-      let annualContributions = 0;
-      let totalInvestment = 0;
-  
-      if (year === 0) {
-        endOfYearValue = initialInvestment;
-        totalInvestment = initialInvestment;
-        annualContributions = initialInvestment;
-      } else {
-        annualContributions = monthlyContribution * 12;
-        endOfYearValue = lastYearEndValue * (1 + annualRate) + annualContributions;
-        totalInvestment = initialInvestment + year * annualContributions;
-      }
-  
-      const inflationFactor = adjustForInflation ? Math.pow(1 + inflationDecimal, year) : 1;
-      const projectedValue = calculateTaxes(endOfYearValue / inflationFactor);
-      const inflationAdjustedTotalInvestment = totalInvestment / inflationFactor;
+    const yearZeroData = {
+        year: 0,
+        projectedValue: calculateTaxes(initialInvestment),
+        totalInvestment: calculateTaxes(initialInvestment),
+        totalReturns: 0,
+        annualContributions: calculateTaxes(initialInvestment),
+        annualReturns: 0,
+    };
+    if (adjustForInflation) {
+        yearZeroData.projectedValue = calculateTaxes(initialInvestment);
+        yearZeroData.totalInvestment = calculateTaxes(initialInvestment);
+    }
+    result.push(yearZeroData);
 
-      const totalReturns = projectedValue - calculateTaxes(inflationAdjustedTotalInvestment);
-      const annualReturns = (year > 0) ? (endOfYearValue - lastYearEndValue - annualContributions) : 0;
-      
-      result.push({
-        year,
-        totalInvestment: calculateTaxes(inflationAdjustedTotalInvestment),
-        projectedValue: projectedValue,
-        totalReturns,
-        annualContributions: calculateTaxes(annualContributions / inflationFactor),
-        annualReturns: calculateTaxes(annualReturns / inflationFactor),
-      });
+
+    for (let year = 1; year <= years; year++) {
+        const startOfYearBalance = currentBalance;
+        const annualContributions = monthlyContribution * 12;
+        currentBalance += annualContributions;
+        totalInvested += annualContributions;
+        
+        const interestEarned = currentBalance * annualRate;
+        currentBalance += interestEarned;
+
+        const annualReturns = currentBalance - startOfYearBalance - annualContributions;
   
-      lastYearEndValue = endOfYearValue;
+        const inflationFactor = adjustForInflation ? Math.pow(1 + inflationDecimal, year) : 1;
+        
+        const projectedValue = calculateTaxes(currentBalance / inflationFactor);
+        const inflationAdjustedTotalInvestment = calculateTaxedTotalInvestment(initialInvestment, monthlyContribution, year, taxRate, inflationDecimal, adjustForInflation);
+
+
+        result.push({
+            year,
+            projectedValue: projectedValue,
+            totalInvestment: inflationAdjustedTotalInvestment,
+            totalReturns: projectedValue - inflationAdjustedTotalInvestment,
+            annualContributions: calculateTaxes(annualContributions / inflationFactor),
+            annualReturns: calculateTaxes(annualReturns / inflationFactor),
+        });
     }
     return result;
   };
+
+  const calculateTaxedTotalInvestment = (initial: number, monthly: number, years: number, taxRate: number, inflationRate: number, adjustForInflation: boolean) => {
+    let totalInvested = initial;
+    for (let y = 1; y <= years; y++) {
+        const inflationFactor = adjustForInflation ? Math.pow(1 + inflationRate, y) : 1;
+        totalInvested += (monthly * 12) / inflationFactor;
+    }
+    // This is a simplified model. For a Roth, this is simple. For Traditional, it's more complex.
+    // The current logic applies tax at the end, but contributions are pre-tax.
+    // A more accurate model would be to show the pre-tax value and then an after-tax estimate.
+    // For now, let's just return the inflation-adjusted sum of contributions.
+    let totalContribution = initial;
+    if (adjustForInflation) {
+        let currentYearContribution = monthly * 12;
+        for (let y=1; y <= years; y++) {
+            totalContribution += currentYearContribution / Math.pow(1+inflationRate, y);
+        }
+    } else {
+        totalContribution += monthly * 12 * years;
+    }
+
+    if(form.getValues('accountType') === 'traditional') {
+        return totalContribution * (1-taxRate);
+    }
+    return totalContribution;
+  }
   
   const finalData = data ? data[data.length - 1] : null;
 
