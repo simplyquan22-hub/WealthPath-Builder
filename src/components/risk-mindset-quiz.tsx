@@ -184,3 +184,5 @@ export function RiskMindsetQuiz() {
     </Card>
   );
 }
+
+    

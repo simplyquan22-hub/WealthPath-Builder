@@ -293,7 +293,7 @@ export function WealthCalculator() {
                 )}
               />
               <div className="flex items-center gap-4">
-                <Button onClick={() => router.back()} variant="outline" className="h-12 text-lg">
+                 <Button onClick={() => router.back()} variant="outline" size="lg" type="button">
                     <ArrowLeft className="mr-2 h-5 w-5" />
                     Back
                 </Button>
@@ -347,5 +347,7 @@ export function WealthCalculator() {
     </div>
   );
 }
+
+    
 
     
