@@ -144,23 +144,16 @@ export function WealthCalculator() {
     for (let year = 1; year <= years; year++) {
       let endOfYearValue = lastYearEndValue;
       const annualContributions = monthlyContribution * 12;
-  
-      // Calculate growth for the year with monthly contributions
-      for (let month = 1; month <= 12; month++) {
-        endOfYearValue = (endOfYearValue * (1 + monthlyRate)) + monthlyContribution;
-      }
-      // Correction for monthly contribution formula: The loop above adds one month too many of contributions to the final value, so we subtract one. A more standard formula is P(1+r)^n + M(...).
-      // Let's use a standard future value of a series formula for more accuracy over the year.
-      const principalGrowth = lastYearEndValue * Math.pow(1 + annualRate, 1);
-      const contributionsGrowth = (monthlyContribution * (Math.pow(1 + monthlyRate, 12) - 1) / monthlyRate) * (1 + monthlyRate);
+      
+      const principalGrowth = lastYearEndValue * (1 + annualRate);
+      const contributionsGrowth = monthlyContribution * ( (Math.pow(1 + monthlyRate, 12) - 1) / monthlyRate );
       endOfYearValue = principalGrowth + contributionsGrowth;
 
       const totalInvestment = initialInvestment + year * annualContributions;
       const projectedValue = calculateTaxes(endOfYearValue);
-      const totalReturns = projectedValue - totalInvestment;
+      const totalReturns = projectedValue - calculateTaxes(totalInvestment);
 
-      const lastYearProjectedValue = result[result.length - 1].projectedValue;
-      const annualReturns = projectedValue - lastYearProjectedValue - calculateTaxes(annualContributions);
+      const annualReturns = (endOfYearValue - lastYearEndValue) - annualContributions;
       
       result.push({
         year,
@@ -168,7 +161,7 @@ export function WealthCalculator() {
         projectedValue: projectedValue,
         totalReturns,
         annualContributions: calculateTaxes(annualContributions),
-        annualReturns: annualReturns,
+        annualReturns: calculateTaxes(annualReturns),
       });
   
       lastYearEndValue = endOfYearValue;
