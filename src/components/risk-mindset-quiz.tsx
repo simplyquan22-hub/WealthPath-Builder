@@ -2,9 +2,8 @@
 "use client";
 
 import * as React from "react";
-import { useRouter } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { ArrowRight } from "lucide-react";
@@ -128,7 +127,6 @@ type Answers = { [key: string]: string };
 const STORAGE_KEY = 'wealthpath-quiz-state';
 
 export function RiskMindsetQuiz() {
-  const router = useRouter();
   const [answers, setAnswers] = React.useState<Answers>({});
   const [score, setScore] = React.useState<number | null>(null);
 
