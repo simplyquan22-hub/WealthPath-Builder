@@ -10,46 +10,46 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 38 92% 50%; /* Gold */
+    --primary-foreground: 240 10% 3.9%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
-    --accent: 217 91% 60%;
+    --accent: 150 60% 40%; /* Lush Green */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 217 91% 60%;
+    --ring: 38 92% 50%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 224 71% 4%;
-    --foreground: 210 40% 98%;
-    --card: 224 71% 4%;
-    --card-foreground: 210 40% 98%;
-    --popover: 224 71% 4%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 215 28% 17%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 215 28% 17%;
-    --muted-foreground: 215 28% 57%;
-    --accent: 217 91% 60%;
+    --background: 150 15% 10%; /* Dark Forest Green/Blue */
+    --foreground: 150 10% 90%;
+    --card: 150 15% 12%;
+    --card-foreground: 150 10% 90%;
+    --popover: 150 15% 10%;
+    --popover-foreground: 150 10% 90%;
+    --primary: 38 92% 50%; /* Gold */
+    --primary-foreground: 38 100% 10%;
+    --secondary: 150 15% 20%;
+    --secondary-foreground: 150 10% 90%;
+    --muted: 150 15% 20%;
+    --muted-foreground: 150 10% 60%;
+    --accent: 150 60% 40%; /* Lush Green */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 215 28% 17%;
-    --input: 215 28% 17%;
-    --ring: 217 91% 60%;
-    --chart-1: 217 91% 60%;
-    --chart-2: 127 22% 40%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
+    --border: 150 15% 25%;
+    --input: 150 15% 25%;
+    --ring: 38 92% 50%;
+    --chart-1: 38 92% 50%; /* Gold */
+    --chart-2: 150 60% 40%; /* Green */
+    --chart-3: 200 70% 50%; /* Blue */
+    --chart-4: 340 80% 60%; /* Pink */
     --chart-5: 27 87% 67%;
   }
 }

@@ -11,9 +11,8 @@ import { Slider } from "@/components/ui/slider";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowLeft, ArrowRight, Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { AllocationChart } from "@/components/allocation-chart";
 
-const glassCardClasses = "bg-background/50 backdrop-blur-xl border border-white/10 shadow-xl shadow-black/10";
+const glassCardClasses = "bg-background/50 backdrop-blur-xl border-t border-l border-r border-b border-white/10 shadow-xl shadow-black/10 bg-gradient-to-br from-white/5 via-transparent to-transparent";
 
 const templates = {
   conservative: { stocks: 20, bonds: 70, alternatives: 10 },
@@ -47,18 +46,18 @@ const availableTickers = [
     { value: 'NVDA', label: 'NVIDIA Corp.', category: 'stocks', group: 'Stocks' },
     { value: 'META', label: 'Meta Platforms Inc.', category: 'stocks', group: 'Stocks' },
     { value: 'TSLA', label: 'Tesla Inc.', category: 'stocks', group: 'Stocks' },
-    { value: 'JPM', label: 'JPMorgan Chase & Co.', category: 'stocks', group: 'Stocks' },
+    { value: 'JPM', label: 'JPMorgan Chase &amp; Co.', category: 'stocks', group: 'Stocks' },
     { value: 'UNH', label: 'UnitedHealth Group', category: 'stocks', group: 'Stocks' },
     { value: 'XOM', label: 'Exxon Mobil Corp.', category: 'stocks', group: 'Stocks' },
     { value: 'V', label: 'Visa Inc.', category: 'stocks', group: 'Stocks' },
-    { value: 'PG', label: 'Procter & Gamble', category: 'stocks', group: 'Stocks' },
-    { value: 'JNJ', label: 'Johnson & Johnson', category: 'stocks', group: 'Stocks' },
+    { value: 'PG', label: 'Procter &amp; Gamble', category: 'stocks', group: 'Stocks' },
+    { value: 'JNJ', label: 'Johnson &amp; Johnson', category: 'stocks', group: 'Stocks' },
     { value: 'NKE', label: 'Nike Inc.', category: 'stocks', group: 'Stocks' },
     { value: 'DIS', label: 'Walt Disney Co.', category: 'stocks', group: 'Stocks' },
-    { value: 'SPY', label: 'SPDR S&P 500 ETF', category: 'stocks', group: 'ETFs' },
+    { value: 'SPY', label: 'SPDR S&amp;P 500 ETF', category: 'stocks', group: 'ETFs' },
     { value: 'VTI', label: 'Vanguard Total Stock Market ETF', category: 'stocks', group: 'ETFs' },
     { value: 'QQQ', label: 'Invesco QQQ Trust', category: 'stocks', group: 'ETFs' },
-    { value: 'IVV', label: 'iShares Core S&P 500 ETF', category: 'stocks', group: 'ETFs' },
+    { value: 'IVV', label: 'iShares Core S&amp;P 500 ETF', category: 'stocks', group: 'ETFs' },
     { value: 'SCHB', label: 'Schwab U.S. Broad Market ETF', category: 'stocks', group: 'ETFs' },
     { value: 'XLK', label: 'Technology Select Sector SPDR Fund', category: 'stocks', group: 'ETFs' },
     { value: 'XLF', label: 'Financial Select Sector SPDR Fund', category: 'stocks', group: 'ETFs' },
@@ -68,11 +67,11 @@ const availableTickers = [
     { value: 'EFA', label: 'iShares MSCI EAFE ETF', category: 'stocks', group: 'ETFs' },
     { value: 'EEM', label: 'iShares MSCI Emerging Markets ETF', category: 'stocks', group: 'ETFs' },
     { value: 'ARKK', label: 'ARK Innovation ETF', category: 'stocks', group: 'ETFs' },
-    { value: 'VOO', label: 'Vanguard S&P 500 ETF', category: 'stocks', group: 'ETFs' },
+    { value: 'VOO', label: 'Vanguard S&amp;P 500 ETF', category: 'stocks', group: 'ETFs' },
     { value: 'IWM', label: 'iShares Russell 2000 ETF', category: 'stocks', group: 'ETFs' },
     { value: 'VFIAX', label: 'Vanguard 500 Index Fund Admiral Shares', category: 'stocks', group: 'Index Funds' },
     { value: 'FXAIX', label: 'Fidelity 500 Index Fund', category: 'stocks', group: 'Index Funds' },
-    { value: 'SWPPX', label: 'Schwab S&P 500 Index Fund', category: 'stocks', group: 'Index Funds' },
+    { value: 'SWPPX', label: 'Schwab S&amp;P 500 Index Fund', category: 'stocks', group: 'Index Funds' },
     { value: 'VTSAX', label: 'Vanguard Total Stock Market Index Fund', category: 'stocks', group: 'Index Funds' },
     { value: 'FSKAX', label: 'Fidelity Total Market Index Fund', category: 'stocks', group: 'Index Funds' },
     { value: 'VTIAX', label: 'Vanguard Total International Stock Index Fund', category: 'stocks', group: 'Index Funds' },
@@ -91,7 +90,7 @@ const availableTickers = [
     { value: 'AMCPX', label: 'American Funds AMCAP Fund', category: 'stocks', group: 'Mutual Funds' },
     { value: 'PRGFX', label: 'T. Rowe Price Growth Stock Fund', category: 'stocks', group: 'Mutual Funds' },
     { value: 'FMAGX', label: 'Fidelity Magellan Fund', category: 'stocks', group: 'Mutual Funds' },
-    { value: 'DODGX', label: 'Dodge & Cox Stock Fund', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'DODGX', label: 'Dodge &amp; Cox Stock Fund', category: 'stocks', group: 'Mutual Funds' },
     { value: 'VDIGX', label: 'Vanguard Dividend Growth Fund', category: 'stocks', group: 'Mutual Funds' },
     { value: 'VWELX', label: 'Vanguard Wellington Fund', category: 'stocks', group: 'Mutual Funds' },
     { value: 'FCNTX', label: 'Fidelity Contrafund', category: 'stocks', group: 'Mutual Funds' },
@@ -287,8 +286,6 @@ export function PortfolioBuilder() {
   const renderCategorySection = (category: keyof Allocation, title: string) => {
       const tickers = getCategoryTickers(category);
       const totalAllocation = getCategoryTotalAllocation(category);
-      const chartData = tickers.map(t => ({ name: t.id, value: t.allocation }));
-      const chartColors = categoryHexColors[category];
 
       return (
         <div>
@@ -301,35 +298,30 @@ export function PortfolioBuilder() {
                     <span className={cn("text-lg font-bold", categoryColors[category])}>{allocation[category]}%</span>
                 </div>
             </div>
-             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="md:col-span-2 space-y-2">
-                    {tickers.length > 0 ? tickers.map(t => (
-                        <div key={t.id} className={cn("flex items-center justify-between p-2 rounded-md gap-2", categoryBgColors[category])}>
-                            <span className="flex-1 truncate text-sm">{t.name} ({t.id})</span>
-                            <div className="flex items-center gap-2">
-                              <Input 
-                                  type="number" 
-                                  value={t.allocation}
-                                  onChange={(e) => handleTickerAllocationChange(t.id, parseInt(e.target.value) || 0)}
-                                  className="w-20 h-8 text-right"
-                                  max={100}
-                                  min={0}
-                              />
-                              <span className="text-muted-foreground">%</span>
-                              <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-destructive" onClick={() => handleRemoveTicker(t.id)}>
-                                  <Trash2 className="h-4 w-4" />
-                              </Button>
-                            </div>
+             <div className="space-y-2">
+                {tickers.length > 0 ? tickers.map(t => (
+                    <div key={t.id} className={cn("flex items-center justify-between p-2 rounded-md gap-2", categoryBgColors[category])}>
+                        <span className="flex-1 truncate text-sm">{t.name} ({t.id})</span>
+                        <div className="flex items-center gap-2">
+                          <Input 
+                              type="number" 
+                              value={t.allocation}
+                              onChange={(e) => handleTickerAllocationChange(t.id, parseInt(e.target.value) || 0)}
+                              className="w-20 h-8 text-right"
+                              max={100}
+                              min={0}
+                          />
+                          <span className="text-muted-foreground">%</span>
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-destructive" onClick={() => handleRemoveTicker(t.id)}>
+                              <Trash2 className="h-4 w-4" />
+                          </Button>
                         </div>
-                    )) : (
-                        <div className="flex items-center justify-center h-full text-muted-foreground text-sm p-4 rounded-md bg-background/20">
-                            Add tickers to this category to see allocation details.
-                        </div>
-                    )}
-                </div>
-                <div className="h-48 md:h-full">
-                    <AllocationChart data={chartData} colors={chartColors} />
-                </div>
+                    </div>
+                )) : (
+                    <div className="flex items-center justify-center h-full text-muted-foreground text-sm p-4 rounded-md bg-background/20">
+                        Add tickers to this category to see allocation details.
+                    </div>
+                )}
             </div>
         </div>
       );

@@ -2,13 +2,16 @@
 "use client";
 
 import * as React from "react";
+import { useRouter } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-const glassCardClasses = "bg-background/50 backdrop-blur-xl border border-white/10 shadow-xl shadow-black/10";
+
+const glassCardClasses = "bg-background/50 backdrop-blur-xl border-t border-l border-r border-b border-white/10 shadow-xl shadow-black/10 bg-gradient-to-br from-white/5 via-transparent to-transparent";
 
 const questions = [
   {
@@ -80,6 +83,7 @@ type Answers = { [key: string]: string };
 const STORAGE_KEY = 'wealthpath-quiz-state';
 
 export function RiskMindsetQuiz() {
+  const router = useRouter();
   const [answers, setAnswers] = React.useState<Answers>({});
   const [score, setScore] = React.useState<number | null>(null);
 
@@ -169,13 +173,9 @@ export function RiskMindsetQuiz() {
             <div className="text-center">
               <h2 className="text-2xl md:text-3xl font-bold font-headline mb-2">{resultData.title}</h2>
               <p className="text-muted-foreground text-lg mb-8">{resultData.message}</p>
-              <a href="/portfolio-builder">
-                <Button
-                  className="h-12 text-lg px-8"
-                >
+              <a href="/portfolio-builder" className={cn("h-12 text-lg px-8", "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 bg-gradient-to-b from-primary to-amber-600")}>
                     {resultData.buttonText}
                     <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
               </a>
             </div>
           )

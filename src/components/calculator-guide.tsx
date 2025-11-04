@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DollarSign, Percent, Calendar, Info } from "lucide-react";
 
-const glassCardClasses = "bg-background/50 backdrop-blur-xl border border-white/10 shadow-xl shadow-black/10";
+const glassCardClasses = "bg-background/50 backdrop-blur-xl border-t border-l border-r border-b border-white/10 shadow-xl shadow-black/10 bg-gradient-to-br from-white/5 via-transparent to-transparent";
 
 export function CalculatorGuide() {
   return (
@@ -26,7 +26,7 @@ export function CalculatorGuide() {
               <strong>Monthly Contribution:</strong> The amount you plan to add to your investment each month.
             </li>
             <li>
-              <strong>Interest Rate (%):</strong> Your estimated annual return on investment. A common benchmark is the average historical return of the S&P 500, which is around 7-10%.
+              <strong>Interest Rate (%):</strong> Your estimated annual return on investment. A common benchmark is the average historical return of the S&amp;P 500, which is around 7-10%.
             </li>
              <li>
               <strong>Marginal Tax Rate (%):</strong> Your estimated combined federal and state income tax rate. This is used to calculate the after-tax value of a Traditional IRA.

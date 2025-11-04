@@ -65,7 +65,7 @@ export interface InvestmentData {
   annualReturns: number;
 }
 
-const glassCardClasses = "bg-background/50 backdrop-blur-xl border border-white/10 shadow-xl shadow-black/10";
+const glassCardClasses = "bg-background/50 backdrop-blur-xl border-t border-l border-r border-b border-white/10 shadow-xl shadow-black/10 bg-gradient-to-br from-white/5 via-transparent to-transparent";
 const STORAGE_KEY = 'wealthpath-calculator-state';
 
 export function WealthCalculator() {
