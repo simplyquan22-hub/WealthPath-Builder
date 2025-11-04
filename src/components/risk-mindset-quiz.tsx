@@ -170,15 +170,13 @@ export function RiskMindsetQuiz() {
             <div className="text-center">
               <h2 className="text-2xl md:text-3xl font-bold font-headline mb-2">{resultData.title}</h2>
               <p className="text-muted-foreground text-lg mb-8">{resultData.message}</p>
-              <Link href="/portfolio-builder" passHref legacyBehavior>
-                <a className="inline-block">
-                    <Button
-                    className="h-12 text-lg px-8"
-                    >
+              <Link href="/portfolio-builder" passHref>
+                <Button asChild className="h-12 text-lg px-8">
+                  <a>
                     {resultData.buttonText}
                     <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                </a>
+                  </a>
+                </Button>
               </Link>
             </div>
           )
