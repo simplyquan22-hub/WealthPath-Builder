@@ -21,6 +21,7 @@ import {
   HeartCrack,
   Smile,
   ShieldAlert,
+  Calendar as CalendarIcon,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -64,7 +65,8 @@ import {
 
 const formSchema = z.object({
   initialInvestment: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Value must be positive."),
-  monthlyContribution: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Value must be positive."),
+  contributionAmount: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Value must be positive."),
+  contributionFrequency: z.enum(["weekly", "bi-weekly", "monthly", "quarterly", "annually"]).default("monthly"),
   interestRate: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Rate must be positive.").max(100, "Rate cannot exceed 100."),
   marginalTaxRate: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Rate must be positive.").max(100, "Rate cannot exceed 100."),
   years: z.coerce.number({invalid_type_error: "Please enter a number."}).int().min(1, "Must be at least 1 year.").max(100, "Cannot exceed 100 years."),
@@ -95,12 +97,12 @@ export function WealthCalculator() {
 
   const router = useRouter();
 
-
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       initialInvestment: 10000,
-      monthlyContribution: 500,
+      contributionAmount: 500,
+      contributionFrequency: "monthly",
       interestRate: 7,
       marginalTaxRate: 25,
       years: 30,
@@ -150,14 +152,15 @@ export function WealthCalculator() {
 
   const generateInvestmentData = async (inputs: FormData): Promise<InvestmentData[]> => {
     const {
-      initialInvestment,
-      monthlyContribution,
-      interestRate,
-      years,
-      accountType,
-      marginalTaxRate,
-      adjustForInflation,
-      inflationRate,
+        initialInvestment,
+        contributionAmount,
+        contributionFrequency,
+        interestRate,
+        years,
+        accountType,
+        marginalTaxRate,
+        adjustForInflation,
+        inflationRate,
     } = inputs;
 
     const results: InvestmentData[] = [];
@@ -166,24 +169,26 @@ export function WealthCalculator() {
 
     let currentValue = initialInvestment;
     let totalPrincipal = initialInvestment;
-    
     let lastYearValue = initialInvestment;
-    if (accountType === 'traditional') {
-      lastYearValue *= (1 - marginalTaxRate / 100);
-    }
-    if (adjustForInflation) {
-      lastYearValue /= Math.pow(1 + (inflationRate / 100), 0);
-    }
 
+    const contributionsPerMonth: { [key: string]: number } = {
+        "weekly": 4.33,
+        "bi-weekly": 2.165,
+        "monthly": 1,
+        "quarterly": 1/3,
+        "annually": 1/12
+    };
 
+    const numContributionsPerMonth = contributionsPerMonth[contributionFrequency];
+    
     // Year 0 data point
     results.push({
-      year: 0,
-      projectedValue: initialInvestment,
-      totalInvestment: initialInvestment,
-      totalReturns: 0,
-      annualContributions: initialInvestment,
-      annualReturns: 0,
+        year: 0,
+        projectedValue: initialInvestment,
+        totalInvestment: initialInvestment,
+        totalReturns: 0,
+        annualContributions: initialInvestment, // This is initial investment
+        annualReturns: 0,
     });
 
     for (let year = 1; year <= years; year++) {
@@ -191,39 +196,47 @@ export function WealthCalculator() {
         let beginningOfYearValue = currentValue;
 
         for (let month = 1; month <= 12; month++) {
-            currentValue += monthlyContribution;
+            // Add contributions for the month
+            const monthlyContributionsTotal = contributionAmount * numContributionsPerMonth;
+            currentValue += monthlyContributionsTotal;
+            yearlyContribution += monthlyContributionsTotal;
+            // Apply interest for the month
             currentValue *= (1 + monthlyInterestRate);
-            yearlyContribution += monthlyContribution;
         }
         
         totalPrincipal += yearlyContribution;
 
         let endOfYearValue = currentValue;
+        
+        // This is the raw projected value before any final adjustments
+        const rawProjectedValue = endOfYearValue;
 
         if (accountType === 'traditional') {
-            endOfYearValue *= (1 - marginalTaxRate / 100);
+            endOfYearValue = rawProjectedValue * (1 - marginalTaxRate / 100);
         }
 
+        let inflationAdjustedValue = endOfYearValue;
         if (adjustForInflation) {
-            endOfYearValue /= Math.pow(1 + (inflationRate / 100), year);
+            inflationAdjustedValue /= Math.pow(1 + (inflationRate / 100), year);
         }
 
-        const annualReturns = endOfYearValue - lastYearValue - (accountType === 'roth' ? yearlyContribution * (1-marginalTaxRate/100) : yearlyContribution);
-        
+        const annualReturns = inflationAdjustedValue - lastYearValue - yearlyContribution;
+
         results.push({
             year,
-            projectedValue: endOfYearValue,
+            projectedValue: inflationAdjustedValue,
             totalInvestment: totalPrincipal,
-            totalReturns: endOfYearValue - totalPrincipal,
+            totalReturns: inflationAdjustedValue - totalPrincipal,
             annualContributions: yearlyContribution,
             annualReturns: isNaN(annualReturns) ? 0 : annualReturns,
         });
 
-        lastYearValue = endOfYearValue;
+        lastYearValue = inflationAdjustedValue;
     }
 
     return results;
   };
+
 
   const handleSimulateCrash = () => {
     setIsCrashSimulated(true);
@@ -288,19 +301,45 @@ export function WealthCalculator() {
                     </FormItem>
                   )}
                 />
-                <FormField
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <FormField
+                    control={form.control}
+                    name="contributionAmount"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Contribution</FormLabel>
+                        <FormControl>
+                          <IconInput icon={<Repeat />} type="number" placeholder="500" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
                   control={form.control}
-                  name="monthlyContribution"
+                  name="contributionFrequency"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Monthly Contribution</FormLabel>
-                      <FormControl>
-                        <IconInput icon={<Repeat />} type="number" placeholder="500" {...field} />
-                      </FormControl>
+                      <FormLabel>Frequency</FormLabel>
+                      <Select onValueChange={field.onChange} value={field.value}>
+                        <FormControl>
+                          <SelectTrigger className="h-12 text-base md:text-sm">
+                              <SelectValue placeholder="Select frequency" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="weekly">Weekly</SelectItem>
+                          <SelectItem value="bi-weekly">Bi-weekly</SelectItem>
+                          <SelectItem value="monthly">Monthly</SelectItem>
+                          <SelectItem value="quarterly">Quarterly</SelectItem>
+                          <SelectItem value="annually">Annually</SelectItem>
+                        </SelectContent>
+                      </Select>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <FormField
                     control={form.control}
