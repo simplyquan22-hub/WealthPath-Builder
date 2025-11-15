@@ -14,8 +14,8 @@ export function Footer() {
             <p>&copy; 2026 WealthPath. All rights reserved.</p>
           </div>
           <div>
-            <Link href="mailto:Raequancol12@gmail.com" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              Contact Us : Raequancol12@gmail.com
+            <Link href="mailto:info@mywealthpath.org" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              Contact Us : info@mywealthpath.org
             </Link>
           </div>
         </div>
