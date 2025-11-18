@@ -3,7 +3,7 @@
 
 import * as React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { RadioGroup } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -198,12 +198,6 @@ export function RiskMindsetQuiz() {
                         <CustomRadio
                           id={`${q.id}-${opt.id}`}
                           value={String(opt.value)}
-                          checked={answers[q.id] === String(opt.value)}
-                          onCheckedChange={(checked) => {
-                            if (checked) {
-                              handleValueChange(q.id, String(opt.value));
-                            }
-                          }}
                         />
                         <span className="text-base font-normal">
                           {opt.text}
@@ -227,8 +221,8 @@ export function RiskMindsetQuiz() {
             <div className="text-center flex flex-col items-center">
               <h2 className="text-2xl md:text-3xl font-bold font-headline mb-2">{resultData.title}</h2>
               <p className="text-muted-foreground text-lg mb-8">{resultData.message}</p>
-              <AnimatedButton asChild className="w-full">
-                <Link href="/portfolio-builder" className="flex items-center justify-center w-full">
+              <AnimatedButton asChild className="w-full flex items-center justify-center">
+                <Link href="/portfolio-builder">
                   {resultData.buttonText}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
