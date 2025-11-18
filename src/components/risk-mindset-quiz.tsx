@@ -9,6 +9,7 @@ import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatedButton } from "./ui/animated-button";
 import Link from "next/link";
+import { CustomRadio } from "./ui/custom-radio";
 
 
 const glassCardClasses = "bg-background/50 backdrop-blur-xl border-t border-l border-r border-b border-white/10 shadow-xl shadow-black/10 bg-gradient-to-br from-white/5 via-transparent to-transparent";
@@ -193,12 +194,21 @@ export function RiskMindsetQuiz() {
                 <RadioGroup value={answers[q.id]} onValueChange={(value) => handleValueChange(q.id, value)}>
                   <div className="space-y-3">
                     {q.options.map((opt) => (
-                      <div key={opt.id} className="flex items-center space-x-3">
-                        <RadioGroupItem value={String(opt.value)} id={`${q.id}-${opt.id}`} />
-                        <Label htmlFor={`${q.id}-${opt.id}`} className="text-base font-normal cursor-pointer">
+                       <Label key={opt.id} htmlFor={`${q.id}-${opt.id}`} className="flex items-center space-x-3 cursor-pointer">
+                        <CustomRadio
+                          id={`${q.id}-${opt.id}`}
+                          value={String(opt.value)}
+                          checked={answers[q.id] === String(opt.value)}
+                          onCheckedChange={(checked) => {
+                            if (checked) {
+                              handleValueChange(q.id, String(opt.value));
+                            }
+                          }}
+                        />
+                        <span className="text-base font-normal">
                           {opt.text}
-                        </Label>
-                      </div>
+                        </span>
+                      </Label>
                     ))}
                   </div>
                 </RadioGroup>
@@ -218,7 +228,7 @@ export function RiskMindsetQuiz() {
               <h2 className="text-2xl md:text-3xl font-bold font-headline mb-2">{resultData.title}</h2>
               <p className="text-muted-foreground text-lg mb-8">{resultData.message}</p>
               <AnimatedButton asChild className="w-full">
-                <Link href="/portfolio-builder" className="flex items-center justify-center">
+                <Link href="/portfolio-builder" className="flex items-center justify-center w-full">
                   {resultData.buttonText}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
