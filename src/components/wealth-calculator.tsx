@@ -511,10 +511,12 @@ export function WealthCalculator() {
                 </Card>
 
                 <div className="flex flex-col sm:flex-row items-center gap-4">
-                  <Button onClick={() => router.back()} variant="outline" size="lg" type="button" className="w-full sm:w-auto">
-                      <ArrowLeft className="mr-2 h-5 w-5" />
-                      Back
-                  </Button>
+                  <AnimatedButton type="button" onClick={() => router.back()}>
+                      <div className="flex items-center">
+                        <ArrowLeft className="mr-2 h-5 w-5" />
+                        Back
+                      </div>
+                  </AnimatedButton>
                   <AnimatedButton type="submit" className="w-full">
                       <div className="flex items-center">
                         Calculate
@@ -537,13 +539,17 @@ export function WealthCalculator() {
                   {submittedValues.adjustForInflation && <span className="text-base font-normal text-muted-foreground ml-2">(Adjusted for Inflation)</span>}
                 </span>
                 {!isCrashSimulated ? (
-                  <Button variant="destructive" size="sm" onClick={handleSimulateCrash}>
-                    <ShieldAlert className="mr-2 h-4 w-4" /> Simulate -20% Drop
-                  </Button>
+                  <AnimatedButton onClick={handleSimulateCrash}>
+                     <div className="flex items-center">
+                       <ShieldAlert className="mr-2 h-4 w-4" /> Simulate -20% Drop
+                     </div>
+                  </AnimatedButton>
                 ) : (
-                  <Button variant="secondary" size="sm" onClick={handleRevertCrash}>
-                    <Smile className="mr-2 h-4 w-4" /> Revert Simulation
-                  </Button>
+                  <AnimatedButton onClick={handleRevertCrash}>
+                     <div className="flex items-center">
+                       <Smile className="mr-2 h-4 w-4" /> Revert Simulation
+                     </div>
+                  </AnimatedButton>
                 )}
               </CardTitle>
               <div className="pt-4 space-y-4">
@@ -624,10 +630,10 @@ export function WealthCalculator() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter className="flex-col gap-2">
-            <Button variant="outline" onClick={() => setShowCrashPopup(false)}>😱 “Sell everything!”</Button>
-            <Button variant="outline" onClick={() => setShowCrashPopup(false)}>😬 “Reduce risk…”</Button>
-            <Button variant="outline" onClick={() => setShowCrashPopup(false)}>😐 “Stay calm & hold.”</Button>
-            <AlertDialogAction onClick={() => setShowCrashPopup(false)}>🧘 “Buy more while it’s cheap!”</AlertDialogAction>
+            <AnimatedButton onClick={() => setShowCrashPopup(false)}>😱 “Sell everything!”</AnimatedButton>
+            <AnimatedButton onClick={() => setShowCrashPopup(false)}>😬 “Reduce risk…”</AnimatedButton>
+            <AnimatedButton onClick={() => setShowCrashPopup(false)}>😐 “Stay calm & hold.”</AnimatedButton>
+            <AnimatedButton onClick={() => setShowCrashPopup(false)}>🧘 “Buy more while it’s cheap!”</AnimatedButton>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

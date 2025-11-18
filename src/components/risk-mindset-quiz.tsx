@@ -3,7 +3,6 @@
 
 import * as React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { buttonVariants } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { ArrowRight } from "lucide-react";
@@ -214,19 +213,17 @@ export function RiskMindsetQuiz() {
           </div>
         ) : (
           resultData && (
-            <div className="text-center">
+            <div className="text-center flex flex-col items-center">
               <h2 className="text-2xl md:text-3xl font-bold font-headline mb-2">{resultData.title}</h2>
               <p className="text-muted-foreground text-lg mb-8">{resultData.message}</p>
-              <a href="/portfolio-builder" 
-                className={cn(buttonVariants({ variant: 'default' }), "h-12 text-lg px-4 sm:px-8 inline-block")}
-              >
-                 <AnimatedButton>
+              <AnimatedButton asChild>
+                <a href="/portfolio-builder">
                     <div className="flex items-center">
                         {resultData.buttonText}
                         <ArrowRight className="ml-2 h-5 w-5" />
                     </div>
-                </AnimatedButton>
-              </a>
+                </a>
+              </AnimatedButton>
             </div>
           )
         )}

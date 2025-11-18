@@ -391,9 +391,9 @@ export function PortfolioBuilder() {
           <CardTitle className="text-2xl font-headline">2. Choose a Template</CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Button variant="outline" className="h-12 text-base" onClick={() => handleTemplateSelect("conservative")}>Conservative</Button>
-          <Button variant="outline" className="h-12 text-base" onClick={() => handleTemplateSelect("balanced")}>Balanced</Button>
-          <Button variant="outline" className="h-12 text-base" onClick={() => handleTemplateSelect("aggressive")}>Aggressive</Button>
+          <AnimatedButton onClick={() => handleTemplateSelect("conservative")}>Conservative</AnimatedButton>
+          <AnimatedButton onClick={() => handleTemplateSelect("balanced")}>Balanced</AnimatedButton>
+          <AnimatedButton onClick={() => handleTemplateSelect("aggressive")}>Aggressive</AnimatedButton>
         </CardContent>
       </Card>
 
@@ -460,10 +460,12 @@ export function PortfolioBuilder() {
       </Card>
 
       <div className="flex flex-col sm:flex-row justify-between gap-4">
-         <Button onClick={() => router.back()} variant="outline" size="lg" className="w-full sm:w-auto">
-            <ArrowLeft className="mr-2 h-5 w-5" />
-            Back
-        </Button>
+         <AnimatedButton onClick={() => router.back()} >
+            <div className="flex items-center">
+              <ArrowLeft className="mr-2 h-5 w-5" />
+              Back
+            </div>
+        </AnimatedButton>
         <AnimatedButton onClick={() => router.push("/calculator")} className="w-full sm:w-auto">
           <div className="flex items-center">
             Project My Growth
