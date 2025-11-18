@@ -11,12 +11,13 @@ interface CustomRadioProps extends React.ComponentPropsWithoutRef<typeof RadioGr
 export const CustomRadio = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,
   CustomRadioProps
->(({ className, ...props }, ref) => {
+>(({ className, onCheckedChange, ...props }, ref) => {
   return (
     <label className="custom-radio">
         <RadioGroupPrimitive.Item
             ref={ref}
             {...props}
+            onCheckedChange={onCheckedChange}
         />
         <div className="checkmark"></div>
     </label>
