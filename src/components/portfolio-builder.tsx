@@ -11,6 +11,7 @@ import { Slider } from "@/components/ui/slider";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowLeft, ArrowRight, Trash2, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { AnimatedButton } from "./ui/animated-button";
 
 const glassCardClasses = "bg-background/50 backdrop-blur-xl border-t border-l border-r border-b border-white/10 shadow-xl shadow-black/10 bg-gradient-to-br from-white/5 via-transparent to-transparent";
 
@@ -463,10 +464,12 @@ export function PortfolioBuilder() {
             <ArrowLeft className="mr-2 h-5 w-5" />
             Back
         </Button>
-        <Button onClick={() => router.push("/calculator")} size="lg" className="w-full sm:w-auto">
-          Project My Growth
-          <ArrowRight className="ml-2 h-5 w-5" />
-        </Button>
+        <AnimatedButton onClick={() => router.push("/calculator")} className="w-full sm:w-auto">
+          <div className="flex items-center">
+            Project My Growth
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </div>
+        </AnimatedButton>
       </div>
     </div>
   );

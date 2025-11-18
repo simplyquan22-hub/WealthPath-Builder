@@ -3,11 +3,12 @@
 
 import * as React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { AnimatedButton } from "./ui/animated-button";
 
 
 const glassCardClasses = "bg-background/50 backdrop-blur-xl border-t border-l border-r border-b border-white/10 shadow-xl shadow-black/10 bg-gradient-to-br from-white/5 via-transparent to-transparent";
@@ -203,13 +204,13 @@ export function RiskMindsetQuiz() {
                 </RadioGroup>
               </div>
             ))}
-            <Button
+            <AnimatedButton
               onClick={calculateScore}
               disabled={!allQuestionsAnswered}
-              className="w-full h-12 text-lg mt-8"
+              className="w-full mt-8"
             >
               See My Result
-            </Button>
+            </AnimatedButton>
           </div>
         ) : (
           resultData && (
@@ -217,10 +218,14 @@ export function RiskMindsetQuiz() {
               <h2 className="text-2xl md:text-3xl font-bold font-headline mb-2">{resultData.title}</h2>
               <p className="text-muted-foreground text-lg mb-8">{resultData.message}</p>
               <a href="/portfolio-builder" 
-                className={cn(buttonVariants({ variant: 'default' }), "h-12 text-lg px-4 sm:px-8")}
+                className={cn(buttonVariants({ variant: 'default' }), "h-12 text-lg px-4 sm:px-8 inline-block")}
               >
-                  {resultData.buttonText}
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                 <AnimatedButton>
+                    <div className="flex items-center">
+                        {resultData.buttonText}
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                    </div>
+                </AnimatedButton>
               </a>
             </div>
           )

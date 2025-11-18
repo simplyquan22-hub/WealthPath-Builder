@@ -63,6 +63,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Slider } from "./ui/slider";
+import { AnimatedButton } from "./ui/animated-button";
 
 
 const formSchema = z.object({
@@ -514,10 +515,12 @@ export function WealthCalculator() {
                       <ArrowLeft className="mr-2 h-5 w-5" />
                       Back
                   </Button>
-                  <Button type="submit" className="w-full h-12 text-lg">
-                      Calculate
-                      <ArrowRight className="ml-2 h-5 w-5"/>
-                  </Button>
+                  <AnimatedButton type="submit" className="w-full">
+                      <div className="flex items-center">
+                        Calculate
+                        <ArrowRight className="ml-2 h-5 w-5"/>
+                      </div>
+                  </AnimatedButton>
                 </div>
               </form>
             </Form>
@@ -549,14 +552,14 @@ export function WealthCalculator() {
                         Projected Value in Year {selectedYear}
                     </div>
                      <Tooltip>
-                        <div className="flex items-center justify-center gap-2">
-                            <p className={`text-4xl font-bold ${isCrashSimulated ? 'text-destructive' : 'text-primary'}`}>
-                                {formatCurrency(finalProjectedValue)}
-                            </p>
-                            <TooltipTrigger asChild>
-                                <Info className="h-5 w-5 text-muted-foreground cursor-pointer" />
-                            </TooltipTrigger>
-                        </div>
+                        <TooltipTrigger asChild>
+                            <div className="flex items-center justify-center gap-2 cursor-pointer">
+                                <p className={`text-4xl font-bold ${isCrashSimulated ? 'text-destructive' : 'text-primary'}`}>
+                                    {formatCurrency(finalProjectedValue)}
+                                </p>
+                                <Info className="h-5 w-5 text-muted-foreground" />
+                            </div>
+                        </TooltipTrigger>
                         <TooltipContent>
                             <p>All returns are estimates — actual results will vary.<br/> This calculator is for educational purposes only.</p>
                         </TooltipContent>
