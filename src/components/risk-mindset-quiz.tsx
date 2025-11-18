@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatedButton } from "./ui/animated-button";
+import Link from "next/link";
 
 
 const glassCardClasses = "bg-background/50 backdrop-blur-xl border-t border-l border-r border-b border-white/10 shadow-xl shadow-black/10 bg-gradient-to-br from-white/5 via-transparent to-transparent";
@@ -217,12 +218,12 @@ export function RiskMindsetQuiz() {
               <h2 className="text-2xl md:text-3xl font-bold font-headline mb-2">{resultData.title}</h2>
               <p className="text-muted-foreground text-lg mb-8">{resultData.message}</p>
               <AnimatedButton asChild>
-                <a href="/portfolio-builder">
+                <Link href="/portfolio-builder">
                     <div className="flex items-center">
                         {resultData.buttonText}
                         <ArrowRight className="ml-2 h-5 w-5" />
                     </div>
-                </a>
+                </Link>
               </AnimatedButton>
             </div>
           )
