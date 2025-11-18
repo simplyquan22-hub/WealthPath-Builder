@@ -3,13 +3,12 @@
 
 import * as React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { RadioGroup } from "@/components/ui/radio-group";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatedButton } from "./ui/animated-button";
 import Link from "next/link";
-import { CustomRadio } from "./ui/custom-radio";
 
 
 const glassCardClasses = "bg-background/50 backdrop-blur-xl border-t border-l border-r border-b border-white/10 shadow-xl shadow-black/10 bg-gradient-to-br from-white/5 via-transparent to-transparent";
@@ -194,8 +193,8 @@ export function RiskMindsetQuiz() {
                 <RadioGroup value={answers[q.id]} onValueChange={(value) => handleValueChange(q.id, value)}>
                   <div className="space-y-3">
                     {q.options.map((opt) => (
-                       <Label key={opt.id} htmlFor={`${q.id}-${opt.id}`} className="custom-radio flex items-center space-x-3">
-                        <CustomRadio
+                       <Label key={opt.id} htmlFor={`${q.id}-${opt.id}`} className="flex items-center space-x-3 p-3 rounded-md hover:bg-white/10 transition-colors cursor-pointer">
+                        <RadioGroupItem
                           id={`${q.id}-${opt.id}`}
                           value={String(opt.value)}
                         />
