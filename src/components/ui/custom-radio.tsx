@@ -10,13 +10,9 @@ const CustomRadio = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
 >(({ className, ...props }, ref) => {
   return (
-    <div className="custom-radio">
-      <RadioGroupPrimitive.Item
-        ref={ref}
-        className={cn(className)}
-        {...props}
-      />
-      <div className="checkmark"></div>
+    <div className={cn("custom-radio", className)}>
+        <RadioGroupPrimitive.Item ref={ref} {...props} />
+        <div className="checkmark"></div>
     </div>
   );
 });
