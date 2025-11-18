@@ -3,22 +3,23 @@
 
 import * as React from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
+import { cn } from "@/lib/utils";
 
-interface CustomRadioProps extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> {
-}
-
-export const CustomRadio = React.forwardRef<
+const CustomRadio = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,
-  CustomRadioProps
+  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
 >(({ className, ...props }, ref) => {
   return (
-    <label className="custom-radio">
-        <RadioGroupPrimitive.Item
-            ref={ref}
-            {...props}
-        />
-        <div className="checkmark"></div>
-    </label>
+    <div className="custom-radio">
+      <RadioGroupPrimitive.Item
+        ref={ref}
+        className={cn(className)}
+        {...props}
+      />
+      <div className="checkmark"></div>
+    </div>
   );
 });
 CustomRadio.displayName = "CustomRadio";
+
+export { CustomRadio };
