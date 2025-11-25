@@ -74,7 +74,7 @@ const formSchema = z.object({
   contributionFrequency: z.enum(["weekly", "bi-weekly", "monthly", "quarterly", "annually"]).default("monthly"),
   interestRate: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Rate must be positive.").max(100, "Rate cannot exceed 100."),
   marginalTaxRate: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Rate must be positive.").max(100, "Rate cannot exceed 100."),
-  annualFees: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Fees must be positive.").max(10, "Fees cannot exceed 10.").default(0.25),
+  annualFees: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Fees must be positive.").max(10, "Fees cannot exceed 10.").default(0.03),
   years: z.coerce.number({invalid_type_error: "Please enter a number."}).int().min(1, "Must be at least 1 year.").max(100, "Cannot exceed 100 years."),
   accountType: z.enum(["roth", "traditional", "kids-roth", "kids-traditional"]),
   adjustForInflation: z.boolean().default(false),
@@ -134,7 +134,7 @@ export function WealthCalculator() {
       contributionFrequency: "monthly",
       interestRate: 7,
       marginalTaxRate: 25,
-      annualFees: 0.25,
+      annualFees: 0.03,
       years: 30,
       accountType: "roth",
       adjustForInflation: false,
@@ -448,7 +448,7 @@ export function WealthCalculator() {
                         <FormItem>
                           <FormLabel>Annual Fees (%)</FormLabel>
                           <FormControl>
-                            <IconInput icon={<Wallet />} type="number" placeholder="0.25" {...field} />
+                            <IconInput icon={<Wallet />} type="number" placeholder="0.03" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
