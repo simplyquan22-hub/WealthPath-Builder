@@ -74,7 +74,7 @@ const formSchema = z.object({
   marginalTaxRate: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Rate must be positive.").max(100, "Rate cannot exceed 100."),
   annualFees: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0, "Fees must be positive.").max(10, "Fees cannot exceed 10.").default(0.25),
   years: z.coerce.number({invalid_type_error: "Please enter a number."}).int().min(1, "Must be at least 1 year.").max(100, "Cannot exceed 100 years."),
-  accountType: z.enum(["roth", "traditional"]),
+  accountType: z.enum(["roth", "traditional", "kids-roth", "kids-traditional"]),
   adjustForInflation: z.boolean().default(false),
   inflationRate: z.coerce.number({invalid_type_error: "Please enter a number."}).min(0).max(20).default(3),
 });
@@ -234,7 +234,7 @@ export function WealthCalculator() {
         const preTaxValue = currentValue;
         let finalValue = preTaxValue;
         
-        if (accountType === 'traditional') {
+        if (accountType.includes('traditional')) {
             const taxesOnGrowth = (preTaxValue - totalPrincipal) * (marginalTaxRate / 100);
             const taxesOnContributions = totalPrincipal * (marginalTaxRate / 100);
             cumulativeTaxes = taxesOnGrowth > 0 ? taxesOnGrowth : 0;
@@ -310,6 +310,10 @@ export function WealthCalculator() {
         return "Roth IRA";
       case "traditional":
         return "Traditional IRA";
+      case "kids-roth":
+        return "Kids Roth IRA";
+      case "kids-traditional":
+        return "Kids Traditional IRA";
       default:
         return "";
     }
@@ -449,6 +453,8 @@ export function WealthCalculator() {
                             <SelectContent>
                               <SelectItem value="roth">Roth IRA</SelectItem>
                               <SelectItem value="traditional">Traditional IRA</SelectItem>
+                              <SelectItem value="kids-roth">Kids Roth IRA</SelectItem>
+                              <SelectItem value="kids-traditional">Kids Traditional IRA</SelectItem>
                             </SelectContent>
                           </Select>
                           <FormMessage />
@@ -456,7 +462,7 @@ export function WealthCalculator() {
                       )}
                     />
                 </div>
-                {accountType === "traditional" && (
+                {accountType.includes("traditional") && (
                   <FormField
                     control={form.control}
                     name="marginalTaxRate"

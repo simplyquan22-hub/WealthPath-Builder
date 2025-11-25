@@ -69,6 +69,18 @@ export function CalculatorGuide() {
               Contributions are typically made with <span className="text-foreground font-medium">pre-tax</span> dollars, which may lower your taxable income for the year. However, you will pay income tax on all withdrawals in retirement. This calculator estimates the after-tax value based on your provided marginal rate.
             </p>
           </div>
+          <div>
+            <h4 className="font-semibold text-lg text-primary">Kids Roth IRA</h4>
+            <p className="text-muted-foreground">
+              A custodial Roth IRA for minors. Contributions are made with <span className="text-foreground font-medium">after-tax</span> dollars from the child's earned income. Like a standard Roth IRA, qualified withdrawals in retirement are <span className="text-green-400 font-medium">tax-free</span>, giving them a huge head start on tax-free growth.
+            </p>
+          </div>
+           <div>
+            <h4 className="font-semibold text-lg text-primary">Kids Traditional IRA</h4>
+            <p className="text-muted-foreground">
+              A custodial Traditional IRA for minors with earned income. Contributions may be <span className="text-foreground font-medium">tax-deductible</span>. Taxes are paid on the money when it is withdrawn in retirement. This can be a good option if you expect the child to be in a lower tax bracket during their working years than in retirement.
+            </p>
+          </div>
           <p className="text-xs text-muted-foreground pt-4">
             Disclaimer: This calculator is for illustrative purposes only and does not constitute financial advice. Consult with a financial professional for personalized advice.
           </p>
