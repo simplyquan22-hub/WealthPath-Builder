@@ -39,7 +39,7 @@ export function AllocationChart({ data, colors }: AllocationChartProps) {
     if (!data || data.every(d => d.value === 0)) {
         return (
             <div className="flex items-center justify-center h-full text-muted-foreground">
-                <p>Add tickers and allocate percentages to see a visual breakdown.</p>
+                <p>No portfolio allocation found. Create one in the Portfolio Builder!</p>
             </div>
         );
     }

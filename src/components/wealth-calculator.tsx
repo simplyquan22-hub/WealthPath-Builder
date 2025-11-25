@@ -64,6 +64,8 @@ import {
 } from "@/components/ui/tooltip";
 import { Slider } from "./ui/slider";
 import { AnimatedButton } from "./ui/animated-button";
+import { AllocationChart } from "./allocation-chart";
+import { Separator } from "./ui/separator";
 
 
 const formSchema = z.object({
@@ -94,8 +96,24 @@ export interface InvestmentData {
   inflationAdjustedValue: number;
 }
 
+type Allocation = {
+    stocks: number;
+    bonds: number;
+    alternatives: number;
+};
+  
+interface PortfolioState {
+    portfolioName: string;
+    allocation: Allocation;
+    selectedTickers: any[]; // You might want to type this more strictly
+}
+
 const glassCardClasses = "bg-background/50 backdrop-blur-xl border-t border-l border-r border-b border-white/10 shadow-xl shadow-black/10 bg-gradient-to-br from-white/5 via-transparent to-transparent";
-const STORAGE_KEY = 'wealthpath-calculator-state';
+const CALCULATOR_STORAGE_KEY = 'wealthpath-calculator-state';
+const PORTFOLIO_STORAGE_KEY = 'wealthpath-portfolio-state';
+
+const allocationColors = ["hsl(var(--chart-3))", "hsl(var(--chart-2))", "hsl(var(--chart-4))"];
+
 
 export function WealthCalculator() {
   const [data, setData] = React.useState<InvestmentData[] | null>(null);
@@ -103,6 +121,7 @@ export function WealthCalculator() {
   const [isCrashSimulated, setIsCrashSimulated] = React.useState(false);
   const [showCrashPopup, setShowCrashPopup] = React.useState(false);
   const [selectedYear, setSelectedYear] = React.useState<number | null>(null);
+  const [portfolioState, setPortfolioState] = React.useState<PortfolioState | null>(null);
 
 
   const router = useRouter();
@@ -125,13 +144,19 @@ export function WealthCalculator() {
 
   React.useEffect(() => {
     try {
-        const savedState = localStorage.getItem(STORAGE_KEY);
-        if (savedState) {
-            const savedValues = JSON.parse(savedState);
+        const savedCalculatorState = localStorage.getItem(CALCULATOR_STORAGE_KEY);
+        if (savedCalculatorState) {
+            const savedValues = JSON.parse(savedCalculatorState);
             form.reset(savedValues);
         }
+
+        const savedPortfolioState = localStorage.getItem(PORTFOLIO_STORAGE_KEY);
+        if (savedPortfolioState) {
+            setPortfolioState(JSON.parse(savedPortfolioState));
+        }
+
     } catch (error) {
-        console.error("Failed to parse calculator state from localStorage", error);
+        console.error("Failed to parse state from localStorage", error);
     }
   }, [form]);
 
@@ -144,7 +169,7 @@ export function WealthCalculator() {
       try {
         if(form.formState.isDirty){
           const stateToSave = JSON.stringify(formValues);
-          localStorage.setItem(STORAGE_KEY, stateToSave);
+          localStorage.setItem(CALCULATOR_STORAGE_KEY, stateToSave);
         }
       } catch (error) {
         console.error("Failed to save calculator state to localStorage", error);
@@ -172,7 +197,6 @@ export function WealthCalculator() {
         years,
         accountType,
         marginalTaxRate,
-        adjustForInflation,
         inflationRate,
         annualFees,
     } = inputs;
@@ -331,6 +355,14 @@ export function WealthCalculator() {
       totalLostToTaxes /= inflationDivisor;
     }
   }
+
+  const allocationChartData = portfolioState
+    ? [
+        { name: "Stocks", value: portfolioState.allocation.stocks },
+        { name: "Bonds", value: portfolioState.allocation.bonds },
+        { name: "Alternatives", value: portfolioState.allocation.alternatives },
+      ]
+    : [];
   
 
   return (
@@ -591,8 +623,17 @@ export function WealthCalculator() {
 
             </CardHeader>
             <CardContent>
-              <InvestmentChart data={data} selectedYear={selectedYear} adjustForInflation={submittedValues.adjustForInflation} />
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 text-center">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                <div className="md:col-span-2">
+                    <InvestmentChart data={data} selectedYear={selectedYear} adjustForInflation={submittedValues.adjustForInflation} />
+                </div>
+                <div className="h-64 md:h-full flex flex-col items-center justify-center">
+                    <h4 className="font-semibold text-center mb-2">{portfolioState?.portfolioName || "Portfolio Allocation"}</h4>
+                    <AllocationChart data={allocationChartData} colors={allocationColors} />
+                </div>
+              </div>
+              <Separator className="my-8" />
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                     <div className="rounded-lg p-3 bg-background/40">
                         <p className="text-sm text-muted-foreground flex items-center justify-center gap-2"><PiggyBank className="h-4 w-4"/> Total Invested</p>
                         <p className="text-xl font-bold">{formatCurrency(finalTotalInvestment)}</p>
