@@ -125,10 +125,34 @@ const results = {
 };
 
 type Answers = { [key: string]: string };
+const STORAGE_KEY = "wealthpath-quiz-state";
+
 
 export function RiskMindsetQuiz() {
   const [answers, setAnswers] = React.useState<Answers>({});
   const [score, setScore] = React.useState<number | null>(null);
+
+  React.useEffect(() => {
+    try {
+      const savedState = localStorage.getItem(STORAGE_KEY);
+      if (savedState) {
+        const { answers: savedAnswers, score: savedScore } = JSON.parse(savedState);
+        if (savedAnswers) setAnswers(savedAnswers);
+        if (savedScore !== null) setScore(savedScore);
+      }
+    } catch (error) {
+      console.error("Failed to parse quiz state from localStorage", error);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    try {
+      const stateToSave = JSON.stringify({ answers, score });
+      localStorage.setItem(STORAGE_KEY, stateToSave);
+    } catch (error) {
+      console.error("Failed to save quiz state to localStorage", error);
+    }
+  }, [answers, score]);
 
   const handleValueChange = (questionId: string, value: string) => {
     setAnswers((prev) => ({ ...prev, [questionId]: value }));
