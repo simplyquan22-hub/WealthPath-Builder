@@ -15,17 +15,38 @@ import { AnimatedButton } from "./ui/animated-button";
 
 const glassCardClasses = "bg-background/50 backdrop-blur-xl border-t border-l border-r border-b border-white/10 shadow-xl shadow-black/10 bg-gradient-to-br from-white/5 via-transparent to-transparent";
 
-const templates = {
-  conservative: {
-    allocation: { stocks: 20, bonds: 70, alternatives: 10 },
+type TickerTemplate = {
+  id: string;
+  name: string;
+  category: "stocks" | "bonds" | "alternatives";
+  allocation: number;
+};
+
+const templates: Record<string, { allocation: Allocation; tickers: TickerTemplate[] }> = {
+  "simple-beginner": {
+    allocation: { stocks: 100, bonds: 0, alternatives: 0 },
+    tickers: [
+      { id: 'VTI', name: 'Vanguard Total Stock Market ETF', category: 'stocks', allocation: 80 },
+      { id: 'VXUS', name: 'Vanguard Total International Stock ETF', category: 'stocks', allocation: 20 },
+    ],
   },
-  balanced: {
-    allocation: { stocks: 60, bonds: 30, alternatives: 10 },
+  "advanced-beginner": {
+    allocation: { stocks: 80, bonds: 20, alternatives: 0 },
+    tickers: [
+      { id: 'VOO', name: 'Vanguard S&P 500 ETF', category: 'stocks', allocation: 60 },
+      { id: 'VXUS', name: 'Vanguard Total International Stock ETF', category: 'stocks', allocation: 20 },
+      { id: 'BND', name: 'Vanguard Total Bond Market ETF', category: 'bonds', allocation: 20 },
+    ],
   },
   aggressive: {
-    allocation: { stocks: 90, bonds: 0, alternatives: 10 },
+    allocation: { stocks: 100, bonds: 0, alternatives: 0 },
+    tickers: [
+      { id: 'VOO', name: 'Vanguard S&P 500 ETF', category: 'stocks', allocation: 70 },
+      { id: 'QQQ', name: 'Invesco QQQ Trust', category: 'stocks', allocation: 30 },
+    ],
   },
 };
+
 
 const categoryColors = {
     stocks: "text-blue-400",
@@ -222,10 +243,10 @@ export function PortfolioBuilder() {
   }, [portfolioName, allocation, selectedTickers]);
 
 
-  const handleTemplateSelect = (template: "conservative" | "balanced" | "aggressive") => {
-    const selectedTemplate = templates[template];
+  const handleTemplateSelect = (templateKey: "simple-beginner" | "advanced-beginner" | "aggressive") => {
+    const selectedTemplate = templates[templateKey];
     setAllocation(selectedTemplate.allocation);
-    setSelectedTickers([]); // Clear tickers to encourage user learning
+    setSelectedTickers(selectedTemplate.tickers);
   };
   
   const handleSingleSliderChange = (name: keyof Allocation, value: number) => {
@@ -354,13 +375,13 @@ export function PortfolioBuilder() {
                     <strong>Name Your Portfolio:</strong> Give your portfolio a descriptive name, like "My First Roth IRA" or "Aggressive Growth Plan."
                 </li>
                 <li>
-                    <strong>Choose a Template:</strong> Select a risk profile (Conservative, Balanced, or Aggressive) to set a baseline for your asset allocation between stocks, bonds, and alternatives.
+                    <strong>Choose a Template:</strong> Select a beginner-friendly template to get started. This will automatically load a recommended set of ETFs and their allocations.
                 </li>
                 <li>
                     <strong>Adjust Allocation:</strong> Fine-tune the percentage of your portfolio dedicated to each asset class using the sliders. The total must equal 100%.
                 </li>
                 <li>
-                    <strong>Add Tickers:</strong> Search for and add individual stocks, ETFs, funds, or other assets to your portfolio.
+                    <strong>Add or Remove Tickers:</strong> Customize the portfolio by adding new stocks, ETFs, or funds, or by removing ones you don't want.
                 </li>
                 <li>
                     <strong>Allocate to Tickers:</strong> In the Portfolio Summary, assign a percentage to each ticker within its category. The total for each category must equal 100%.
@@ -391,9 +412,9 @@ export function PortfolioBuilder() {
           <CardTitle className="text-2xl font-headline">2. Choose a Template</CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <AnimatedButton onClick={() => handleTemplateSelect("conservative")}>Conservative</AnimatedButton>
-          <AnimatedButton onClick={() => handleTemplateSelect("balanced")}>Balanced</AnimatedButton>
-          <AnimatedButton onClick={() => handleTemplateSelect("aggressive")}>Aggressive</AnimatedButton>
+          <AnimatedButton onClick={() => handleTemplateSelect("simple-beginner")}>⭐ Super Simple Beginner</AnimatedButton>
+          <AnimatedButton onClick={() => handleTemplateSelect("advanced-beginner")}>⭐ Slightly Advanced</AnimatedButton>
+          <AnimatedButton onClick={() => handleTemplateSelect("aggressive")}>⭐ Aggressive</AnimatedButton>
         </CardContent>
       </Card>
 
