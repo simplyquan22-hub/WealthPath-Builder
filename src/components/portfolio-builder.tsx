@@ -331,7 +331,7 @@ export function PortfolioBuilder() {
              <div className="space-y-2">
                 {tickers.length > 0 ? tickers.map(t => (
                     <div key={t.id} className={cn("flex items-center justify-between p-2 rounded-md gap-2", categoryBgColors[category])}>
-                        <span className="flex-1 truncate text-sm">{t.name} ({t.id})</span>
+                        <span className="flex-1 truncate text-sm">{t.id}</span>
                         <div className="flex items-center gap-2">
                           <Input 
                               type="number" 
@@ -497,5 +497,3 @@ export function PortfolioBuilder() {
     </div>
   );
 }
-
-    
