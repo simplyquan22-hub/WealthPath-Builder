@@ -23,6 +23,9 @@ import {
   ShieldAlert,
   Wallet,
   HandCoins,
+  Frown,
+  Meh,
+  Laugh,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -66,6 +69,7 @@ import { Slider } from "./ui/slider";
 import { AnimatedButton } from "./ui/animated-button";
 import { AllocationChart } from "./allocation-chart";
 import { Separator } from "./ui/separator";
+import { useToast } from "@/hooks/use-toast";
 
 
 const formSchema = z.object({
@@ -122,6 +126,7 @@ export function WealthCalculator() {
   const [showCrashPopup, setShowCrashPopup] = React.useState(false);
   const [selectedYear, setSelectedYear] = React.useState<number | null>(null);
   const [portfolioState, setPortfolioState] = React.useState<PortfolioState | null>(null);
+  const { toast } = useToast();
 
 
   const router = useRouter();
@@ -296,6 +301,41 @@ export function WealthCalculator() {
 
   const handleRevertCrash = () => {
     setIsCrashSimulated(false);
+  };
+
+  const handleReaction = (reaction: 'sell' | 'reduce' | 'hold' | 'buy') => {
+    setShowCrashPopup(false);
+    let toastContent = {};
+
+    switch (reaction) {
+        case 'sell':
+            toastContent = {
+                variant: "destructive",
+                title: "Selling in a Panic",
+                description: "Selling during a downturn locks in your losses. Historically, markets recover, and staying invested is often the best long-term strategy.",
+            };
+            break;
+        case 'reduce':
+            toastContent = {
+                title: "Reducing Risk",
+                description: "Rebalancing can be smart, but drastically reducing risk might mean missing out on the eventual market recovery.",
+            };
+            break;
+        case 'hold':
+            toastContent = {
+                title: "Staying the Course",
+                description: "Well done. Sticking to your long-term plan and avoiding emotional decisions is a key to successful investing.",
+            };
+            break;
+        case 'buy':
+            toastContent = {
+                title: "Buying the Dip",
+                description: "Great mindset! Market downturns can be seen as a 'sale' on stocks, offering a chance to buy assets at a lower price.",
+            };
+            break;
+    }
+
+    toast(toastContent);
   };
   
   const activeYearData = selectedYear !== null && data ? data[selectedYear] : null;
@@ -677,13 +717,31 @@ export function WealthCalculator() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter className="flex-col gap-2">
-            <AnimatedButton onClick={() => setShowCrashPopup(false)}>😱 “Sell everything!”</AnimatedButton>
-            <AnimatedButton onClick={() => setShowCrashPopup(false)}>😬 “Reduce risk…”</AnimatedButton>
-            <AnimatedButton onClick={() => setShowCrashPopup(false)}>😐 “Stay calm & hold.”</AnimatedButton>
-            <AnimatedButton onClick={() => setShowCrashPopup(false)}>🧘 “Buy more while it’s cheap!”</AnimatedButton>
+            <AnimatedButton onClick={() => handleReaction('sell')}>
+              <div className="flex items-center gap-2">
+                <Frown /> “Sell everything!”
+              </div>
+            </AnimatedButton>
+            <AnimatedButton onClick={() => handleReaction('reduce')}>
+              <div className="flex items-center gap-2">
+                <ShieldAlert /> “Reduce risk…”
+              </div>
+            </AnimatedButton>
+            <AnimatedButton onClick={() => handleReaction('hold')}>
+              <div className="flex items-center gap-2">
+                <Meh /> “Stay calm & hold.”
+              </div>
+            </AnimatedButton>
+            <AnimatedButton onClick={() => handleReaction('buy')}>
+              <div className="flex items-center gap-2">
+                <Laugh /> “Buy more while it’s cheap!”
+              </div>
+            </AnimatedButton>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
     </TooltipProvider>
   );
 }
+
+    
