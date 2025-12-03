@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, TrendingUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Button } from './ui/button';
 
 const navLinks = [
@@ -54,6 +54,9 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
+              <SheetHeader>
+                <SheetTitle className="sr-only">Main Menu</SheetTitle>
+              </SheetHeader>
               <div className="flex flex-col space-y-4 pt-8">
                 {navLinks.map((link) => (
                   <SheetClose asChild key={link.href}>
