@@ -1,1 +1,1 @@
-This file is a placeholder to ensure the 'public' directory is created. You can delete this file. Please place your logo.png file in this 'public' directory.
+Please add your logo.png file to this public directory. You can delete this placeholder file after doing so.
