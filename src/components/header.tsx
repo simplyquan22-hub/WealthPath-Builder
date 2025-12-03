@@ -26,26 +26,7 @@ export function Header() {
           <TrendingUp className="h-6 w-6 text-primary" />
           <span className="font-bold font-headline text-lg">WealthPath</span>
         </Link>
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-          {navLinks.map((link) => {
-            const isActive = !link.external && pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                target={link.external ? '_blank' : undefined}
-                rel={link.external ? 'noopener noreferrer' : undefined}
-                className={cn(
-                  'transition-colors hover:text-primary',
-                  isActive ? 'text-primary' : 'text-muted-foreground'
-                )}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
-        <div className="md:hidden">
+        <div className="ml-auto">
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
