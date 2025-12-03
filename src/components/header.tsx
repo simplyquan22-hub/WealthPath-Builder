@@ -8,6 +8,7 @@ import { Menu, TrendingUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Button } from './ui/button';
+import { Separator } from './ui/separator';
 
 const navLinks = [
   { href: '/', label: 'Risk Quiz' },
@@ -35,8 +36,9 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
-              <SheetHeader>
-                <SheetTitle className="sr-only">Main Menu</SheetTitle>
+              <SheetHeader className="text-center">
+                <SheetTitle>WealthPath Menu</SheetTitle>
+                <Separator className="bg-primary h-[2px] mx-auto w-1/2" />
               </SheetHeader>
               <div className="flex flex-col space-y-4 pt-8">
                 {navLinks.map((link) => (
@@ -48,7 +50,7 @@ export function Header() {
                       rel={link.external ? 'noopener noreferrer' : undefined}
                     >
                       <Button
-                        variant="outline"
+                        variant={pathname === link.href ? "default" : "outline"}
                         className="w-full justify-start text-lg py-6"
                       >
                         {link.label}
@@ -64,5 +66,3 @@ export function Header() {
     </header>
   );
 }
-
-    
