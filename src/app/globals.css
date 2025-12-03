@@ -10,19 +10,19 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 38 92% 50%; /* Gold */
-    --primary-foreground: 240 10% 3.9%;
+    --primary: 24 9.8% 10%; /* Dark Gray for button text */
+    --primary-foreground: 0 0% 100%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
-    --accent: 150 60% 40%; /* Lush Green */
+    --accent: 24 95% 53%; /* Orange for hover */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 38 92% 50%;
+    --ring: 24 95% 53%; /* Orange for ring */
     --radius: 0.5rem;
   }
 
@@ -33,19 +33,19 @@
     --card-foreground: 150 10% 90%;
     --popover: 150 15% 10%;
     --popover-foreground: 150 10% 90%;
-    --primary: 38 92% 50%; /* Gold */
-    --primary-foreground: 38 100% 10%;
+    --primary: 24 95% 53%; /* Orange for buttons */
+    --primary-foreground: 150 10% 10%;
     --secondary: 150 15% 20%;
     --secondary-foreground: 150 10% 90%;
     --muted: 150 15% 20%;
     --muted-foreground: 150 10% 60%;
-    --accent: 150 60% 40%; /* Lush Green */
+    --accent: 24 95% 53%; /* Orange for hover */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 150 15% 25%;
     --input: 150 15% 25%;
-    --ring: 38 92% 50%;
+    --ring: 24 95% 53%; /* Orange for ring */
     --chart-1: 38 92% 50%; /* Gold */
     --chart-2: 150 60% 40%; /* Green */
     --chart-3: 200 70% 50%; /* Blue */
@@ -366,3 +366,5 @@
     transform: translate(60px, -32px) translateZ(0);
   }
 }
+
+    

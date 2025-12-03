@@ -43,11 +43,16 @@ export function Header() {
                   <SheetClose asChild key={link.href}>
                     <Link
                       href={link.href}
+                      passHref
                       target={link.external ? '_blank' : undefined}
                       rel={link.external ? 'noopener noreferrer' : undefined}
-                      className="text-lg text-muted-foreground hover:text-primary"
                     >
-                      {link.label}
+                      <Button
+                        variant="outline"
+                        className="w-full justify-start text-lg py-6"
+                      >
+                        {link.label}
+                      </Button>
                     </Link>
                   </SheetClose>
                 ))}
@@ -59,3 +64,5 @@ export function Header() {
     </header>
   );
 }
+
+    
