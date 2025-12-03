@@ -3,6 +3,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Sheet, BarChart, FileQuestion } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -20,14 +21,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" fill="hsl(var(--primary))" />
-            <path d="M12 12L22 7" stroke="hsl(var(--background))" strokeWidth="1.5" />
-            <path d="M12 12V22" stroke="hsl(var(--background))" strokeWidth="1.5" />
-            <path d="M12 12L2 7" stroke="hsl(var(--background))" strokeWidth="1.5" />
-            <path d="M2 17L7 14.5" stroke="hsl(var(--primary))" strokeWidth="1.5" />
-            <path d="M22 17L17 14.5" stroke="hsl(var(--primary))" strokeWidth="1.5" />
-          </svg>
+          <Image src="/logo.png" alt="WealthPath Logo" width={32} height={32} />
           <span className="font-bold font-headline text-lg">WealthPath</span>
         </Link>
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
