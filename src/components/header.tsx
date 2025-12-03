@@ -21,7 +21,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.png" alt="WealthPath Logo" width={32} height={32} />
+          <Image src="https://storage.googleapis.com/genai-studio-project-images/611a14a1-b0e6-425b-89f5-3006a8f152f1.png" alt="WealthPath Logo" width={32} height={32} />
           <span className="font-bold font-headline text-lg">WealthPath</span>
         </Link>
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
