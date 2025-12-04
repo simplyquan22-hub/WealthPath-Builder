@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowLeft, ArrowRight, Trash2, Info } from "lucide-react";
+import { ArrowLeft, ArrowRight, Trash2, Info, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatedButton } from "./ui/animated-button";
 
@@ -249,6 +249,12 @@ export function PortfolioBuilder() {
     setSelectedTickers(selectedTemplate.tickers);
   };
   
+  const handleCustomTemplate = () => {
+    setAllocation({ stocks: 60, bonds: 30, alternatives: 10 });
+    setSelectedTickers([]);
+    setPortfolioName("My Custom Portfolio");
+  };
+
   const handleSingleSliderChange = (name: keyof Allocation, value: number) => {
     const oldValue = allocation[name];
     const diff = value - oldValue;
@@ -411,10 +417,15 @@ export function PortfolioBuilder() {
         <CardHeader>
           <CardTitle className="text-2xl font-headline">2. Choose a Template</CardTitle>
         </CardHeader>
-        <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <AnimatedButton onClick={() => handleTemplateSelect("simple-beginner")}>⭐ Super Simple Beginner</AnimatedButton>
           <AnimatedButton onClick={() => handleTemplateSelect("advanced-beginner")}>⭐ Slightly Advanced</AnimatedButton>
           <AnimatedButton onClick={() => handleTemplateSelect("aggressive")}>⭐ Aggressive</AnimatedButton>
+          <AnimatedButton onClick={handleCustomTemplate}>
+            <div className="flex items-center gap-2">
+              <Star className="h-5 w-5" /> Custom
+            </div>
+          </AnimatedButton>
         </CardContent>
       </Card>
 
@@ -497,3 +508,5 @@ export function PortfolioBuilder() {
     </div>
   );
 }
+
+    
