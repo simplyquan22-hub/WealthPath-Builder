@@ -13,7 +13,7 @@ import { ArrowLeft, ArrowRight, Trash2, Info, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatedButton } from "./ui/animated-button";
 
-const glassCardClasses = "bg-background/50 backdrop-blur-xl border-t border-l border-r border-b border-white/10 shadow-xl shadow-black/10 bg-gradient-to-br from-white/5 via-transparent to-transparent";
+const glassCardClasses = "animated-border-card";
 
 type TickerTemplate = {
   id: string;
@@ -510,3 +510,4 @@ export function PortfolioBuilder() {
 }
 
     
+
