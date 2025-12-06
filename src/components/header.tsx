@@ -4,11 +4,12 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, TrendingUp } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Button } from './ui/button';
 import { Separator } from './ui/separator';
+import Image from 'next/image';
 
 const navLinks = [
   { href: '/', label: 'Risk Quiz', description: 'Find your investment style.', emoji: '🤔' },
@@ -24,7 +25,17 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2">
-          <TrendingUp className="h-6 w-6 text-primary" />
+          {/* 
+            STEP 1: Add your logo file (e.g., "my-logo.png") to the `public` folder in your project root.
+            STEP 2: The code below will then display it. You can adjust width and height as needed.
+          */}
+          <Image 
+            src="/my-logo.png" 
+            alt="WealthPath Logo" 
+            width={24} 
+            height={24} 
+            className="h-6 w-6"
+          />
           <span className="font-bold font-headline text-lg">WealthPath</span>
         </Link>
         <div>
