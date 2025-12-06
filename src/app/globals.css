@@ -315,11 +315,3 @@
     transform: translate(60px, -32px) translateZ(0);
   }
 }
-
-@layer components {
-  .animated-border-card {
-    @apply border border-transparent;
-    background-color: hsl(var(--card));
-    box-shadow: 0 0 10px 1px rgba(96, 165, 250, 0.2); /* Static light blue glow */
-  }
-}

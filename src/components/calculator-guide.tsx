@@ -4,7 +4,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DollarSign, Percent, Calendar, Info, Repeat } from "lucide-react";
 
-const glassCardClasses = "rounded-lg border border-white/10 bg-card/50 backdrop-blur-sm text-card-foreground shadow-sm";
+const glassCardClasses = "rounded-lg border border-white/10 bg-card/50 backdrop-blur-sm text-card-foreground shadow-[0_0_15px_2px_rgba(96,165,250,0.25)]";
 
 export function CalculatorGuide() {
   return (

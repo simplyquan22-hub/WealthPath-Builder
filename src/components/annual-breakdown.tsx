@@ -42,7 +42,7 @@ export function AnnualBreakdown({ data, adjustForInflation }: AnnualBreakdownPro
           View Annual Breakdown
         </AccordionTrigger>
         <AccordionContent>
-           <Card className="bg-card/50 backdrop-blur-sm border border-white/10 p-4 mb-6">
+           <Card className="bg-card/50 backdrop-blur-sm border border-white/10 p-4 mb-6 shadow-[0_0_15px_2px_rgba(96,165,250,0.25)]">
             <CardContent className="p-0">
                 <div className="flex items-start gap-3">
                     <Info className="h-5 w-5 mt-1 text-muted-foreground flex-shrink-0"/>
