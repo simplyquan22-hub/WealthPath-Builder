@@ -11,10 +11,10 @@ import { Button } from './ui/button';
 import { Separator } from './ui/separator';
 
 const navLinks = [
-  { href: '/', label: 'Risk Quiz' },
-  { href: '/portfolio-builder', label: 'Portfolio Builder' },
-  { href: '/calculator', label: 'Calculator' },
-  { href: 'https://mywealthpath.org', label: 'Landing Page', external: true },
+  { href: '/', label: 'Risk Quiz', description: 'Find your investment style.', emoji: '🤔' },
+  { href: '/portfolio-builder', label: 'Portfolio Builder', description: 'Design your perfect portfolio.', emoji: '🏗️' },
+  { href: '/calculator', label: 'Calculator', description: 'Project your financial future.', emoji: '🧮' },
+  { href: 'https://mywealthpath.org', label: 'WealthPath\'s Main Page', description: 'Visit our homepage.', emoji: '🏠', external: true },
 ];
 
 export function Header() {
@@ -51,9 +51,15 @@ export function Header() {
                     >
                       <Button
                         variant={pathname === link.href ? "default" : "outline"}
-                        className="w-full justify-start text-lg py-6"
+                        className="w-full justify-start text-left h-auto py-4"
                       >
-                        {link.label}
+                        <div className="flex items-center gap-4">
+                           <span className="text-2xl">{link.emoji}</span>
+                           <div className="flex flex-col">
+                                <span className="text-base font-semibold">{link.label}</span>
+                                <span className="text-sm font-normal text-muted-foreground">{link.description}</span>
+                           </div>
+                        </div>
                       </Button>
                     </Link>
                   </SheetClose>
