@@ -67,10 +67,10 @@
 .uiverse {
   --duration: 7s;
   --easing: linear;
-  --c-color-1: hsla(var(--primary), 0.7);
+  --c-color-1: #3b82f6; /* Blue */
   --c-color-2: #3b82f6; /* Blue */
   --c-color-3: #60a5fa; /* Lighter Blue */
-  --c-color-4: hsla(var(--primary), 0.7);
+  --c-color-4: #60a5fa; /* Lighter Blue */
   --c-shadow: rgba(59, 130, 246, 0.5);
   --c-shadow-inset-top: rgba(59, 130, 246, 0.9);
   --c-shadow-inset-bottom: rgba(96, 165, 250, 0.8);
@@ -366,5 +366,3 @@
     transform: translate(60px, -32px) translateZ(0);
   }
 }
-
-    
