@@ -369,7 +369,7 @@ export function PortfolioBuilder() {
       <Card className={glassCardClasses}>
         <CardHeader>
             <CardTitle className="text-2xl font-headline flex items-center gap-2">
-                <Info className="h-6 w-6" /> How to Use the Portfolio Builder
+                <Info className="h-6 w-6 text-primary" /> <span className="text-primary">How to Use the Portfolio Builder</span>
             </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
@@ -378,22 +378,22 @@ export function PortfolioBuilder() {
             </p>
             <ul className="space-y-3 list-decimal list-inside">
                 <li>
-                    <strong>Name Your Portfolio:</strong> Give your portfolio a descriptive name, like "My First Roth IRA" or "Aggressive Growth Plan."
+                    <strong className="text-foreground">Name Your Portfolio:</strong> Give your portfolio a descriptive name, like "My First Roth IRA" or "Aggressive Growth Plan."
                 </li>
                 <li>
-                    <strong>Choose a Template:</strong> Select a beginner-friendly template to get started. This will automatically load a recommended set of ETFs and their allocations.
+                    <strong className="text-foreground">Choose a Template:</strong> Select a <span className="text-green-400">beginner-friendly</span> template to get started. This will automatically load a recommended set of ETFs and their allocations.
                 </li>
                 <li>
-                    <strong>Adjust Allocation:</strong> Fine-tune the percentage of your portfolio dedicated to each asset class using the sliders. The total must equal 100%.
+                    <strong className="text-foreground">Adjust Allocation:</strong> Fine-tune the percentage of your portfolio dedicated to each asset class using the sliders. The total must equal 100%.
                 </li>
                 <li>
-                    <strong>Add or Remove Tickers:</strong> Customize the portfolio by adding new stocks, ETFs, or funds, or by removing ones you don't want.
+                    <strong className="text-foreground">Add or Remove Tickers:</strong> Customize the portfolio by adding new stocks, ETFs, or funds, or by removing ones you don't want.
                 </li>
                 <li>
-                    <strong>Allocate to Tickers:</strong> In the Portfolio Summary, assign a percentage to each ticker within its category. The total for each category must equal 100%.
+                    <strong className="text-foreground">Allocate to Tickers:</strong> In the Portfolio Summary, assign a percentage to each ticker within its category. The total for each category must equal 100%.
                 </li>
                 <li>
-                    <strong>Project Growth:</strong> Once you're done, click "Project My Growth" to see how your custom portfolio could perform over time in the calculator.
+                    <strong className="text-foreground">Project Growth:</strong> Once you're done, click "<span className="text-primary">Project My Growth</span>" to see how your custom portfolio could perform over time in the calculator.
                 </li>
             </ul>
         </CardContent>

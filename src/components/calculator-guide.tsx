@@ -12,7 +12,7 @@ export function CalculatorGuide() {
       <Card className={glassCardClasses}>
         <CardHeader>
           <CardTitle className="text-2xl font-headline flex items-center gap-2">
-            <Info className="h-6 w-6" /> How to Use This Calculator
+            <Info className="h-6 w-6 text-primary" /> <span className="text-primary">How to Use This Calculator</span>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
@@ -21,31 +21,31 @@ export function CalculatorGuide() {
           </p>
           <ul className="space-y-3">
              <li>
-              <strong>Initial Investment:</strong> The amount of money you are starting with.
+              <strong className="text-foreground">Initial Investment:</strong> The amount of money you are starting with.
             </li>
             <li>
-              <strong>Contribution Amount & Frequency:</strong> The amount you plan to add and how often (e.g., weekly, monthly).
+              <strong className="text-foreground">Contribution Amount & Frequency:</strong> The amount you plan to add and how often (e.g., weekly, monthly).
             </li>
             <li>
-              <strong>Interest Rate (%):</strong> Your estimated annual return on investment. A common benchmark is the average historical return of the S&P 500, which is around 7-10%.
+              <strong className="text-foreground">Interest Rate (%):</strong> Your estimated annual return on investment. A common benchmark is the average historical return of the S&P 500, which is around <span className="text-green-400">7-10%</span>.
             </li>
             <li>
-              <strong>Annual Fees (%):</strong> The yearly cost of managing your investments, like an ETF expense ratio. A low-cost index fund might have fees around 0.03%, while actively managed funds can be 1% or higher.
+              <strong className="text-foreground">Annual Fees (%):</strong> The yearly cost of managing your investments, like an ETF expense ratio. A low-cost index fund might have fees around <span className="text-green-400">0.03%</span>, while actively managed funds can be <span className="text-destructive">1% or higher</span>.
             </li>
              <li>
-              <strong>Years:</strong> The number of years you plan to let your investment grow.
+              <strong className="text-foreground">Years:</strong> The number of years you plan to let your investment grow.
             </li>
             <li>
-              <strong>Marginal Tax Rate (%):</strong> Your estimated combined federal and state income tax rate. This is used to calculate the after-tax value of a Traditional IRA.
+              <strong className="text-foreground">Marginal Tax Rate (%):</strong> Your estimated combined federal and state income tax rate. This is used to calculate the after-tax value of a Traditional IRA.
             </li>
             <li>
-              <strong>Account Type:</strong> The type of retirement account you are using. This choice has significant tax implications.
+              <strong className="text-foreground">Account Type:</strong> The type of retirement account you are using. This choice has significant tax implications.
             </li>
             <li>
-              <strong>Adjust for Inflation:</strong> When enabled, this projects the future value of your investment in today's dollars, giving you a clearer sense of its future purchasing power.
+              <strong className="text-foreground">Adjust for Inflation:</strong> When enabled, this projects the future value of your investment in <span className="text-green-400">today's dollars</span>, giving you a clearer sense of its future purchasing power.
             </li>
              <li>
-              <strong>Time Machine Slider:</strong> After calculating, use the slider to travel through time and see how your investment value changes year by year.
+              <strong className="text-foreground">Time Machine Slider:</strong> After calculating, use the slider to travel through time and see how your investment value changes year by year.
             </li>
           </ul>
         </CardContent>
@@ -53,7 +53,7 @@ export function CalculatorGuide() {
       <Card className={glassCardClasses}>
         <CardHeader>
           <CardTitle className="text-2xl font-headline flex items-center gap-2">
-            <DollarSign className="h-6 w-6" /> Account Types Explained
+            <DollarSign className="h-6 w-6 text-primary" /> <span className="text-primary">Account Types Explained</span>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
