@@ -13,7 +13,7 @@ import { ArrowLeft, ArrowRight, Trash2, Info, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatedButton } from "./ui/animated-button";
 
-const glassCardClasses = "animated-border-card bg-card/50 backdrop-blur-sm";
+const glassCardClasses = "border border-white/10 bg-card/50 backdrop-blur-sm";
 
 type TickerTemplate = {
   id: string;

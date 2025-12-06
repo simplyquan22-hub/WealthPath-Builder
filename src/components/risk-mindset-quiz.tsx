@@ -11,7 +11,7 @@ import { AnimatedButton } from "./ui/animated-button";
 import Link from "next/link";
 
 
-const glassCardClasses = "animated-border-card bg-card/50 backdrop-blur-sm";
+const glassCardClasses = "border border-white/10 bg-card/50 backdrop-blur-sm";
 
 const questions = [
   {
