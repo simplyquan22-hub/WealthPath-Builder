@@ -49,7 +49,7 @@ export function Header() {
             <SheetContent side="right">
               <SheetHeader className="text-center">
                 <SheetTitle>WealthPath Menu</SheetTitle>
-                <Separator className="bg-primary h-[2px] mx-auto w-1/2" />
+                <Separator className="bg-brand h-[2px] mx-auto w-1/2" />
               </SheetHeader>
               <div className="flex flex-col space-y-4 pt-8">
                 {navLinks.map((link) => (

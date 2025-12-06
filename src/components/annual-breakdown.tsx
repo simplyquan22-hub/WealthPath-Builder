@@ -50,7 +50,7 @@ export function AnnualBreakdown({ data, adjustForInflation }: AnnualBreakdownPro
                         <h4 className="font-semibold mb-2">How are "Returns" calculated?</h4>
                         <div className="text-muted-foreground text-sm space-y-2">
                            <p>For any given year, the annual return is calculated like this:</p>
-                           <p className="pl-4 italic border-l-2 border-primary/50">
+                           <p className="pl-4 italic border-l-2 border-brand/50">
                              (End Value of Current Year) - (End Value of Previous Year) - (Contributions Made During Current Year)
                            </p>
                            <p>

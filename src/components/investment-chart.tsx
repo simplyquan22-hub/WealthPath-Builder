@@ -36,7 +36,7 @@ const CustomTooltip = ({ active, payload, label, adjustForInflation }: any) => {
     return (
       <Card className="p-4 bg-background/80 backdrop-blur-sm border-white/10">
         <p className="label font-bold">{`Year ${label}`}</p>
-        <p className="intro text-primary">{`Projected Value: ${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(projectedValue)}`}</p>
+        <p className="intro text-brand">{`Projected Value: ${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(projectedValue)}`}</p>
         <p className="intro text-muted-foreground">{`Total Investment: ${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(totalInvestment)}`}</p>
       </Card>
     );
@@ -81,8 +81,8 @@ export function InvestmentChart({ data, selectedYear, adjustForInflation }: Inve
         >
           <defs>
              <linearGradient id="colorReturns" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0}/>
+                <stop offset="5%" stopColor="hsl(var(--brand))" stopOpacity={0.8}/>
+                <stop offset="95%" stopColor="hsl(var(--brand))" stopOpacity={0}/>
             </linearGradient>
             <linearGradient id="colorInvestment" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="hsl(var(--muted-foreground))" stopOpacity={0.4}/>
@@ -103,13 +103,13 @@ export function InvestmentChart({ data, selectedYear, adjustForInflation }: Inve
             tickLine={{ stroke: 'hsl(var(--muted-foreground))' }}
             domain={['dataMin', 'dataMax']}
           />
-          <Tooltip content={<CustomTooltip adjustForInflation={adjustForInflation} />} cursor={{ stroke: 'hsl(var(--primary))', strokeWidth: 1, strokeDasharray: '3 3' }}/>
+          <Tooltip content={<CustomTooltip adjustForInflation={adjustForInflation} />} cursor={{ stroke: 'hsl(var(--brand))', strokeWidth: 1, strokeDasharray: '3 3' }}/>
           <Area
             type="monotone"
             dataKey="displayProjectedValue"
             name="Projected Value"
             stackId="1"
-            stroke="hsl(var(--primary))"
+            stroke="hsl(var(--brand))"
             strokeWidth={2}
             fill="url(#colorReturns)"
           />
@@ -127,7 +127,7 @@ export function InvestmentChart({ data, selectedYear, adjustForInflation }: Inve
                     x={selectedYearData.year}
                     y={selectedYearData.displayProjectedValue}
                     r={8}
-                    fill="hsl(var(--primary))"
+                    fill="hsl(var(--brand))"
                     stroke="hsl(var(--background))"
                     strokeWidth={2}
                 />

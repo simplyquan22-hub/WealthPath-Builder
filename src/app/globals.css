@@ -10,19 +10,21 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 24 9.8% 10%; /* Dark Gray for button text */
-    --primary-foreground: 0 0% 100%;
+    --brand: 24 9.8% 10%; /* Dark Gray for text */
+    --brand-foreground: 0 0% 100%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
-    --accent: 24 95% 53%; /* Orange for hover */
-    --accent-foreground: 0 0% 100%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 24 95% 53%; /* Orange for ring */
+    --ring: 215 20.2% 65.1%;
     --radius: 0.5rem;
   }
 
@@ -33,19 +35,21 @@
     --card-foreground: 150 10% 90%;
     --popover: 150 15% 10%;
     --popover-foreground: 150 10% 90%;
-    --primary: 24 95% 53%; /* Orange for buttons */
-    --primary-foreground: 150 10% 10%;
+    --brand: 24 95% 53%; /* Orange for highlights */
+    --brand-foreground: 150 10% 10%;
+    --primary: 217 91% 60%; /* Blue for buttons */
+    --primary-foreground: 210 40% 98%;
     --secondary: 150 15% 20%;
     --secondary-foreground: 150 10% 90%;
     --muted: 150 15% 20%;
     --muted-foreground: 150 10% 60%;
-    --accent: 24 95% 53%; /* Orange for hover */
+    --accent: 217 91% 60%; /* Blue for hover */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 150 15% 25%;
     --input: 150 15% 25%;
-    --ring: 24 95% 53%; /* Orange for ring */
+    --ring: 217 91% 60%; /* Blue for ring */
     --chart-1: 38 92% 50%; /* Gold */
     --chart-2: 150 60% 40%; /* Green */
     --chart-3: 200 70% 50%; /* Blue */
@@ -190,61 +194,6 @@
   --x: -12px;
   --y: -12px;
   --animation: circle-3;
-}
-
-.uiverse .wrapper .circle.circle-4 {
-  --x: 80px;
-  --y: -12px;
-  --animation: circle-4;
-}
-
-.uiverse .wrapper .circle.circle-5 {
-  --x: 12px;
-  --y: -4px;
-  --animation: circle-5;
-}
-
-.uiverse .wrapper .circle.circle-6 {
-  --x: 56px;
-  --y: 16px;
-  --animation: circle-6;
-}
-
-.uiverse .wrapper .circle.circle-7 {
-  --x: 8px;
-  --y: 28px;
-  --animation: circle-7;
-}
-
-.uiverse .wrapper .circle.circle-8 {
-  --x: 28px;
-  --y: -4px;
-  --animation: circle-8;
-}
-
-.uiverse .wrapper .circle.circle-9 {
-  --x: 20px;
-  --y: -12px;
-  --animation: circle-9;
-}
-
-.uiverse .wrapper .circle.circle-10 {
-  --x: 64px;
-  --y: 16px;
-  --animation: circle-10;
-}
-
-.uiverse .wrapper .circle.circle-11 {
-  --x: 4px;
-  --y: 4px;
-  --animation: circle-11;
-}
-
-.uiverse .wrapper .circle.circle-12 {
-  --blur: 14px;
-  --x: 52px;
-  --y: 4px;
-  --animation: circle-12;
 }
 
 @keyframes circle-1 {

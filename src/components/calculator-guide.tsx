@@ -58,25 +58,25 @@ export function CalculatorGuide() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <h4 className="font-semibold text-lg text-primary">Roth IRA</h4>
+            <h4 className="font-semibold text-lg text-brand">Roth IRA</h4>
             <p className="text-muted-foreground">
               Contributions are made with <span className="text-foreground font-medium">after-tax</span> dollars. This means you pay taxes on the money before you invest it. The key benefit is that your qualified withdrawals in retirement are <span className="text-green-400 font-medium">100% tax-free</span>.
             </p>
           </div>
           <div>
-            <h4 className="font-semibold text-lg text-primary">Traditional IRA</h4>
+            <h4 className="font-semibold text-lg text-brand">Traditional IRA</h4>
             <p className="text-muted-foreground">
               Contributions are typically made with <span className="text-foreground font-medium">pre-tax</span> dollars, which may lower your taxable income for the year. However, you will pay income tax on all withdrawals in retirement. This calculator estimates the after-tax value based on your provided marginal rate.
             </p>
           </div>
           <div>
-            <h4 className="font-semibold text-lg text-primary">Kids Roth IRA</h4>
+            <h4 className="font-semibold text-lg text-brand">Kids Roth IRA</h4>
             <p className="text-muted-foreground">
               A custodial Roth IRA for minors. Contributions are made with <span className="text-foreground font-medium">after-tax</span> dollars from the child's earned income. Like a standard Roth IRA, qualified withdrawals in retirement are <span className="text-green-400 font-medium">tax-free</span>, giving them a huge head start on tax-free growth.
             </p>
           </div>
            <div>
-            <h4 className="font-semibold text-lg text-primary">Kids Traditional IRA</h4>
+            <h4 className="font-semibold text-lg text-brand">Kids Traditional IRA</h4>
             <p className="text-muted-foreground">
               A custodial Traditional IRA for minors with earned income. Contributions may be <span className="text-foreground font-medium">tax-deductible</span>. Taxes are paid on the money when it is withdrawn in retirement. This can be a good option if you expect the child to be in a lower tax bracket during their working years than in retirement.
             </p>
