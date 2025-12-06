@@ -638,7 +638,7 @@ export function WealthCalculator() {
                      <Tooltip>
                         <TooltipTrigger asChild>
                             <div className="flex items-center justify-center gap-2 cursor-pointer">
-                                <p className={`text-4xl font-bold ${isCrashSimulated ? 'text-destructive' : 'text-brand'}`}>
+                                <p className={`text-4xl font-bold ${isCrashSimulated ? 'text-destructive' : 'text-primary'}`}>
                                     {formatCurrency(finalProjectedValue)}
                                 </p>
                                 <Info className="h-5 w-5 text-muted-foreground" />
@@ -698,8 +698,8 @@ export function WealthCalculator() {
           </Card>
         ) : (
           <Card className={`flex flex-col items-center justify-center text-center p-8 lg:p-16 min-h-[300px] lg:min-h-[600px] ${glassCardClasses}`}>
-              <div className="p-4 bg-brand/20 rounded-full mb-4">
-                <TrendingUp className="h-10 w-10 text-brand" />
+              <div className="p-4 bg-primary/20 rounded-full mb-4">
+                <TrendingUp className="h-10 w-10 text-primary" />
               </div>
               <h3 className="text-xl font-semibold font-headline">Your financial projection awaits.</h3>
               <p className="text-muted-foreground mt-2">Fill out the form to visualize your investment journey.</p>
