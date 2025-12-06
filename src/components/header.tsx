@@ -14,7 +14,7 @@ const navLinks = [
   { href: '/', label: 'Risk Quiz', description: 'Find your investment style.', emoji: '🤔' },
   { href: '/portfolio-builder', label: 'Portfolio Builder', description: 'Design your perfect portfolio.', emoji: '🏗️' },
   { href: '/calculator', label: 'Calculator', description: 'Project your financial future.', emoji: '🧮' },
-  { href: 'https://mywealthpath.org', label: 'WealthPath\'s Main Page', description: 'Visit our homepage.', emoji: '🏠', external: true },
+  { href: 'https://mywealthpath.org', label: "WealthPath's Main Page", description: 'Visit our homepage.', emoji: '🏠', external: true },
 ];
 
 export function Header() {
@@ -56,8 +56,8 @@ export function Header() {
                         <div className="flex items-center gap-4">
                            <span className="text-2xl">{link.emoji}</span>
                            <div className="flex flex-col">
-                                <span className="text-base font-semibold">{link.label}</span>
-                                <span className="text-sm font-normal text-muted-foreground">{link.description}</span>
+                                <span className="text-base font-semibold whitespace-normal">{link.label}</span>
+                                <span className="text-sm font-normal text-muted-foreground whitespace-normal">{link.description}</span>
                            </div>
                         </div>
                       </Button>
