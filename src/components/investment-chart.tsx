@@ -34,7 +34,7 @@ const CustomTooltip = ({ active, payload, label, adjustForInflation }: any) => {
     }
     
     return (
-      <Card className="p-4 bg-background/80 backdrop-blur-sm border-white/10">
+      <Card className="p-4 bg-card/80 backdrop-blur-sm border-white/10">
         <p className="label font-bold">{`Year ${label}`}</p>
         <p className="intro text-primary">{`Projected Value: ${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(projectedValue)}`}</p>
         <p className="intro text-muted-foreground">{`Total Investment: ${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(totalInvestment)}`}</p>

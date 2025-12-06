@@ -112,7 +112,7 @@ interface PortfolioState {
     selectedTickers: any[]; // You might want to type this more strictly
 }
 
-const glassCardClasses = "animated-border-card";
+const glassCardClasses = "animated-border-card bg-card/50 backdrop-blur-sm";
 const CALCULATOR_STORAGE_KEY = 'wealthpath-calculator-state';
 const PORTFOLIO_STORAGE_KEY = 'wealthpath-portfolio-state';
 
@@ -549,7 +549,7 @@ export function WealthCalculator() {
                     )}
                   />
                 )}
-                <Card className="bg-background/30 border-white/10 p-4 space-y-4">
+                <Card className="bg-card/50 backdrop-blur-sm border-white/10 p-4 space-y-4">
                   <FormField
                       control={form.control}
                       name="adjustForInflation"
@@ -737,8 +737,3 @@ export function WealthCalculator() {
 }
 
     
-
-    
-
-    
-
