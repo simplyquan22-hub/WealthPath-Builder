@@ -32,9 +32,9 @@ export function Header() {
           <Image 
             src="/my-logo.png" 
             alt="WealthPath Logo" 
-            width={24} 
-            height={24} 
-            className="h-6 w-6 [filter:drop-shadow(0_0_8px_#00aaff)]"
+            width={42} 
+            height={42} 
+            className="[filter:drop-shadow(0_0_8px_#00aaff)]"
           />
           <span className="font-bold font-headline text-lg">WealthPath</span>
         </Link>
