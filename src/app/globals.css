@@ -10,10 +10,10 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --brand: 24 9.8% 10%; /* Dark Gray for text */
+    --brand: 24 95% 53%; /* Orange */
     --brand-foreground: 0 0% 100%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 217 91% 60%; /* Blue */
+    --primary-foreground: 210 40% 98%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
@@ -29,11 +29,11 @@
   }
 
   .dark {
-    --background: 150 15% 10%; /* Dark Forest Green/Blue */
+    --background: 240 10% 3.9%; /* Deep Black */
     --foreground: 150 10% 90%;
-    --card: 150 15% 12%;
+    --card: 240 5% 8%;
     --card-foreground: 150 10% 90%;
-    --popover: 150 15% 10%;
+    --popover: 240 10% 3.9%;
     --popover-foreground: 150 10% 90%;
     --brand: 24 95% 53%; /* Orange for highlights */
     --brand-foreground: 150 10% 10%;
@@ -318,40 +318,8 @@
 
 @layer components {
   .animated-border-card {
-    @apply bg-background/50 backdrop-blur-xl shadow-xl shadow-black/10 bg-gradient-to-br from-white/5 via-transparent to-transparent;
-    position: relative;
-    overflow: hidden;
-    z-index: 0;
-  }
-  .animated-border-card::before {
-    content: '';
-    position: absolute;
-    z-index: -2;
-    left: -50%;
-    top: -50%;
-    width: 200%;
-    height: 200%;
-    background-color: #3b82f6;
-    background-repeat: no-repeat;
-    background-size: 50% 50%, 50% 50%;
-    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
-    background-image: linear-gradient(#3b82f6, #3b82f6), linear-gradient(#60a5fa, #60a5fa), linear-gradient(#3b82f6, #3b82f6), linear-gradient(#60a5fa, #60a5fa);
-    animation: rotate 4s linear infinite;
-  }
-  .animated-border-card::after {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    left: 2px;
-    top: 2px;
-    width: calc(100% - 4px);
-    height: calc(100% - 4px);
-    background: hsl(var(--card));
-    border-radius: calc(var(--radius) - 2px);
-  }
-  @keyframes rotate {
-    100% {
-      transform: rotate(1turn);
-    }
+    @apply border border-transparent;
+    background-color: hsl(var(--card));
+    box-shadow: 0 0 10px 1px rgba(96, 165, 250, 0.2); /* Static light blue glow */
   }
 }
