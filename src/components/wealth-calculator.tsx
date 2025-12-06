@@ -716,33 +716,27 @@ export function WealthCalculator() {
               This is a simulation. How would you react in this real-life scenario?
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter className="flex-col gap-2">
-            <AnimatedButton onClick={() => handleReaction('sell')}>
-              <div className="flex items-center gap-2">
-                <Frown /> “Sell everything!”
-              </div>
-            </AnimatedButton>
-            <AnimatedButton onClick={() => handleReaction('reduce')}>
-              <div className="flex items-center gap-2">
-                <ShieldAlert /> “Reduce risk…”
-              </div>
-            </AnimatedButton>
-            <AnimatedButton onClick={() => handleReaction('hold')}>
-              <div className="flex items-center gap-2">
-                <Meh /> “Stay calm & hold.”
-              </div>
-            </AnimatedButton>
-            <AnimatedButton onClick={() => handleReaction('buy')}>
-              <div className="flex items-center gap-2">
-                <Laugh /> “Buy more while it’s cheap!”
-              </div>
-            </AnimatedButton>
+          <AlertDialogFooter className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <Button variant="destructive" onClick={() => handleReaction('sell')}>
+              <Frown className="mr-2 h-4 w-4" /> “Sell everything!”
+            </Button>
+            <Button variant="secondary" onClick={() => handleReaction('reduce')}>
+              <ShieldAlert className="mr-2 h-4 w-4" /> “Reduce risk…”
+            </Button>
+            <Button variant="secondary" onClick={() => handleReaction('hold')}>
+              <Meh className="mr-2 h-4 w-4" /> “Stay calm & hold.”
+            </Button>
+            <Button variant="default" className="bg-green-600 hover:bg-green-700" onClick={() => handleReaction('buy')}>
+              <Laugh className="mr-2 h-4 w-4" /> “Buy more!”
+            </Button>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
     </TooltipProvider>
   );
 }
+
+    
 
     
 
