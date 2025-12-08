@@ -369,7 +369,7 @@ export function PortfolioBuilder() {
       <Card className={glassCardClasses}>
         <CardHeader>
             <CardTitle className="text-2xl font-headline flex items-center gap-2">
-                <Info className="h-6 w-6 text-green-400" /> <span className="text-green-400">How to Use the Portfolio Builder</span>
+                <Info className="h-6 w-6" /> <span>How to Use the Portfolio Builder</span>
             </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">

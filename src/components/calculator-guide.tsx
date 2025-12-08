@@ -12,7 +12,7 @@ export function CalculatorGuide() {
       <Card className={glassCardClasses}>
         <CardHeader>
           <CardTitle className="text-2xl font-headline flex items-center gap-2">
-            <Info className="h-6 w-6 text-green-400" /> <span className="text-green-400">How to Use This Calculator</span>
+            <Info className="h-6 w-6" /> <span>How to Use This Calculator</span>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
@@ -53,7 +53,7 @@ export function CalculatorGuide() {
       <Card className={glassCardClasses}>
         <CardHeader>
           <CardTitle className="text-2xl font-headline flex items-center gap-2">
-            <DollarSign className="h-6 w-6 text-green-400" /> <span className="text-green-400">Account Types Explained</span>
+            <DollarSign className="h-6 w-6" /> <span>Account Types Explained</span>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
