@@ -36,7 +36,7 @@ export function Header() {
             height={42} 
             className="[filter:drop-shadow(0_0_8px_#00aaff)]"
           />
-          <span className="font-bold font-headline text-lg">WealthPath</span>
+          <span className="font-bold font-headline text-lg [text-shadow:0_0_8px_#00aaff]">WealthPath</span>
         </Link>
         <div>
           <Sheet>
