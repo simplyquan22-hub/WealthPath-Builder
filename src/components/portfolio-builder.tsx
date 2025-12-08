@@ -369,7 +369,7 @@ export function PortfolioBuilder() {
       <Card className={glassCardClasses}>
         <CardHeader>
             <CardTitle className="text-2xl font-headline flex items-center gap-2">
-                <Info className="h-6 w-6 text-primary" /> <span className="text-primary">How to Use the Portfolio Builder</span>
+                <Info className="h-6 w-6 text-green-400" /> <span className="text-green-400">How to Use the Portfolio Builder</span>
             </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
@@ -381,7 +381,7 @@ export function PortfolioBuilder() {
                     <strong className="text-foreground">Name Your Portfolio:</strong> Give your portfolio a descriptive name, like "My First Roth IRA" or "Aggressive Growth Plan."
                 </li>
                 <li>
-                    <strong className="text-foreground">Choose a Template:</strong> Select a <span className="text-green-400">beginner-friendly</span> template to get started. This will automatically load a recommended set of ETFs and their allocations.
+                    <strong className="text-foreground">Choose a Template:</strong> Select a <span className="text-primary">beginner-friendly</span> template to get started. This will automatically load a recommended set of ETFs and their allocations.
                 </li>
                 <li>
                     <strong className="text-foreground">Adjust Allocation:</strong> Fine-tune the percentage of your portfolio dedicated to each asset class using the sliders. The total must equal 100%.
