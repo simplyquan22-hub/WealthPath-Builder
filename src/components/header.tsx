@@ -34,9 +34,9 @@ export function Header() {
             alt="WealthPath Logo" 
             width={42} 
             height={42} 
-            className="[filter:drop-shadow(0_0_5px_rgba(0,100,255,0.5))]"
+            className="[filter:drop-shadow(0_0_8px_rgba(0,100,255,0.7))]"
           />
-          <span className="font-bold font-headline text-lg [text-shadow:0_0_5px_rgba(0,100,255,0.5)]">WealthPath</span>
+          <span className="font-bold font-headline text-lg [text-shadow:0_0_8px_rgba(0,100,255,0.7)]">WealthPath</span>
         </Link>
         <div>
           <Sheet>
