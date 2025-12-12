@@ -521,4 +521,32 @@
         { "ticker": "META", "weight": 2.4 },
         { "ticker": "GOOGL", "weight": 2.1 },
         { "ticker": "GOOG", "weight": 1.8 },
-        {
+        { "ticker": "BRK.B", "weight": 1.7 },
+        { "ticker": "LLY", "weight": 1.5 },
+        { "ticker": "AVGO", "weight": 1.3 }
+    ],
+    "sectorExposure": [
+        { "sector": "Technology", "weight": 30.1 },
+        { "sector": "Financials", "weight": 13.1 },
+        { "sector": "Healthcare", "weight": 12.3 },
+        { "sector": "Consumer Discretionary", "weight": 10.2 },
+        { "sector": "Communication Services", "weight": 9.0 },
+        { "sector": "Industrials", "weight": 8.7 },
+        { "sector": "Consumer Staples", "weight": 5.8 },
+        { "sector": "Energy", "weight": 3.9 },
+        { "sector": "Real Estate", "weight": 2.5 },
+        { "sector": "Materials", "weight": 2.3 },
+        { "sector": "Utilities", "weight": 2.1 }
+    ],
+    "regionExposure": [
+        { "region": "North America", "weight": 99.1 },
+        { "region": "Europe", "weight": 0.6 },
+        { "region": "Asia", "weight": 0.3 }
+    ],
+    "marketCapExposure": [
+        { "cap": "Large", "weight": 100 }
+    ]
+  }
+}
+
+    
