@@ -1,4 +1,5 @@
 
+      
 {
   "VTI": {
     "name": "Vanguard Total Stock Market ETF",
@@ -2165,8 +2166,7 @@
     "marketCapExposure": [
       { "cap": "Giant", "weight": 65.00 },
       { "cap": "Large", "weight": 25.00 },
-      { "cap": "Mid", "weight": 10.00 },
-      { "cap": "Small", "weight": 0.00 }
+      { "cap": "Mid", "weight": 10.00 }
     ]
   },
   "VFH": {
@@ -2227,7 +2227,9 @@
       { "region": "Non-U.S. Equity", "weight": 1.46 },
       { "region": "Cash", "weight": 0.13 }
     ],
-    "marketCapExposure": []
+    "marketCapExposure": [
+        { "cap": "Large", "weight": 100 }
+    ]
   },
   "VHT": {
     "name": "Vanguard Health Care ETF",
@@ -2281,6 +2283,307 @@
       { "region": "United States", "weight": 100.00 }
     ],
     "marketCapExposure": []
+  },
+  "VDE": {
+    "name": "Vanguard Energy ETF",
+    "topHoldings": [
+      { "ticker": "XOM", "weight": 22.5 },
+      { "ticker": "CVX", "weight": 15.8 },
+      { "ticker": "COP", "weight": 7.5 },
+      { "ticker": "EOG", "weight": 4.2 },
+      { "ticker": "SLB", "weight": 4.1 },
+      { "ticker": "MPC", "weight": 3.9 },
+      { "ticker": "PXD", "weight": 3.5 },
+      { "ticker": "VLO", "weight": 3.2 },
+      { "ticker": "PSX", "weight": 2.8 },
+      { "ticker": "OXY", "weight": 2.5 }
+    ],
+    "sectorExposure": [
+      { "sector": "Energy", "weight": 100.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100.0 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 90.0 },
+      { "cap": "Medium", "weight": 10.0 },
+      { "cap": "Small", "weight": 0.0 }
+    ]
+  },
+  "XLE": {
+    "name": "Energy Select Sector SPDR Fund",
+    "topHoldings": [
+      { "ticker": "XOM", "weight": 23.1 },
+      { "ticker": "CVX", "weight": 16.2 },
+      { "ticker": "COP", "weight": 7.9 },
+      { "ticker": "SLB", "weight": 4.5 },
+      { "ticker": "EOG", "weight": 4.4 },
+      { "ticker": "MPC", "weight": 4.0 },
+      { "ticker": "PXD", "weight": 3.6 },
+      { "ticker": "VLO", "weight": 3.3 },
+      { "ticker": "PSX", "weight": 2.9 },
+      { "ticker": "WMB", "weight": 2.7 }
+    ],
+    "sectorExposure": [
+      { "sector": "Energy", "weight": 100.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100.0 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 100.0 }
+    ]
+  },
+  "VIS": {
+    "name": "Vanguard Industrials ETF",
+    "topHoldings": [
+      { "ticker": "GE", "weight": 4.5 },
+      { "ticker": "CAT", "weight": 4.2 },
+      { "ticker": "UNP", "weight": 4.0 },
+      { "ticker": "HON", "weight": 3.8 },
+      { "ticker": "BA", "weight": 3.5 },
+      { "ticker": "RTX", "weight": 3.2 },
+      { "ticker": "DE", "weight": 3.0 },
+      { "ticker": "LMT", "weight": 2.8 },
+      { "ticker": "UPS", "weight": 2.5 },
+      { "ticker": "ADP", "weight": 2.3 }
+    ],
+    "sectorExposure": [
+      { "sector": "Industrials", "weight": 100.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100.0 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 85.0 },
+      { "cap": "Medium", "weight": 15.0 },
+      { "cap": "Small", "weight": 0.0 }
+    ]
+  },
+  "XLI": {
+    "name": "Industrial Select Sector SPDR Fund",
+    "topHoldings": [
+      { "ticker": "GE", "weight": 5.0 },
+      { "ticker": "CAT", "weight": 4.5 },
+      { "ticker": "UNP", "weight": 4.2 },
+      { "ticker": "HON", "weight": 4.0 },
+      { "ticker": "BA", "weight": 3.8 },
+      { "ticker": "RTX", "weight": 3.5 },
+      { "ticker": "DE", "weight": 3.2 },
+      { "ticker": "LMT", "weight": 3.0 },
+      { "ticker": "UPS", "weight": 2.8 },
+      { "ticker": "ADP", "weight": 2.5 }
+    ],
+    "sectorExposure": [
+      { "sector": "Industrials", "weight": 100.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100.0 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 100.0 }
+    ]
+  },
+  "VCR": {
+    "name": "Vanguard Consumer Discretionary ETF",
+    "topHoldings": [
+      { "ticker": "AMZN", "weight": 23.5 },
+      { "ticker": "TSLA", "weight": 12.1 },
+      { "ticker": "HD", "weight": 7.5 },
+      { "ticker": "MCD", "weight": 4.5 },
+      { "ticker": "LOW", "weight": 3.8 },
+      { "ticker": "SBUX", "weight": 3.2 },
+      { "ticker": "BKNG", "weight": 3.0 },
+      { "ticker": "TJX", "weight": 2.8 },
+      { "ticker": "NKE", "weight": 2.5 },
+      { "ticker": "CMG", "weight": 2.1 }
+    ],
+    "sectorExposure": [
+      { "sector": "Consumer Discretionary", "weight": 100.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100.0 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 90.0 },
+      { "cap": "Medium", "weight": 10.0 },
+      { "cap": "Small", "weight": 0.0 }
+    ]
+  },
+  "XLY": {
+    "name": "Consumer Discretionary Select Sector SPDR Fund",
+    "topHoldings": [
+      { "ticker": "AMZN", "weight": 24.1 },
+      { "ticker": "TSLA", "weight": 12.5 },
+      { "ticker": "HD", "weight": 8.0 },
+      { "ticker": "MCD", "weight": 4.8 },
+      { "ticker": "LOW", "weight": 4.0 },
+      { "ticker": "SBUX", "weight": 3.5 },
+      { "ticker": "BKNG", "weight": 3.2 },
+      { "ticker": "TJX", "weight": 3.0 },
+      { "ticker": "NKE", "weight": 2.8 },
+      { "ticker": "CMG", "weight": 2.3 }
+    ],
+    "sectorExposure": [
+      { "sector": "Consumer Discretionary", "weight": 100.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100.0 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 100.0 }
+    ]
+  },
+  "VDC": {
+    "name": "Vanguard Consumer Staples ETF",
+    "topHoldings": [
+      { "ticker": "PG", "weight": 13.5 },
+      { "ticker": "KO", "weight": 9.5 },
+      { "ticker": "PEP", "weight": 9.2 },
+      { "ticker": "COST", "weight": 8.5 },
+      { "ticker": "WMT", "weight": 7.8 },
+      { "ticker": "MDLZ", "weight": 4.2 },
+      { "ticker": "MO", "weight": 3.8 },
+      { "ticker": "PM", "weight": 3.5 },
+      { "ticker": "CL", "weight": 2.9 },
+      { "ticker": "TGT", "weight": 2.1 }
+    ],
+    "sectorExposure": [
+      { "sector": "Consumer Staples", "weight": 100.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100.0 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 95.0 },
+      { "cap": "Medium", "weight": 5.0 },
+      { "cap": "Small", "weight": 0.0 }
+    ]
+  },
+  "XLP": {
+    "name": "Consumer Staples Select Sector SPDR Fund",
+    "topHoldings": [
+      { "ticker": "PG", "weight": 14.1 },
+      { "ticker": "KO", "weight": 10.1 },
+      { "ticker": "PEP", "weight": 9.8 },
+      { "ticker": "COST", "weight": 9.0 },
+      { "ticker": "WMT", "weight": 8.2 },
+      { "ticker": "MDLZ", "weight": 4.5 },
+      { "ticker": "MO", "weight": 4.0 },
+      { "ticker": "PM", "weight": 3.8 },
+      { "ticker": "CL", "weight": 3.1 },
+      { "ticker": "TGT", "weight": 2.3 }
+    ],
+    "sectorExposure": [
+      { "sector": "Consumer Staples", "weight": 100.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100.0 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 100.0 }
+    ]
+  },
+  "VPU": {
+    "name": "Vanguard Utilities ETF",
+    "topHoldings": [
+      { "ticker": "NEE", "weight": 12.5 },
+      { "ticker": "DUK", "weight": 7.5 },
+      { "ticker": "SO", "weight": 6.8 },
+      { "ticker": "D", "weight": 5.1 },
+      { "ticker": "AEP", "weight": 4.8 },
+      { "ticker": "SRE", "weight": 4.5 },
+      { "ticker": "EXC", "weight": 4.2 },
+      { "ticker": "XEL", "weight": 3.8 },
+      { "ticker": "WEC", "weight": 3.5 },
+      { "ticker": "PEG", "weight": 2.9 }
+    ],
+    "sectorExposure": [
+      { "sector": "Utilities", "weight": 100.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100.0 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 90.0 },
+      { "cap": "Medium", "weight": 10.0 },
+      { "cap": "Small", "weight": 0.0 }
+    ]
+  },
+  "XLU": {
+    "name": "Utilities Select Sector SPDR Fund",
+    "topHoldings": [
+      { "ticker": "NEE", "weight": 13.1 },
+      { "ticker": "DUK", "weight": 7.8 },
+      { "ticker": "SO", "weight": 7.0 },
+      { "ticker": "D", "weight": 5.3 },
+      { "ticker": "AEP", "weight": 5.0 },
+      { "ticker": "SRE", "weight": 4.7 },
+      { "ticker": "EXC", "weight": 4.4 },
+      { "ticker": "XEL", "weight": 4.0 },
+      { "ticker": "WEC", "weight": 3.7 },
+      { "ticker": "PEG", "weight": 3.1 }
+    ],
+    "sectorExposure": [
+      { "sector": "Utilities", "weight": 100.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100.0 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 100.0 }
+    ]
+  },
+  "VOX": {
+    "name": "Vanguard Communication Services ETF",
+    "topHoldings": [
+      { "ticker": "GOOGL", "weight": 11.8 },
+      { "ticker": "GOOG", "weight": 10.1 },
+      { "ticker": "META", "weight": 22.5 },
+      { "ticker": "T", "weight": 5.5 },
+      { "ticker": "VZ", "weight": 5.2 },
+      { "ticker": "NFLX", "weight": 4.8 },
+      { "ticker": "CMCSA", "weight": 4.5 },
+      { "ticker": "TMUS", "weight": 3.9 },
+      { "ticker": "DIS", "weight": 3.2 },
+      { "ticker": "CHTR", "weight": 2.5 }
+    ],
+    "sectorExposure": [
+      { "sector": "Communication Services", "weight": 100.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100.0 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 95.0 },
+      { "cap": "Medium", "weight": 5.0 },
+      { "cap": "Small", "weight": 0.0 }
+    ]
+  },
+  "XLC": {
+    "name": "Communication Services Select Sector SPDR Fund",
+    "topHoldings": [
+      { "ticker": "META", "weight": 23.1 },
+      { "ticker": "GOOGL", "weight": 12.2 },
+      { "ticker": "GOOG", "weight": 10.5 },
+      { "ticker": "T", "weight": 5.8 },
+      { "ticker": "VZ", "weight": 5.5 },
+      { "ticker": "NFLX", "weight": 5.0 },
+      { "ticker": "CMCSA", "weight": 4.8 },
+      { "ticker": "TMUS", "weight": 4.1 },
+      { "ticker": "DIS", "weight": 3.5 },
+      { "ticker": "CHTR", "weight": 2.8 }
+    ],
+    "sectorExposure": [
+      { "sector": "Communication Services", "weight": 100.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100.0 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 100.0 }
+    ]
   }
 }
+
     
