@@ -46,12 +46,19 @@ export function analyzePortfolio(portfolio: Ticker[]): PortfolioAnalysis {
     const sectorExposure: Exposure = {};
     const regionExposure: Exposure = {};
     const marketCapExposure: Exposure = {};
+    const assetClassExposure: Exposure = { "stocks": 0, "bonds": 0, "alternatives": 0 };
 
     for (const asset of portfolio) {
         const data = etfData[asset.id as EtfKey];
         if (!data) continue;
 
         const assetWeightInPortfolio = asset.allocation / totalPortfolioAllocation;
+
+        // Aggregate Asset Class
+        const assetClass = asset.category;
+        if(assetClassExposure[assetClass] !== undefined) {
+            assetClassExposure[assetClass] += assetWeightInPortfolio * 100;
+        }
 
         // Aggregate Holdings
         data.topHoldings.forEach(holding => {
@@ -97,10 +104,10 @@ export function analyzePortfolio(portfolio: Ticker[]): PortfolioAnalysis {
         .sort((a, b) => b.value - a.value);
 
     // Calculate diversification score
-    const diversificationScore = calculateDiversificationScore(top10Holdings, sectorExposure);
+    const diversificationScore = calculateDiversificationScore(top10Holdings, sectorExposure, regionExposure, assetClassExposure);
 
     // Generate recommendations
-    const recommendations = generateRecommendations(diversificationScore, sectorExposure, top10Holdings);
+    const recommendations = generateRecommendations(diversificationScore, sectorExposure, regionExposure, top10Holdings, overlappingHoldings, assetClassExposure);
 
     return {
         diversificationScore,
@@ -114,18 +121,29 @@ export function analyzePortfolio(portfolio: Ticker[]): PortfolioAnalysis {
 }
 
 // Helper functions
-function calculateDiversificationScore(topHoldings: Holding[], sectorExposure: Exposure): number {
+function calculateDiversificationScore(topHoldings: Holding[], sectorExposure: Exposure, regionExposure: Exposure, assetClassExposure: Exposure): number {
     let score = 100;
     
+    // Penalty for lack of asset class diversification (e.g., all stocks)
+    if (assetClassExposure.stocks > 95 && assetClassExposure.bonds < 5) {
+        score -= 15; // Significant penalty for not having a mix of asset classes
+    }
+
+    // Penalty for regional concentration
+    const northAmericaExposure = regionExposure['North America'] || 0;
+    if (northAmericaExposure > 90) {
+        score -= (northAmericaExposure - 90) * 0.5; // Penalty for being too US-centric
+    }
+
     // Penalty for over-concentration in top holdings
     const topHoldingConcentration = topHoldings.reduce((sum, h) => sum + h.weight, 0);
-    if (topHoldingConcentration > 50) score -= (topHoldingConcentration - 50) * 0.5;
-    if (topHoldings.length > 0 && topHoldings[0].weight > 10) score -= (topHoldings[0].weight - 10);
+    if (topHoldingConcentration > 40) score -= (topHoldingConcentration - 40);
+    if (topHoldings.length > 0 && topHoldings[0].weight > 7) score -= (topHoldings[0].weight - 7) * 2;
 
     // Penalty for sector concentration
     const topSector = Object.values(sectorExposure).sort((a,b) => b-a)[0] || 0;
-    if (topSector > 40) score -= (topSector - 40);
-    if (topSector > 60) score -= (topSector - 60);
+    if (topSector > 30) score -= (topSector - 30);
+    if (topSector > 50) score -= (topSector - 50);
 
     return Math.max(0, Math.round(score));
 }
@@ -133,30 +151,53 @@ function calculateDiversificationScore(topHoldings: Holding[], sectorExposure: E
 function generateRecommendations(
     diversificationScore: number, 
     sectorExposure: Exposure, 
-    topHoldings: Holding[]
+    regionExposure: Exposure,
+    topHoldings: Holding[],
+    overlappingHoldings: { ticker: string; percentage: number; heldIn: string[] }[],
+    assetClassExposure: Exposure
 ): string[] {
     const recommendations: string[] = [];
 
+    // General diversification comment
     if (diversificationScore < 50) {
-        recommendations.push("Your portfolio is highly concentrated. Consider diversifying across more assets or sectors to reduce risk.");
+        recommendations.push("Your portfolio is highly concentrated. Consider diversifying across more assets, sectors, and regions to reduce risk.");
     } else if (diversificationScore < 75) {
-        recommendations.push("Your portfolio is moderately concentrated. Look for opportunities to add assets in underrepresented sectors.");
+        recommendations.push("Your portfolio has moderate concentration. Look for opportunities to add assets in underrepresented areas to improve diversification.");
     }
 
+    // Asset Class recommendation
+    if (assetClassExposure.stocks > 95 && assetClassExposure.bonds < 5) {
+        recommendations.push("Your portfolio is almost entirely in stocks. Adding bonds (e.g., BND, AGG) can provide stability and reduce volatility during stock market downturns.");
+    }
+
+    // Regional exposure recommendation
+    const northAmericaExposure = regionExposure['North America'] || 0;
+    if (northAmericaExposure > 90) {
+        recommendations.push(`Your portfolio is heavily weighted towards North America (${northAmericaExposure.toFixed(1)}%). Consider increasing international exposure (e.g., VXUS, VEA) to diversify geographically.`);
+    }
+
+    // Sector exposure recommendation
     const topSector = Object.entries(sectorExposure).sort(([, a], [, b]) => b - a)[0];
-    if (topSector && topSector[1] > 40) {
-        recommendations.push(`You have a high concentration (${topSector[1].toFixed(1)}%) in the ${topSector[0]} sector. Consider diversifying into other areas like Healthcare, Industrials, or Financials to balance your portfolio.`);
+    if (topSector && topSector[1] > 35) {
+        recommendations.push(`You have a high concentration (${topSector[1].toFixed(1)}%) in the ${topSector[0]} sector. Diversifying into other sectors could lower your risk.`);
     }
 
+    // Top holding recommendation
     if (topHoldings.length > 0 && topHoldings[0].weight > 10) {
-        recommendations.push(`Your largest holding, ${topHoldings[0].ticker}, makes up a significant portion of your portfolio. This concentration increases risk. Ensure you are comfortable with this level of exposure.`);
+        recommendations.push(`Your largest holding, ${topHoldings[0].ticker}, makes up over ${topHoldings[0].weight.toFixed(1)}% of your portfolio. This creates significant single-stock risk.`);
+    }
+
+    // Overlap recommendation
+    const significantOverlap = overlappingHoldings.find(o => o.percentage > 3);
+    if (significantOverlap) {
+        recommendations.push(`There is significant overlap between your chosen ETFs, such as holding ${significantOverlap.ticker} in multiple funds. This might make your portfolio less diversified than it appears. For example, VTI and VOO have a very high correlation.`);
     }
     
-    if (recommendations.length === 0) {
-        recommendations.push("Your portfolio shows a good level of diversification. Keep your long-term goals in mind and review your holdings periodically.");
+    if (recommendations.length === 0 && diversificationScore > 75) {
+        recommendations.push("Your portfolio shows a good level of diversification across different assets, sectors, and regions. Keep your long-term goals in mind and review your holdings periodically.");
+    } else if (recommendations.length === 0) {
+        recommendations.push("Review your allocations to ensure they align with your long-term investment strategy and risk tolerance.");
     }
 
     return recommendations;
 }
-
-    
