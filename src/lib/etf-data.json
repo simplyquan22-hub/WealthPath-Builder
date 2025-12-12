@@ -163,38 +163,6 @@
     ],
     "marketCapExposure": []
   },
-  "SCHD": {
-    "name": "Schwab U.S. Dividend Equity ETF",
-    "topHoldings": [
-      { "ticker": "AMGN", "weight": 4.5 },
-      { "ticker": "MRK", "weight": 4.3 },
-      { "ticker": "VZ", "weight": 4.2 },
-      { "ticker": "HD", "weight": 4.1 },
-      { "ticker": "PEP", "weight": 4.0 },
-      { "ticker": "PFE", "weight": 3.9 },
-      { "ticker": "AVGO", "weight": 3.8 },
-      { "ticker": "KO", "weight": 3.7 },
-      { "ticker": "MSFT", "weight": 3.6 },
-      { "ticker": "T", "weight": 3.5 }
-    ],
-    "sectorExposure": [
-      { "sector": "Financials", "weight": 20.0 },
-      { "sector": "Industrials", "weight": 18.0 },
-      { "sector": "Health Care", "weight": 15.0 },
-      { "sector": "Information Technology", "weight": 13.0 },
-      { "sector": "Consumer Staples", "weight": 12.0 },
-      { "sector": "Consumer Discretionary", "weight": 9.0 },
-      { "sector": "Energy", "weight": 6.0 },
-      { "sector": "Communication Services", "weight": 4.0 },
-      { "sector": "Materials", "weight": 3.0 }
-    ],
-    "regionExposure": [
-      { "region": "North America", "weight": 100 }
-    ],
-    "marketCapExposure": [
-      { "cap": "Large", "weight": 100 }
-    ]
-  },
   "VGT": {
     "name": "Vanguard Information Technology ETF",
     "topHoldings": [
@@ -256,43 +224,6 @@
     "marketCapExposure": [
         { "cap": "Large", "weight": 88 },
         { "cap": "Medium", "weight": 12 }
-    ]
-  },
-  "VWO": {
-    "name": "Vanguard FTSE Emerging Markets ETF",
-    "topHoldings": [
-        { "ticker": "TSMC", "weight": 5.8 },
-        { "ticker": "TENCENT", "weight": 3.2 },
-        { "ticker": "ALIBABA", "weight": 2.0 },
-        { "ticker": "RELIANCE", "weight": 1.5 },
-        { "ticker": "PDD", "weight": 1.1 },
-        { "ticker": "VALE", "weight": 0.8 },
-        { "ticker": "INFOSYS", "weight": 0.8 },
-        { "ticker": "MEITUAN", "weight": 0.7 },
-        { "ticker": "ICICI BANK", "weight": 0.7 },
-        { "ticker": "JD.COM", "weight": 0.6 }
-    ],
-    "sectorExposure": [
-        { "sector": "Financials", "weight": 23.5 },
-        { "sector": "Technology", "weight": 22.1 },
-        { "sector": "Consumer Discretionary", "weight": 14.5 },
-        { "sector": "Communication Services", "weight": 9.5 },
-        { "sector": "Materials", "weight": 7.5 },
-        { "sector": "Energy", "weight": 7.0 },
-        { "sector": "Industrials", "weight": 4.8 },
-        { "sector": "Consumer Staples", "weight": 4.6 },
-        { "sector": "Healthcare", "weight": 3.5 },
-        { "sector": "Utilities", "weight": 2.0 }
-    ],
-    "regionExposure": [
-        { "region": "Emerging Markets", "weight": 75 },
-        { "region": "Asia-Pacific", "weight": 23 },
-        { "region": "Other", "weight": 2 }
-    ],
-    "marketCapExposure": [
-        { "cap": "Large", "weight": 80 },
-        { "cap": "Medium", "weight": 15 },
-        { "cap": "Small", "weight": 5 }
     ]
   },
   "VNQ": {
@@ -1586,6 +1517,38 @@
       { "cap": "Small", "weight": 20 }
     ]
   },
+  "SCHD": {
+    "name": "Schwab U.S. Dividend Equity ETF",
+    "topHoldings": [
+        { "ticker": "AVGO", "weight": 4.2 },
+        { "ticker": "MRK", "weight": 4.1 },
+        { "ticker": "CVX", "weight": 4.0 },
+        { "ticker": "HD", "weight": 4.0 },
+        { "ticker": "ABBV", "weight": 3.9 },
+        { "ticker": "VZ", "weight": 3.8 },
+        { "ticker": "PEP", "weight": 3.8 },
+        { "ticker": "KO", "weight": 3.7 },
+        { "ticker": "CSCO", "weight": 3.6 },
+        { "ticker": "AMGN", "weight": 3.5 }
+    ],
+    "sectorExposure": [
+        { "sector": "Financials", "weight": 20.5 },
+        { "sector": "Industrials", "weight": 17.1 },
+        { "sector": "Healthcare", "weight": 15.8 },
+        { "sector": "Consumer Staples", "weight": 12.4 },
+        { "sector": "Technology", "weight": 11.5 },
+        { "sector": "Energy", "weight": 9.9 },
+        { "sector": "Communication Services", "weight": 5.1 },
+        { "sector": "Consumer Discretionary", "weight": 5.0 },
+        { "sector": "Materials", "weight": 2.7 }
+    ],
+    "regionExposure": [
+        { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+        { "cap": "Large", "weight": 100 }
+    ]
+  },
   "VYM": {
     "name": "Vanguard High Dividend Yield ETF",
     "topHoldings": [
@@ -1831,6 +1794,80 @@
       { "cap": "Large", "weight": 90 },
       { "cap": "Medium", "weight": 10 },
       { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "VWO": {
+    "name": "Vanguard FTSE Emerging Markets ETF",
+    "topHoldings": [
+        { "ticker": "TSMC", "weight": 5.8 },
+        { "ticker": "TENCENT", "weight": 3.2 },
+        { "ticker": "ALIBABA", "weight": 2.0 },
+        { "ticker": "RELIANCE", "weight": 1.5 },
+        { "ticker": "PDD", "weight": 1.1 },
+        { "ticker": "VALE", "weight": 0.8 },
+        { "ticker": "INFOSYS", "weight": 0.8 },
+        { "ticker": "MEITUAN", "weight": 0.7 },
+        { "ticker": "ICICI BANK", "weight": 0.7 },
+        { "ticker": "JD.COM", "weight": 0.6 }
+    ],
+    "sectorExposure": [
+        { "sector": "Financials", "weight": 23.5 },
+        { "sector": "Technology", "weight": 22.1 },
+        { "sector": "Consumer Discretionary", "weight": 14.5 },
+        { "sector": "Communication Services", "weight": 9.5 },
+        { "sector": "Materials", "weight": 7.5 },
+        { "sector": "Energy", "weight": 7.0 },
+        { "sector": "Industrials", "weight": 4.8 },
+        { "sector": "Consumer Staples", "weight": 4.6 },
+        { "sector": "Healthcare", "weight": 3.5 },
+        { "sector": "Utilities", "weight": 2.0 }
+    ],
+    "regionExposure": [
+        { "region": "Emerging Markets", "weight": 75 },
+        { "region": "Asia-Pacific", "weight": 23 },
+        { "region": "Other", "weight": 2 }
+    ],
+    "marketCapExposure": [
+        { "cap": "Large", "weight": 80 },
+        { "cap": "Medium", "weight": 15 },
+        { "cap": "Small", "weight": 5 }
+    ]
+  },
+  "IEMG": {
+    "name": "iShares Core MSCI Emerging Markets ETF",
+    "topHoldings": [
+        { "ticker": "TSMC", "weight": 5.8 },
+        { "ticker": "TENCENT", "weight": 3.2 },
+        { "ticker": "ALIBABA", "weight": 2.0 },
+        { "ticker": "SAMSUNG", "weight": 1.8 },
+        { "ticker": "RELIANCE", "weight": 1.5 },
+        { "ticker": "PDD", "weight": 1.1 },
+        { "ticker": "VALE", "weight": 0.8 },
+        { "ticker": "INFOSYS", "weight": 0.8 },
+        { "ticker": "MEITUAN", "weight": 0.7 },
+        { "ticker": "ICICI BANK", "weight": 0.7 }
+    ],
+    "sectorExposure": [
+        { "sector": "Financials", "weight": 23.5 },
+        { "sector": "Technology", "weight": 22.1 },
+        { "sector": "Consumer Discretionary", "weight": 14.5 },
+        { "sector": "Communication Services", "weight": 9.5 },
+        { "sector": "Materials", "weight": 7.5 },
+        { "sector": "Energy", "weight": 7.0 },
+        { "sector": "Industrials", "weight": 4.8 },
+        { "sector": "Consumer Staples", "weight": 4.6 },
+        { "sector": "Healthcare", "weight": 3.5 },
+        { "sector": "Utilities", "weight": 2.0 }
+    ],
+    "regionExposure": [
+        { "region": "Emerging Markets", "weight": 75 },
+        { "region": "Asia-Pacific", "weight": 23 },
+        { "region": "Other", "weight": 2 }
+    ],
+    "marketCapExposure": [
+        { "cap": "Large", "weight": 80 },
+        { "cap": "Medium", "weight": 15 },
+        { "cap": "Small", "weight": 5 }
     ]
   }
 }
