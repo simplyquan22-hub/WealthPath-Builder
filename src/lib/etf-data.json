@@ -113,40 +113,44 @@
   "VXUS": {
     "name": "Vanguard Total International Stock ETF",
     "topHoldings": [
-        { "ticker": "TSMC", "weight": 1.5 },
-        { "ticker": "NOVO B", "weight": 1.2 },
-        { "ticker": "ASML", "weight": 1.1 },
-        { "ticker": "NESTLE", "weight": 0.8 },
-        { "ticker": "SAMSUNG", "weight": 0.7 },
-        { "ticker": "TENCENT", "weight": 0.6 },
-        { "ticker": "SHELL", "weight": 0.6 },
-        { "ticker": "ASTRAZENECA", "weight": 0.6 },
-        { "ticker": "TOYOTA", "weight": 0.5 },
-        { "ticker": "NOVARTIS", "weight": 0.5 }
+      { "ticker": "TSM", "weight": 3.04 },
+      { "ticker": "TCEHY", "weight": 1.30 },
+      { "ticker": "ASML", "weight": 1.08 },
+      { "ticker": "BABA", "weight": 0.99 },
+      { "ticker": "005930.KR", "weight": 0.91 },
+      { "ticker": "SAP", "weight": 0.69 },
+      { "ticker": "AZN", "weight": 0.64 },
+      { "ticker": "HSBC", "weight": 0.63 },
+      { "ticker": "NESN", "weight": 0.63 },
+      { "ticker": "NOVN", "weight": 0.60 }
     ],
     "sectorExposure": [
-        { "sector": "Financials", "weight": 19.5 },
-        { "sector": "Industrials", "weight": 15.2 },
-        { "sector": "Technology", "weight": 14.8 },
-        { "sector": "Consumer Discretionary", "weight": 11.5 },
-        { "sector": "Healthcare", "weight": 9.5 },
-        { "sector": "Consumer Staples", "weight": 7.5 },
-        { "sector": "Materials", "weight": 6.8 },
-        { "sector": "Energy", "weight": 5.7 },
-        { "sector": "Communication Services", "weight": 5.0 },
-        { "sector": "Real Estate", "weight": 2.5 },
-        { "sector": "Utilities", "weight": 2.0 }
+      { "sector": "Financial Services", "weight": 22.39 },
+      { "sector": "Industrials", "weight": 15.96 },
+      { "sector": "Technology", "weight": 15.26 },
+      { "sector": "Consumer Cyclical", "weight": 10.19 },
+      { "sector": "Healthcare", "weight": 7.68 },
+      { "sector": "Basic Materials", "weight": 6.92 },
+      { "sector": "Communication Services", "weight": 5.61 },
+      { "sector": "Consumer Defensive", "weight": 5.73 },
+      { "sector": "Energy", "weight": 4.42 },
+      { "sector": "Utilities", "weight": 3.08 },
+      { "sector": "Real Estate", "weight": 2.75 }
     ],
     "regionExposure": [
-        { "region": "Europe", "weight": 40.1 },
-        { "region": "Asia-Pacific", "weight": 33.3 },
-        { "region": "Emerging Markets", "weight": 19.5 },
-        { "region": "North America", "weight": 7.1 }
+      { "region": "Europe", "weight": 37.52 },
+      { "region": "Emerging Markets", "weight": 27.59 },
+      { "region": "Pacific", "weight": 25.98 },
+      { "region": "North America (Canada)", "weight": 7.74 },
+      { "region": "Middle East", "weight": 0.69 },
+      { "region": "Other", "weight": 0.47 }
     ],
     "marketCapExposure": [
-        { "cap": "Large", "weight": 78 },
-        { "cap": "Medium", "weight": 15 },
-        { "cap": "Small", "weight": 7 }
+      { "cap": "Giant", "weight": 45.92 },
+      { "cap": "Large", "weight": 30.09 },
+      { "cap": "Mid", "weight": 16.56 },
+      { "cap": "Small", "weight": 3.62 },
+      { "cap": "Micro", "weight": 0.32 }
     ]
   },
   "BND": {
@@ -193,37 +197,40 @@
   "VEA": {
     "name": "Vanguard FTSE Developed Markets ETF",
     "topHoldings": [
-        { "ticker": "NOVO B", "weight": 1.8 },
-        { "ticker": "ASML", "weight": 1.7 },
-        { "ticker": "NESTLE", "weight": 1.2 },
-        { "ticker": "SHELL", "weight": 1.0 },
-        { "ticker": "ASTRAZENECA", "weight": 0.9 },
-        { "ticker": "LVMH", "weight": 0.8 },
-        { "ticker": "SAMSUNG", "weight": 0.8 },
-        { "ticker": "TOYOTA", "weight": 0.7 },
-        { "ticker": "NOVARTIS", "weight": 0.7 },
-        { "ticker": "SAP", "weight": 0.7 }
+      { "ticker": "ASML", "weight": 1.51 },
+      { "ticker": "005930.KR", "weight": 1.28 },
+      { "ticker": "SAP", "weight": 0.97 },
+      { "ticker": "AZN", "weight": 0.90 },
+      { "ticker": "HSBC", "weight": 0.88 },
+      { "ticker": "NESN", "weight": 0.88 },
+      { "ticker": "NOVN", "weight": 0.84 },
+      { "ticker": "ROG", "weight": 0.82 },
+      { "ticker": "SHEL", "weight": 0.80 },
+      { "ticker": "TM", "weight": 0.79 }
     ],
     "sectorExposure": [
-        { "sector": "Financials", "weight": 21.0 },
-        { "sector": "Industrials", "weight": 16.5 },
-        { "sector": "Consumer Discretionary", "weight": 12.1 },
-        { "sector": "Healthcare", "weight": 11.5 },
-        { "sector": "Technology", "weight": 10.5 },
-        { "sector": "Consumer Staples", "weight": 9.8 },
-        { "sector": "Materials", "weight": 7.0 },
-        { "sector": "Energy", "weight": 4.5 },
-        { "sector": "Communication Services", "weight": 3.8 },
-        { "sector": "Utilities", "weight": 3.3 }
+      { "sector": "Financial Services", "weight": 23.01 },
+      { "sector": "Industrials", "weight": 19.16 },
+      { "sector": "Technology", "weight": 12.13 },
+      { "sector": "Healthcare", "weight": 8.97 },
+      { "sector": "Consumer Cyclical", "weight": 8.94 },
+      { "sector": "Basic Materials", "weight": 6.72 },
+      { "sector": "Consumer Defensive", "weight": 6.36 },
+      { "sector": "Energy", "weight": 4.49 },
+      { "sector": "Communication Services", "weight": 4.18 },
+      { "sector": "Utilities", "weight": 3.13 },
+      { "sector": "Real Estate", "weight": 2.93 }
     ],
     "regionExposure": [
-        { "region": "Europe", "weight": 55.4 },
-        { "region": "Asia-Pacific", "weight": 40.6 },
-        { "region": "North America", "weight": 3.0 }
+      { "region": "Non-U.S. Equity", "weight": 97.82 },
+      { "region": "U.S. Equity", "weight": 0.86 }
     ],
     "marketCapExposure": [
-        { "cap": "Large", "weight": 88 },
-        { "cap": "Medium", "weight": 12 }
+      { "cap": "Giant", "weight": 45.98 },
+      { "cap": "Large", "weight": 30.67 },
+      { "cap": "Mid", "weight": 17.20 },
+      { "cap": "Small", "weight": 3.71 },
+      { "cap": "Micro", "weight": 0.26 }
     ]
   },
   "VNQ": {
@@ -1799,75 +1806,223 @@
   "VWO": {
     "name": "Vanguard FTSE Emerging Markets ETF",
     "topHoldings": [
-        { "ticker": "TSMC", "weight": 5.8 },
-        { "ticker": "TENCENT", "weight": 3.2 },
-        { "ticker": "ALIBABA", "weight": 2.0 },
-        { "ticker": "RELIANCE", "weight": 1.5 },
-        { "ticker": "PDD", "weight": 1.1 },
-        { "ticker": "VALE", "weight": 0.8 },
-        { "ticker": "INFOSYS", "weight": 0.8 },
-        { "ticker": "MEITUAN", "weight": 0.7 },
-        { "ticker": "ICICI BANK", "weight": 0.7 },
-        { "ticker": "JD.COM", "weight": 0.6 }
+      { "ticker": "TSM", "weight": 10.72 },
+      { "ticker": "TCEHY", "weight": 4.60 },
+      { "ticker": "BABA", "weight": 3.48 },
+      { "ticker": "HDFCBANK", "weight": 1.15 },
+      { "ticker": "RELIANCE", "weight": 1.04 },
+      { "ticker": "PDD", "weight": 0.94 },
+      { "ticker": "HNHPF", "weight": 0.92 },
+      { "ticker": "XIACY", "weight": 0.87 },
+      { "ticker": "CCB", "weight": 0.87 },
+      { "ticker": "ICICI", "weight": 0.73 }
     ],
     "sectorExposure": [
-        { "sector": "Financials", "weight": 23.5 },
-        { "sector": "Technology", "weight": 22.1 },
-        { "sector": "Consumer Discretionary", "weight": 14.5 },
-        { "sector": "Communication Services", "weight": 9.5 },
-        { "sector": "Materials", "weight": 7.5 },
-        { "sector": "Energy", "weight": 7.0 },
-        { "sector": "Industrials", "weight": 4.8 },
-        { "sector": "Consumer Staples", "weight": 4.6 },
-        { "sector": "Healthcare", "weight": 3.5 },
-        { "sector": "Utilities", "weight": 2.0 }
+      { "sector": "Technology", "weight": 23.38 },
+      { "sector": "Financial Services", "weight": 20.75 },
+      { "sector": "Consumer Cyclical", "weight": 13.43 },
+      { "sector": "Communication Services", "weight": 9.30 },
+      { "sector": "Industrials", "weight": 7.71 },
+      { "sector": "Basic Materials", "weight": 7.48 },
+      { "sector": "Healthcare", "weight": 4.34 },
+      { "sector": "Energy", "weight": 4.25 },
+      { "sector": "Consumer Defensive", "weight": 4.10 },
+      { "sector": "Utilities", "weight": 2.95 },
+      { "sector": "Real Estate", "weight": 2.31 }
     ],
     "regionExposure": [
-        { "region": "Emerging Markets", "weight": 75 },
-        { "region": "Asia-Pacific", "weight": 23 },
-        { "region": "Other", "weight": 2 }
+      { "region": "Asia Pacific", "weight": 74.72 },
+      { "region": "Europe", "weight": 12.56 },
+      { "region": "North, Central and South America", "weight": 8.24 },
+      { "region": "Other", "weight": 4.48 }
     ],
     "marketCapExposure": [
-        { "cap": "Large", "weight": 80 },
-        { "cap": "Medium", "weight": 15 },
-        { "cap": "Small", "weight": 5 }
+      { "cap": "Large", "weight": 65.16 },
+      { "cap": "Medium", "weight": 21.38 },
+      { "cap": "Small", "weight": 8.01 },
+      { "cap": "Micro", "weight": 0.81 }
     ]
   },
   "IEMG": {
     "name": "iShares Core MSCI Emerging Markets ETF",
     "topHoldings": [
-        { "ticker": "TSMC", "weight": 5.8 },
-        { "ticker": "TENCENT", "weight": 3.2 },
-        { "ticker": "ALIBABA", "weight": 2.0 },
-        { "ticker": "SAMSUNG", "weight": 1.8 },
-        { "ticker": "RELIANCE", "weight": 1.5 },
-        { "ticker": "PDD", "weight": 1.1 },
-        { "ticker": "VALE", "weight": 0.8 },
-        { "ticker": "INFOSYS", "weight": 0.8 },
-        { "ticker": "MEITUAN", "weight": 0.7 },
-        { "ticker": "ICICI BANK", "weight": 0.7 }
+      { "ticker": "TSM", "weight": 10.01 },
+      { "ticker": "TCEHY", "weight": 4.28 },
+      { "ticker": "SSNLF", "weight": 2.97 },
+      { "ticker": "BABA", "weight": 2.87 },
+      { "ticker": "HIN", "weight": 1.81 },
+      { "ticker": "HDFCBANK", "weight": 1.08 },
+      { "ticker": "RELIANCE", "weight": 0.90 },
+      { "ticker": "CCB", "weight": 0.81 },
+      { "ticker": "XIACY", "weight": 0.81 },
+      { "ticker": "HNHPF", "weight": 0.80 }
     ],
     "sectorExposure": [
-        { "sector": "Financials", "weight": 23.5 },
-        { "sector": "Technology", "weight": 22.1 },
-        { "sector": "Consumer Discretionary", "weight": 14.5 },
-        { "sector": "Communication Services", "weight": 9.5 },
-        { "sector": "Materials", "weight": 7.5 },
-        { "sector": "Energy", "weight": 7.0 },
-        { "sector": "Industrials", "weight": 4.8 },
-        { "sector": "Consumer Staples", "weight": 4.6 },
-        { "sector": "Healthcare", "weight": 3.5 },
-        { "sector": "Utilities", "weight": 2.0 }
+      { "sector": "Information Technology", "weight": 25.99 },
+      { "sector": "Financials", "weight": 21.05 },
+      { "sector": "Consumer Discretionary", "weight": 11.80 },
+      { "sector": "Communication Services", "weight": 8.67 },
+      { "sector": "Industrials", "weight": 8.37 },
+      { "sector": "Materials", "weight": 7.44 },
+      { "sector": "Health Care", "weight": 4.14 },
+      { "sector": "Consumer Staples", "weight": 3.99 },
+      { "sector": "Energy", "weight": 3.65 },
+      { "sector": "Utilities", "weight": 2.39 },
+      { "sector": "Real Estate", "weight": 2.05 }
     ],
     "regionExposure": [
-        { "region": "Emerging Markets", "weight": 75 },
-        { "region": "Asia-Pacific", "weight": 23 },
-        { "region": "Other", "weight": 2 }
+      { "region": "Emerging Markets", "weight": 100 }
     ],
     "marketCapExposure": [
-        { "cap": "Large", "weight": 80 },
-        { "cap": "Medium", "weight": 15 },
-        { "cap": "Small", "weight": 5 }
+      { "cap": "Giant", "weight": 50.09 },
+      { "cap": "Large", "weight": 29.96 },
+      { "cap": "Mid", "weight": 14.89 },
+      { "cap": "Small", "weight": 3.18 },
+      { "cap": "Micro", "weight": 0.13 }
+    ]
+  },
+  "IXUS": {
+    "name": "iShares Core MSCI Total International Stock ETF",
+    "topHoldings": [
+      { "ticker": "TSM", "weight": 3.06 },
+      { "ticker": "TCEHY", "weight": 1.30 },
+      { "ticker": "ASML", "weight": 1.13 },
+      { "ticker": "005930.KR", "weight": 0.91 },
+      { "ticker": "BABA", "weight": 0.87 },
+      { "ticker": "AZN", "weight": 0.73 },
+      { "ticker": "ROG", "weight": 0.72 },
+      { "ticker": "SAP", "weight": 0.67 },
+      { "ticker": "NOVN", "weight": 0.66 },
+      { "ticker": "NESN", "weight": 0.65 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financials", "weight": 23.17 },
+      { "sector": "Industrials", "weight": 15.46 },
+      { "sector": "Information Technology", "weight": 14.20 },
+      { "sector": "Consumer Discretionary", "weight": 10.12 },
+      { "sector": "Health Care", "weight": 7.72 },
+      { "sector": "Materials", "weight": 7.53 },
+      { "sector": "Consumer Staples", "weight": 5.87 },
+      { "sector": "Communication", "weight": 5.45 },
+      { "sector": "Energy", "weight": 4.34 },
+      { "sector": "Utilities", "weight": 3.13 },
+      { "sector": "Real Estate", "weight": 2.61 }
+    ],
+    "regionExposure": [
+      { "region": "Asia", "weight": 41.49 },
+      { "region": "Europe", "weight": 39.56 },
+      { "region": "North America (Canada)", "weight": 9.24 },
+      { "region": "Oceania", "weight": 4.49 },
+      { "region": "Middle East", "weight": 2.81 },
+      { "region": "Latin America", "weight": 1.44 },
+      { "region": "Africa", "weight": 0.97 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Giant", "weight": 47.36 },
+      { "cap": "Large", "weight": 31.41 },
+      { "cap": "Mid", "weight": 16.64 },
+      { "cap": "Small", "weight": 3.49 },
+      { "cap": "Micro", "weight": 0.11 }
+    ]
+  },
+  "IEFA": {
+    "name": "iShares Core MSCI EAFE ETF",
+    "topHoldings": [
+      { "ticker": "ASML", "weight": 1.85 },
+      { "ticker": "AZN", "weight": 1.20 },
+      { "ticker": "ROG", "weight": 1.18 },
+      { "ticker": "SAP", "weight": 1.08 },
+      { "ticker": "NOVN", "weight": 1.07 },
+      { "ticker": "NESN", "weight": 1.06 },
+      { "ticker": "HSBC", "weight": 1.05 },
+      { "ticker": "SHEL", "weight": 0.90 },
+      { "ticker": "SI", "weight": 0.89 },
+      { "ticker": "TM", "weight": 0.79 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financial Services", "weight": 22.40 },
+      { "sector": "Industrials", "weight": 19.97 },
+      { "sector": "Healthcare", "weight": 10.72 },
+      { "sector": "Technology", "weight": 9.78 },
+      { "sector": "Consumer Cyclical", "weight": 9.60 },
+      { "sector": "Consumer Defensive", "weight": 6.95 },
+      { "sector": "Basic Materials", "weight": 5.98 },
+      { "sector": "Communication Services", "weight": 4.80 },
+      { "sector": "Utilities", "weight": 3.39 },
+      { "sector": "Energy", "weight": 3.21 },
+      { "sector": "Real Estate", "weight": 3.20 }
+    ],
+    "regionExposure": [
+      { "region": "Non-U.S. Equity (EAFE focus)", "weight": 98.34 },
+      { "region": "U.S. Equity", "weight": 1.46 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Giant", "weight": 45.68 },
+      { "cap": "Large", "weight": 32.23 },
+      { "cap": "Mid", "weight": 17.08 },
+      { "cap": "Small", "weight": 3.47 },
+      { "cap": "Micro", "weight": 0.16 }
+    ]
+  },
+  "SCHF": {
+    "name": "Schwab International Equity ETF",
+    "topHoldings": [
+      { "ticker": "ASML", "weight": 1.70 },
+      { "ticker": "005930.KR", "weight": 1.35 },
+      { "ticker": "ROG", "weight": 1.06 },
+      { "ticker": "AZN", "weight": 1.06 },
+      { "ticker": "SAP", "weight": 1.00 },
+      { "ticker": "NOVN", "weight": 0.97 },
+      { "ticker": "NESN", "weight": 0.97 },
+      { "ticker": "HSBC", "weight": 0.96 },
+      { "ticker": "RY", "weight": 0.90 },
+      { "ticker": "SHEL", "weight": 0.85 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financial Services", "weight": 24.24 },
+      { "sector": "Industrials", "weight": 18.37 },
+      { "sector": "Technology", "weight": 11.91 },
+      { "sector": "Healthcare", "weight": 9.46 },
+      { "sector": "Consumer Cyclical", "weight": 8.86 },
+      { "sector": "Basic Materials", "weight": 6.65 },
+      { "sector": "Consumer Defensive", "weight": 6.63 },
+      { "sector": "Energy", "weight": 4.35 },
+      { "sector": "Communication Services", "weight": 3.97 },
+      { "sector": "Utilities", "weight": 3.23 },
+      { "sector": "Real Estate", "weight": 2.32 }
+    ],
+    "regionExposure": [
+      { "region": "Non-U.S. Equity", "weight": 98.38 },
+      { "region": "U.S. Equity", "weight": 0.89 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Average Market Cap", "weight": 100 }
+    ]
+  },
+  "SPDW": {
+    "name": "SPDR Portfolio Developed World Ex-US ETF",
+    "topHoldings": [
+      { "ticker": "ASML", "weight": 1.47 },
+      { "ticker": "005930.KR", "weight": 1.23 },
+      { "ticker": "AZN", "weight": 0.95 },
+      { "ticker": "ROG", "weight": 0.93 },
+      { "ticker": "NOVN", "weight": 0.88 },
+      { "ticker": "NESN", "weight": 0.87 },
+      { "ticker": "SAP", "weight": 0.84 },
+      { "ticker": "HSBC", "weight": 0.84 },
+      { "ticker": "TM", "weight": 0.82 },
+      { "ticker": "RY", "weight": 0.78 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financial Services", "weight": 23.21 },
+      { "sector": "Industrials", "weight": 19.07 },
+      { "sector": "Technology", "weight": 11.64 }
+    ],
+    "regionExposure": [
+      { "region": "Developed Ex-US", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Not Available", "weight": 100 }
     ]
   }
 }
