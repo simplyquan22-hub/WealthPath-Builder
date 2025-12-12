@@ -1,4 +1,5 @@
 
+
 {
   "VTI": {
     "name": "Vanguard Total Stock Market ETF",
@@ -2024,5 +2025,91 @@
     "marketCapExposure": [
       { "cap": "Not Available", "weight": 100 }
     ]
+  },
+  "SCHE": {
+    "name": "Schwab Emerging Markets Equity ETF",
+    "topHoldings": [
+      { "ticker": "TSM", "weight": 12.07 },
+      { "ticker": "TCEHY", "weight": 4.98 },
+      { "ticker": "BABA", "weight": 3.65 },
+      { "ticker": "HDFCBANK", "weight": 1.31 },
+      { "ticker": "RELIANCE", "weight": 1.21 },
+      { "ticker": "CICHF", "weight": 0.98 },
+      { "ticker": "01810.HK", "weight": 0.97 },
+      { "ticker": "2317.TW", "weight": 0.94 },
+      { "ticker": "PDD", "weight": 0.92 },
+      { "ticker": "ICICIBANK", "weight": 0.84 }
+    ],
+    "sectorExposure": [
+      { "sector": "Technology", "weight": 23.89 },
+      { "sector": "Financial Services", "weight": 22.55 },
+      { "sector": "Consumer Cyclical", "weight": 12.40 },
+      { "sector": "Communication Services", "weight": 9.87 },
+      { "sector": "Basic Materials", "weight": 7.50 },
+      { "sector": "Industrials", "weight": 6.81 },
+      { "sector": "Energy", "weight": 4.58 },
+      { "sector": "Consumer Defensive", "weight": 3.94 },
+      { "sector": "Healthcare", "weight": 3.83 },
+      { "sector": "Utilities", "weight": 2.82 },
+      { "sector": "Real Estate", "weight": 1.81 }
+    ],
+    "regionExposure": [
+      { "region": "Asia", "weight": 78.05 },
+      { "region": "Middle East", "weight": 7.05 },
+      { "region": "Latin America", "weight": 5.08 },
+      { "region": "Europe", "weight": 4.03 },
+      { "region": "Africa", "weight": 3.52 },
+      { "region": "North America", "weight": 2.28 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Giant", "weight": 51.98 },
+      { "cap": "Large", "weight": 30.61 },
+      { "cap": "Medium", "weight": 11.38 },
+      { "cap": "Small", "weight": 1.10 },
+      { "cap": "Micro", "weight": 0.10 }
+    ]
+  },
+  "EMXC": {
+    "name": "iShares MSCI Emerging Markets ex China ETF",
+    "topHoldings": [
+      { "ticker": "TSM", "weight": 16.36 },
+      { "ticker": "005930.KR", "weight": 4.89 },
+      { "ticker": "000660.KR", "weight": 2.97 },
+      { "ticker": "HDFCBANK", "weight": 1.75 },
+      { "ticker": "RELIANCE", "weight": 1.44 },
+      { "ticker": "2317.TW", "weight": 1.30 },
+      { "ticker": "ICICIBANK", "weight": 1.16 },
+      { "ticker": "BHARTIARTL", "weight": 0.86 },
+      { "ticker": "2454.TW", "weight": 0.85 },
+      { "ticker": "2308.TW", "weight": 0.81 }
+    ],
+    "sectorExposure": [
+      { "sector": "Technology", "weight": 30.34 },
+      { "sector": "Financials", "weight": 25.44 },
+      { "sector": "Industrials", "weight": 7.50 },
+      { "sector": "Materials", "weight": 6.89 },
+      { "sector": "Consumer Discretionary", "weight": 6.02 },
+      { "sector": "Communication Services", "weight": 4.48 },
+      { "sector": "Energy", "weight": 4.31 },
+      { "sector": "Consumer Staples", "weight": 4.03 },
+      { "sector": "Health Care", "weight": 2.69 },
+      { "sector": "Utilities", "weight": 2.39 },
+      { "sector": "Real Estate", "weight": 1.48 }
+    ],
+    "regionExposure": [
+      { "region": "Asia", "weight": 73.01 },
+      { "region": "Middle East", "weight": 8.13 },
+      { "region": "Latin America", "weight": 6.55 },
+      { "region": "Africa", "weight": 4.35 },
+      { "region": "Europe", "weight": 4.25 },
+      { "region": "North America", "weight": 3.71 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 79.87 },
+      { "cap": "Medium", "weight": 19.88 },
+      { "cap": "Small", "weight": 0.03 }
+    ]
   }
 }
+
+    
