@@ -484,4 +484,271 @@
         { "ticker": "AMZN", "weight": 3.7 },
         { "ticker": "META", "weight": 2.4 },
         { "ticker": "GOOGL", "weight": 2.1 },
-        { "ticker": "GOOG",.
+        { "ticker": "GOOG", "weight": 1.8 },
+        { "ticker": "BRK.B", "weight": 1.7 },
+        { "ticker": "LLY", "weight": 1.5 },
+        { "ticker": "AVGO", "weight": 1.3 }
+    ],
+    "sectorExposure": [
+        { "sector": "Technology", "weight": 30.1 },
+        { "sector": "Financials", "weight": 13.1 },
+        { "sector": "Healthcare", "weight": 12.3 },
+        { "sector": "Consumer Discretionary", "weight": 10.2 },
+        { "sector": "Communication Services", "weight": 9.0 },
+        { "sector": "Industrials", "weight": 8.7 },
+        { "sector": "Consumer Staples", "weight": 5.8 },
+        { "sector": "Energy", "weight": 3.9 },
+        { "sector": "Real Estate", "weight": 2.5 },
+        { "sector": "Materials", "weight": 2.3 },
+        { "sector": "Utilities", "weight": 2.1 }
+    ],
+    "regionExposure": [
+        { "region": "North America", "weight": 99.0 },
+        { "region": "Europe", "weight": 0.7 },
+        { "region": "Asia", "weight": 0.3 }
+    ],
+    "marketCapExposure": [
+        { "cap": "Large", "weight": 100 },
+        { "cap": "Medium", "weight": 0 },
+        { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "SPLG": {
+    "name": "SPDR Portfolio S&P 500 ETF",
+    "topHoldings": [
+      { "ticker": "MSFT", "weight": 7.4 },
+      { "ticker": "AAPL", "weight": 7.1 },
+      { "ticker": "NVDA", "weight": 4.0 },
+      { "ticker": "AMZN", "weight": 3.7 },
+      { "ticker": "GOOGL", "weight": 2.2 },
+      { "ticker": "GOOG", "weight": 1.9 },
+      { "ticker": "META", "weight": 1.8 },
+      { "ticker": "BRK.B", "weight": 1.5 },
+      { "ticker": "LLY", "weight": 1.3 },
+      { "ticker": "JPM", "weight": 1.2 }
+    ],
+    "sectorExposure": [
+      { "sector": "Information Technology", "weight": 30.1 },
+      { "sector": "Financials", "weight": 12.9 },
+      { "sector": "Health Care", "weight": 12.8 },
+      { "sector": "Consumer Discretionary", "weight": 10.4 },
+      { "sector": "Communication Services", "weight": 8.0 },
+      { "sector": "Industrials", "weight": 8.9 },
+      { "sector": "Consumer Staples", "weight": 5.8 },
+      { "sector": "Energy", "weight": 4.0 },
+      { "sector": "Real Estate", "weight": 2.6 },
+      { "sector": "Utilities", "weight": 2.6 },
+      { "sector": "Materials", "weight": 2.4 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 95 },
+      { "cap": "Medium", "weight": 5 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "SPYG": {
+    "name": "SPDR S&P 500 Growth ETF",
+    "topHoldings": [
+      { "ticker": "MSFT", "weight": 12.6 },
+      { "ticker": "AAPL", "weight": 11.5 },
+      { "ticker": "NVDA", "weight": 6.7 },
+      { "ticker": "AMZN", "weight": 6.2 },
+      { "ticker": "GOOGL", "weight": 3.9 },
+      { "ticker": "GOOG", "weight": 3.4 },
+      { "ticker": "META", "weight": 3.1 },
+      { "ticker": "LLY", "weight": 2.3 },
+      { "ticker": "TSLA", "weight": 1.8 },
+      { "ticker": "V", "weight": 1.7 }
+    ],
+    "sectorExposure": [
+      { "sector": "Information Technology", "weight": 48.0 },
+      { "sector": "Communication Services", "weight": 12.5 },
+      { "sector": "Health Care", "weight": 12.0 },
+      { "sector": "Consumer Discretionary", "weight": 11.5 },
+      { "sector": "Financials", "weight": 7.0 },
+      { "sector": "Industrials", "weight": 4.0 },
+      { "sector": "Consumer Staples", "weight": 3.0 },
+      { "sector": "Materials", "weight": 1.0 },
+      { "sector": "Other", "weight": 1.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 98 },
+      { "cap": "Medium", "weight": 2 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "SPYV": {
+    "name": "SPDR S&P 500 Value ETF",
+    "topHoldings": [
+      { "ticker": "BRK.B", "weight": 4.4 },
+      { "ticker": "JPM", "weight": 2.7 },
+      { "ticker": "XOM", "weight": 2.7 },
+      { "ticker": "UNH", "weight": 2.5 },
+      { "ticker": "PG", "weight": 2.4 },
+      { "ticker": "CVX", "weight": 2.3 },
+      { "ticker": "HD", "weight": 2.2 },
+      { "ticker": "MRK", "weight": 2.2 },
+      { "ticker": "JNJ", "weight": 2.1 },
+      { "ticker": "PEP", "weight": 2.0 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financials", "weight": 22.0 },
+      { "sector": "Health Care", "weight": 19.5 },
+      { "sector": "Industrials", "weight": 14.5 },
+      { "sector": "Consumer Staples", "weight": 11.0 },
+      { "sector": "Energy", "weight": 10.5 },
+      { "sector": "Information Technology", "weight": 8.0 },
+      { "sector": "Consumer Discretionary", "weight": 5.0 },
+      { "sector": "Utilities", "weight": 4.0 },
+      { "sector": "Materials", "weight": 3.5 },
+      { "sector": "Real Estate", "weight": 2.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 98 },
+      { "cap": "Medium", "weight": 2 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "QQQM": {
+    "name": "Invesco NASDAQ 100 ETF",
+    "topHoldings": [
+      { "ticker": "MSFT", "weight": 8.6 },
+      { "ticker": "AAPL", "weight": 8.1 },
+      { "ticker": "NVDA", "weight": 5.4 },
+      { "ticker": "AMZN", "weight": 5.0 },
+      { "ticker": "META", "weight": 4.5 },
+      { "ticker": "GOOGL", "weight": 3.0 },
+      { "ticker": "GOOG", "weight": 2.6 },
+      { "ticker": "TSLA", "weight": 2.5 },
+      { "ticker": "AVGO", "weight": 1.7 },
+      { "ticker": "COST", "weight": 1.6 }
+    ],
+    "sectorExposure": [
+      { "sector": "Information Technology", "weight": 48.0 },
+      { "sector": "Communication Services", "weight": 15.0 },
+      { "sector": "Consumer Discretionary", "weight": 14.5 },
+      { "sector": "Health Care", "weight": 6.5 },
+      { "sector": "Industrials", "weight": 4.5 },
+      { "sector": "Consumer Staples", "weight": 3.5 },
+      { "sector": "Other", "weight": 8.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 99.0 },
+      { "region": "Europe", "weight": 1.0 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 90 },
+      { "cap": "Medium", "weight": 10 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "VUG": {
+    "name": "Vanguard Growth ETF",
+    "topHoldings": [
+      { "ticker": "MSFT", "weight": 11.5 },
+      { "ticker": "AAPL", "weight": 10.5 },
+      { "ticker": "NVDA", "weight": 6.5 },
+      { "ticker": "AMZN", "weight": 6.0 },
+      { "ticker": "GOOGL", "weight": 3.5 },
+      { "ticker": "GOOG", "weight": 3.0 },
+      { "ticker": "META", "weight": 2.8 },
+      { "ticker": "LLY", "weight": 2.2 },
+      { "ticker": "TSLA", "weight": 1.7 },
+      { "ticker": "V", "weight": 1.6 }
+    ],
+    "sectorExposure": [
+      { "sector": "Information Technology", "weight": 47.0 },
+      { "sector": "Communication Services", "weight": 12.0 },
+      { "sector": "Health Care", "weight": 11.5 },
+      { "sector": "Consumer Discretionary", "weight": 11.0 },
+      { "sector": "Financials", "weight": 7.0 },
+      { "sector": "Industrials", "weight": 4.5 },
+      { "sector": "Consumer Staples", "weight": 3.0 },
+      { "sector": "Other", "weight": 4.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 90 },
+      { "cap": "Medium", "weight": 10 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "SCHG": {
+    "name": "Schwab U.S. Large-Cap Growth ETF",
+    "topHoldings": [
+      { "ticker": "MSFT", "weight": 11.5 },
+      { "ticker": "AAPL", "weight": 10.5 },
+      { "ticker": "NVDA", "weight": 6.5 },
+      { "ticker": "AMZN", "weight": 6.0 },
+      { "ticker": "GOOGL", "weight": 3.5 },
+      { "ticker": "GOOG", "weight": 3.0 },
+      { "ticker": "META", "weight": 2.8 },
+      { "ticker": "LLY", "weight": 2.2 },
+      { "ticker": "TSLA", "weight": 1.7 },
+      { "ticker": "V", "weight": 1.6 }
+    ],
+    "sectorExposure": [
+      { "sector": "Information Technology", "weight": 47.0 },
+      { "sector": "Communication Services", "weight": 12.0 },
+      { "sector": "Health Care", "weight": 11.5 },
+      { "sector": "Consumer Discretionary", "weight": 11.0 },
+      { "sector": "Financials", "weight": 7.0 },
+      { "sector": "Industrials", "weight": 4.5 },
+      { "sector": "Consumer Staples", "weight": 3.0 },
+      { "sector": "Other", "weight": 4.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 90 },
+      { "cap": "Medium", "weight": 10 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "IWF": {
+    "name": "iShares Russell 1000 Growth ETF",
+    "topHoldings": [
+      { "ticker": "MSFT", "weight": 12.6 },
+      { "ticker": "AAPL", "weight": 11.5 },
+      { "ticker": "NVDA", "weight": 6.7 },
+      { "ticker": "AMZN", "weight": 6.2 },
+      { "ticker": "GOOGL", "weight": 3.9 },
+      { "ticker": "GOOG", "weight": 3.4 },
+      { "ticker": "META", "weight": 3.1 },
+      { "ticker": "LLY", "weight": 2.3 },
+      { "ticker": "TSLA", "weight": 1.8 },
+      { "ticker": "V", "weight": 1.7 }
+    ],
+    "sectorExposure": [
+      { "sector": "Information Technology", "weight": 48.0 },
+      { "sector": "Communication Services", "weight": 12.5 },
+      { "sector": "Health Care", "weight": 12.0 },
+      { "sector": "Consumer Discretionary", "weight": 11.5 },
+      { "sector": "Financials", "weight": 7.0 },
+      { "sector": "Industrials", "weight": 4.0 },
+      { "sector": "Consumer Staples", "weight": 3.0 },
+      { "sector": "Materials", "weight": 1.0 },
+      { "sector": "Other", "weight": 1.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 98 },
+      { "cap": "Medium", "weight": 2 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  }
+}
