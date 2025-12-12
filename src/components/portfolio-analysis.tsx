@@ -4,10 +4,11 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PortfolioAnalysis } from '@/lib/portfolio-analyzer';
-import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip as RechartsTooltip, Legend } from 'recharts';
+import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip as RechartsTooltip } from 'recharts';
 import { Badge } from './ui/badge';
 import { CheckCircle, AlertTriangle, Info } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
+import { cn } from '@/lib/utils';
 
 interface PortfolioAnalysisProps {
   analysis: PortfolioAnalysis;
@@ -42,33 +43,50 @@ const CustomTooltip = ({ active, payload }: any) => {
     return null;
 };
 
+const CustomLegend = ({ data }: { data: { name: string; value: number }[] }) => (
+    <ul className="space-y-2 text-sm">
+        {data.map((entry, index) => (
+            <li key={`item-${index}`} className="flex items-center gap-2">
+                <span
+                    className="h-3 w-3 rounded-full"
+                    style={{ backgroundColor: COLORS[index % COLORS.length] }}
+                />
+                <span className="text-muted-foreground">{entry.name}</span>
+            </li>
+        ))}
+    </ul>
+);
+
 const ExposureChart: React.FC<{ data: { name: string; value: number }[], title: string }> = ({ data, title }) => (
-    <div>
-        <h3 className="text-center font-semibold mb-2">{title}</h3>
-        <div style={{ width: '100%', height: 250 }}>
-            <ResponsiveContainer>
-                <PieChart>
-                    <RechartsTooltip content={<CustomTooltip />} />
-                    <Pie 
-                        data={data} 
-                        dataKey="value" 
-                        nameKey="name" 
-                        cx="50%" 
-                        cy="50%" 
-                        outerRadius={80} 
-                        fill="#8884d8"
-                    >
-                        {data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)}
-                    </Pie>
-                    <Legend 
-                        iconSize={10} 
-                        wrapperStyle={{ fontSize: '12px' }}
-                    />
-                </PieChart>
-            </ResponsiveContainer>
+    <div className="flex flex-col">
+        <h3 className="text-center font-semibold mb-4">{title}</h3>
+        <div className="flex-grow grid grid-cols-1 md:grid-cols-2 items-center gap-4">
+            <div className="w-full h-52">
+                <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                        <RechartsTooltip content={<CustomTooltip />} />
+                        <Pie 
+                            data={data} 
+                            dataKey="value" 
+                            nameKey="name" 
+                            cx="50%" 
+                            cy="50%" 
+                            outerRadius={80} 
+                            innerRadius={50}
+                            fill="#8884d8"
+                        >
+                            {data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)}
+                        </Pie>
+                    </PieChart>
+                </ResponsiveContainer>
+            </div>
+            <div className="flex justify-center">
+                <CustomLegend data={data} />
+            </div>
         </div>
     </div>
 );
+
 
 export const PortfolioAnalysisDisplay: React.FC<PortfolioAnalysisProps> = ({ analysis }) => {
   return (
@@ -94,7 +112,7 @@ export const PortfolioAnalysisDisplay: React.FC<PortfolioAnalysisProps> = ({ ana
             </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <ExposureChart data={analysis.sectorExposure} title="Sector Exposure" />
             <ExposureChart data={analysis.regionExposure} title="Region Exposure" />
             <ExposureChart data={analysis.marketCapExposure} title="Market Cap Exposure" />
