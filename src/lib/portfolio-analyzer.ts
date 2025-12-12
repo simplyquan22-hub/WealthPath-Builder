@@ -29,23 +29,25 @@ export interface PortfolioAnalysis {
 export function analyzePortfolio(portfolio: Ticker[]): PortfolioAnalysis {
     const totalPortfolioAllocation = portfolio.reduce((sum, t) => sum + t.allocation, 0);
     
-    // Normalize portfolio allocations if they don't sum to 100 for a category
-    const normalizedPortfolio = portfolio.map(p => {
-        const categoryTotal = portfolio
-            .filter(t => t.category === p.category)
-            .reduce((sum, t) => sum + t.allocation, 0);
+    if (totalPortfolioAllocation === 0) {
+        // Return a default or empty analysis if there's no allocation
         return {
-            ...p,
-            normalizedAllocation: categoryTotal > 0 ? (p.allocation / categoryTotal) * 100 : 0
+            diversificationScore: 0,
+            top10Holdings: [],
+            overlappingHoldings: [],
+            sectorExposure: [],
+            regionExposure: [],
+            marketCapExposure: [],
+            recommendations: ["Your portfolio is empty. Add some tickers and allocate percentages to get an analysis."]
         };
-    });
+    }
 
     const allHoldings: { [ticker: string]: { percentage: number; heldIn: string[] } } = {};
     const sectorExposure: Exposure = {};
     const regionExposure: Exposure = {};
     const marketCapExposure: Exposure = {};
 
-    for (const asset of normalizedPortfolio) {
+    for (const asset of portfolio) {
         const data = etfData[asset.id as EtfKey];
         if (!data) continue;
 
@@ -53,11 +55,11 @@ export function analyzePortfolio(portfolio: Ticker[]): PortfolioAnalysis {
 
         // Aggregate Holdings
         data.topHoldings.forEach(holding => {
-            const holdingWeightInPortfolio = holding.weight * assetWeightInPortfolio;
+            const holdingWeightInPortfolio = (holding.weight / 100) * assetWeightInPortfolio;
             if (!allHoldings[holding.ticker]) {
                 allHoldings[holding.ticker] = { percentage: 0, heldIn: [] };
             }
-            allHoldings[holding.ticker].percentage += holdingWeightInPortfolio;
+            allHoldings[holding.ticker].percentage += holdingWeightInPortfolio * 100;
             if (!allHoldings[holding.ticker].heldIn.includes(asset.id)) {
                 allHoldings[holding.ticker].heldIn.push(asset.id);
             }
@@ -66,11 +68,11 @@ export function analyzePortfolio(portfolio: Ticker[]): PortfolioAnalysis {
         // Aggregate Exposures
         const aggregateExposure = (exposureMap: Exposure, exposureArray: { [key: string]: any, weight: number }[], keyName: string) => {
             exposureArray.forEach(exp => {
-                const weightInPortfolio = exp.weight * assetWeightInPortfolio;
+                const weightInPortfolio = (exp.weight / 100) * assetWeightInPortfolio;
                 if (!exposureMap[exp[keyName]]) {
                     exposureMap[exp[keyName]] = 0;
                 }
-                exposureMap[exp[keyName]] += weightInPortfolio;
+                exposureMap[exp[keyName]] += weightInPortfolio * 100;
             });
         };
         
@@ -156,3 +158,5 @@ function generateRecommendations(
 
     return recommendations;
 }
+
+    

@@ -4,7 +4,7 @@
 import * as React from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
@@ -16,7 +16,6 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { analyzePortfolio, PortfolioAnalysis } from "@/lib/portfolio-analyzer";
 import { PortfolioAnalysisDisplay } from "./portfolio-analysis";
 import etfData from '@/lib/etf-data.json';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { Badge } from "./ui/badge";
 
 const glassCardClasses = "border border-white/10 bg-card/50 backdrop-blur-sm shadow-[0_0_15px_2px_rgba(0,100,255,0.35)]";
@@ -466,9 +465,6 @@ export function PortfolioBuilder() {
             <div className="flex justify-between items-center mb-4">
                 <h4 className={cn("font-semibold text-lg", categoryColors[category])}>{title}</h4>
                 <div className="flex items-center gap-4">
-                    <span className={cn("text-sm", "text-muted-foreground")}>
-                        Portfolio Total: {categoryTotalFromTickers}%
-                    </span>
                     <span className={cn("text-lg font-bold", categoryColors[category])}>{allocation[category]}% Target</span>
                 </div>
             </div>
@@ -527,7 +523,7 @@ export function PortfolioBuilder() {
                     <strong className="text-foreground">Add or Remove Tickers:</strong> Customize the portfolio by adding new stocks, ETFs, or funds, or by removing ones you don't want.
                 </li>
                 <li>
-                    <strong className="text-foreground">Allocate to Tickers:</strong> In the Portfolio Summary, assign a percentage to each ticker within its category. The total for each category must equal 100%.
+                    <strong className="text-foreground">Allocate to Tickers:</strong> In the Portfolio Summary, assign a percentage to each ticker. The total allocation for all tickers in your portfolio must equal 100%.
                 </li>
                  <li>
                     <strong className="text-foreground">Analyze Your Portfolio:</strong> Click the "Analyze Portfolio" button to get a detailed breakdown of your portfolio's diversification, overlap, and exposure.
@@ -632,31 +628,6 @@ export function PortfolioBuilder() {
                     </Command>
                 </PopoverContent>
             </Popover>
-            <Accordion type="single" collapsible className="w-full mt-4">
-              <AccordionItem value="item-1">
-                <AccordionTrigger>View Tickers Available for Full Analysis</AccordionTrigger>
-                <AccordionContent>
-                  <p className="text-sm text-muted-foreground mb-4">The following tickers have detailed data for in-depth analysis. You can add data for more tickers in <code>src/lib/etf-data.json</code>.</p>
-                  <div className="max-h-60 overflow-y-auto pr-2">
-                    {Object.entries(
-                        availableForAnalysis.reduce((acc, ticker) => {
-                          const category = uniqueTickers.find(t => t.value === ticker)?.category || 'alternatives';
-                          if (!acc[category]) acc[category] = [];
-                          acc[category].push(ticker);
-                          return acc;
-                        }, {} as Record<string, string[]>)
-                      ).map(([category, tickers]) => (
-                        <div key={category} className="mb-4">
-                          <h4 className={cn("font-semibold capitalize mb-2", categoryColors[category as keyof typeof categoryColors])}>{category}</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {tickers.sort().map(ticker => <Badge key={ticker} variant="secondary">{ticker}</Badge>)}
-                          </div>
-                        </div>
-                      ))}
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
         </CardContent>
       </Card>
       
@@ -674,6 +645,11 @@ export function PortfolioBuilder() {
                 {renderCategorySection("alternatives", "Alternatives")}
             </div>
         </CardContent>
+        <CardFooter className="flex justify-end text-right">
+            <div className={cn("font-bold", totalPortfolioAllocation !== 100 ? "text-destructive" : "text-green-400")}>
+                Total Allocation: {totalPortfolioAllocation}%
+            </div>
+        </CardFooter>
       </Card>
 
         {analysis && (
@@ -704,5 +680,7 @@ export function PortfolioBuilder() {
     </div>
   );
 }
+
+    
 
     
