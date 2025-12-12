@@ -14,7 +14,7 @@ import { AnimatedButton } from "./ui/animated-button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 
-const glassCardClasses = "border border-white/10 bg-card/50 backdrop-blur-sm shadow-[0_0_15px_2px_rgba(0,0,255,0.35)]";
+const glassCardClasses = "border border-white/10 bg-card/50 backdrop-blur-sm shadow-[0_0_15px_2px_rgba(0,100,255,0.35)]";
 
 type TickerTemplate = {
   id: string;
@@ -174,7 +174,7 @@ const availableTickers = [
     { value: 'TLT', label: 'iShares 20+ Year Treasury Bond ETF', category: 'bonds', group: 'Bond ETFs' },
     { value: 'VTIP', label: 'Vanguard Short-Term Inflation-Protected Securities ETF', category: 'bonds', group: 'Bond ETFs' },
     { value: 'TIP', label: 'iShares TIPS Bond ETF', category: 'bonds', group: 'Bond ETFs' },
-    { value: 'LQD', 'label': 'iShares iBoxx $ Investment Grade Corporate Bond ETF', category: 'bonds', group: 'Bond ETFs' },
+    { value: 'LQD', label: 'iShares iBoxx $ Investment Grade Corporate Bond ETF', category: 'bonds', group: 'Bond ETFs' },
     { value: 'VCIT', label: 'Vanguard Intermediate-Term Corporate Bond ETF', category: 'bonds', group: 'Bond ETFs' },
     { value: 'HYG', label: 'iShares iBoxx $ High Yield Corporate Bond ETF', category: 'bonds', group: 'Bond ETFs' },
 
@@ -338,7 +338,8 @@ export function PortfolioBuilder() {
   const [allocation, setAllocation] = React.useState<Allocation>({ stocks: 60, bonds: 30, alternatives: 10 });
   const [selectedTickers, setSelectedTickers] = React.useState<Ticker[]>([]);
   const [comboboxOpen, setComboboxOpen] = React.useState(false);
-
+  const allocationRef = React.useRef<HTMLDivElement>(null);
+  const summaryRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     try {
@@ -368,12 +369,14 @@ export function PortfolioBuilder() {
     const selectedTemplate = templates[templateKey];
     setAllocation(selectedTemplate.allocation);
     setSelectedTickers(selectedTemplate.tickers);
+    summaryRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
   
   const handleCustomTemplate = () => {
     setAllocation({ stocks: 60, bonds: 30, alternatives: 10 });
     setSelectedTickers([]);
     setPortfolioName("My Custom Portfolio");
+    allocationRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleSingleSliderChange = (name: keyof Allocation, value: number) => {
@@ -551,7 +554,7 @@ export function PortfolioBuilder() {
         </CardContent>
       </Card>
 
-      <Card className={glassCardClasses}>
+      <Card className={glassCardClasses} ref={allocationRef}>
         <CardHeader>
           <CardTitle className="text-2xl font-headline">3. Adjust Allocation</CardTitle>
            <p className="text-sm text-muted-foreground">Total Allocation: {allocation.stocks + allocation.bonds + allocation.alternatives}%</p>
@@ -617,7 +620,7 @@ export function PortfolioBuilder() {
         </CardContent>
       </Card>
       
-      <Card className={glassCardClasses}>
+      <Card className={glassCardClasses} ref={summaryRef}>
         <CardHeader>
           <CardTitle className="text-2xl font-headline">5. Portfolio Summary</CardTitle>
         </CardHeader>
