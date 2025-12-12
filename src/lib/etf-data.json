@@ -750,5 +750,179 @@
       { "cap": "Medium", "weight": 2 },
       { "cap": "Small", "weight": 0 }
     ]
+  },
+  "VTV": {
+    "name": "Vanguard Value ETF",
+    "topHoldings": [
+      { "ticker": "BRK.B", "weight": 3.9 },
+      { "ticker": "JPM", "weight": 2.5 },
+      { "ticker": "XOM", "weight": 2.4 },
+      { "ticker": "UNH", "weight": 2.3 },
+      { "ticker": "PG", "weight": 2.2 },
+      { "ticker": "CVX", "weight": 2.1 },
+      { "ticker": "HD", "weight": 2.0 },
+      { "ticker": "MRK", "weight": 2.0 },
+      { "ticker": "JNJ", "weight": 1.9 },
+      { "ticker": "PEP", "weight": 1.8 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financials", "weight": 22.0 },
+      { "sector": "Health Care", "weight": 19.0 },
+      { "sector": "Industrials", "weight": 14.5 },
+      { "sector": "Consumer Staples", "weight": 11.0 },
+      { "sector": "Energy", "weight": 10.5 },
+      { "sector": "Information Technology", "weight": 8.0 },
+      { "sector": "Consumer Discretionary", "weight": 5.0 },
+      { "sector": "Utilities", "weight": 4.0 },
+      { "sector": "Materials", "weight": 3.5 },
+      { "sector": "Real Estate", "weight": 2.5 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 80 },
+      { "cap": "Medium", "weight": 15 },
+      { "cap": "Small", "weight": 5 }
+    ]
+  },
+  "SCHV": {
+    "name": "Schwab U.S. Large-Cap Value ETF",
+    "topHoldings": [
+      { "ticker": "BRK.B", "weight": 4.0 },
+      { "ticker": "JPM", "weight": 2.6 },
+      { "ticker": "XOM", "weight": 2.5 },
+      { "ticker": "UNH", "weight": 2.4 },
+      { "ticker": "PG", "weight": 2.3 },
+      { "ticker": "CVX", "weight": 2.2 },
+      { "ticker": "HD", "weight": 2.1 },
+      { "ticker": "MRK", "weight": 2.1 },
+      { "ticker": "JNJ", "weight": 2.0 },
+      { "ticker": "PEP", "weight": 1.9 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financials", "weight": 22.5 },
+      { "sector": "Health Care", "weight": 19.5 },
+      { "sector": "Industrials", "weight": 14.0 },
+      { "sector": "Consumer Staples", "weight": 11.5 },
+      { "sector": "Energy", "weight": 10.0 },
+      { "sector": "Information Technology", "weight": 8.5 },
+      { "sector": "Consumer Discretionary", "weight": 5.0 },
+      { "sector": "Utilities", "weight": 4.0 },
+      { "sector": "Materials", "weight": 3.0 },
+      { "sector": "Real Estate", "weight": 2.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 100 }
+    ]
+  },
+  "IWD": {
+    "name": "iShares Russell 1000 Value ETF",
+    "topHoldings": [
+      { "ticker": "BRK.B", "weight": 4.0 },
+      { "ticker": "JPM", "weight": 2.6 },
+      { "ticker": "XOM", "weight": 2.5 },
+      { "ticker": "UNH", "weight": 2.4 },
+      { "ticker": "PG", "weight": 2.3 },
+      { "ticker": "CVX", "weight": 2.2 },
+      { "ticker": "HD", "weight": 2.1 },
+      { "ticker": "MRK", "weight": 2.1 },
+      { "ticker": "JNJ", "weight": 2.0 },
+      { "ticker": "PEP", "weight": 1.9 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financials", "weight": 22.5 },
+      { "sector": "Health Care", "weight": 19.5 },
+      { "sector": "Industrials", "weight": 14.0 },
+      { "sector": "Consumer Staples", "weight": 11.5 },
+      { "sector": "Energy", "weight": 10.0 },
+      { "sector": "Information Technology", "weight": 8.5 },
+      { "sector": "Consumer Discretionary", "weight": 5.0 },
+      { "sector": "Utilities", "weight": 4.0 },
+      { "sector": "Materials", "weight": 3.0 },
+      { "sector": "Real Estate", "weight": 2.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 98 },
+      { "cap": "Medium", "weight": 2 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "VBR": {
+    "name": "Vanguard Small-Cap Value ETF",
+    "topHoldings": [
+      { "ticker": "HUBB", "weight": 0.5 },
+      { "ticker": "AEM", "weight": 0.4 },
+      { "ticker": "CADE", "weight": 0.4 },
+      { "ticker": "STLD", "weight": 0.4 },
+      { "ticker": "VLY", "weight": 0.4 },
+      { "ticker": "MTH", "weight": 0.4 },
+      { "ticker": "EPR", "weight": 0.3 },
+      { "ticker": "CVNA", "weight": 0.3 },
+      { "ticker": "UFPI", "weight": 0.3 },
+      { "ticker": "ASGN", "weight": 0.3 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financials", "weight": 23.5 },
+      { "sector": "Industrials", "weight": 19.0 },
+      { "sector": "Consumer Discretionary", "weight": 13.0 },
+      { "sector": "Real Estate", "weight": 11.5 },
+      { "sector": "Information Technology", "weight": 9.0 },
+      { "sector": "Energy", "weight": 7.0 },
+      { "sector": "Materials", "weight": 5.5 },
+      { "sector": "Health Care", "weight": 4.0 },
+      { "sector": "Utilities", "weight": 3.5 },
+      { "sector": "Consumer Staples", "weight": 2.5 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 0 },
+      { "cap": "Medium", "weight": 20 },
+      { "cap": "Small", "weight": 80 }
+    ]
+  },
+  "VOE": {
+    "name": "Vanguard Mid-Cap Value ETF",
+    "topHoldings": [
+      { "ticker": "PGR", "weight": 1.1 },
+      { "ticker": "WEC", "weight": 1.0 },
+      { "ticker": "TRV", "weight": 1.0 },
+      { "ticker": "AEP", "weight": 1.0 },
+      { "ticker": "MSCI", "weight": 0.9 },
+      { "ticker": "CMS", "weight": 0.9 },
+      { "ticker": "KMI", "weight": 0.8 },
+      { "ticker": "CME", "weight": 0.8 },
+      { "ticker": "DAL", "weight": 0.8 },
+      { "ticker": "C", "weight": 0.7 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financials", "weight": 21.0 },
+      { "sector": "Industrials", "weight": 15.5 },
+      { "sector": "Utilities", "weight": 12.0 },
+      { "sector": "Consumer Discretionary", "weight": 11.0 },
+      { "sector": "Energy", "weight": 10.0 },
+      { "sector": "Health Care", "weight": 9.0 },
+      { "sector": "Real Estate", "weight": 7.0 },
+      { "sector": "Information Technology", "weight": 6.5 },
+      { "sector": "Materials", "weight": 4.5 },
+      { "sector": "Consumer Staples", "weight": 3.5 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 0 },
+      { "cap": "Medium", "weight": 100 },
+      { "cap": "Small", "weight": 0 }
+    ]
   }
 }
+    
