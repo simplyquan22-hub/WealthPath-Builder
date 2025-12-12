@@ -186,6 +186,43 @@ const availableTickers = [
     { value: 'BCH-USD', label: 'Bitcoin Cash', category: 'alternatives', group: 'Crypto' },
     { value: 'NEAR-USD', label: 'Near Protocol', category: 'alternatives', group: 'Crypto' },
     { value: 'ICP-USD', label: 'Internet Computer', category: 'alternatives', group: 'Crypto' },
+    { value: 'VVIAX', label: 'Vanguard Value Index Fund Admiral Shares', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'VFWAX', label: 'Vanguard FTSE All-World ex-US Index Fund', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'VTMGX', label: 'Vanguard Developed Markets Index Fund', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'VEMAX', label: 'Vanguard Emerging Markets Stock Index Fund', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'VTABX', label: 'Vanguard Total International Bond Index Fund', category: 'bonds', group: 'Mutual Funds' },
+    { value: 'VWIAX', label: 'Vanguard Wellington Fund Admiral Shares', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'VWENX', label: 'Vanguard Wellington Fund Admiral Shares', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'VGHAX', label: 'Vanguard Health Care Fund Admiral Shares', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'VGSIX', label: 'Vanguard Real Estate Index Fund Admiral Shares', category: 'alternatives', group: 'Mutual Funds' },
+    { value: 'VFSTX', label: 'Vanguard Short-Term Investment-Grade Fund', category: 'bonds', group: 'Mutual Funds' },
+    { value: 'VMMXX', label: 'Vanguard Prime Money Market Fund', category: 'bonds', group: 'Mutual Funds' },
+    { value: 'VWAHX', label: 'Vanguard High-Yield Corporate Fund Admiral Shares', category: 'bonds', group: 'Mutual Funds' },
+    { value: 'VWUSX', label: 'Vanguard U.S. Growth Fund Admiral Shares', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'FSMDX', label: 'Fidelity Mid Cap Index Fund', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'FSSNX', label: 'Fidelity Small Cap Index Fund', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'FISVX', label: 'Fidelity Small Cap Value Index Fund', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'FLCOX', label: 'Fidelity Corporate Bond Fund', category: 'bonds', group: 'Mutual Funds' },
+    { value: 'FIPDX', label: 'Fidelity Inflation-Protected Bond Index Fund', category: 'bonds', group: 'Mutual Funds' },
+    { value: 'FNILX', label: 'Fidelity ZERO Large Cap Index Fund', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'SWTSX', label: 'Schwab Total Stock Market Index', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'SWAGX', label: 'Schwab U.S. Aggregate Bond Index Fund', category: 'bonds', group: 'Mutual Funds' },
+    { value: 'SWLGX', label: 'Schwab U.S. Large-Cap Growth Index Fund', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'SWLVX', label: 'Schwab U.S. Large-Cap Value Index Fund', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'SWRSX', label: 'Schwab Global Real Estate Fund', category: 'alternatives', group: 'Mutual Funds' },
+    { value: 'SWEMX', label: 'Schwab Emerging Markets Equity ETF', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'SWTIX', label: 'Schwab Treasury Inflation Protected Securities Index', category: 'bonds', group: 'Mutual Funds' },
+    { value: 'SWMIX', label: 'Schwab U.S. Mid-Cap Index Fund', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'SWSMX', label: 'Schwab Small-Cap Index Fund', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'SWOBX', label: 'Schwab Short-Term Bond Index Fund', category: 'bonds', group: 'Mutual Funds' },
+    { value: 'SWYMX', label: 'Schwab Municipal Bond Fund', category: 'bonds', group: 'Mutual Funds' },
+    { value: 'SWCRX', label: 'Schwab Commodity Index Fund', category: 'alternatives', group: 'Mutual Funds' },
+    { value: 'SWPSX', label: 'Schwab U.S. Dividend Equity ETF', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'SWPRX', label: 'Schwab International Bond Fund', category: 'bonds', group: 'Mutual Funds' },
+    { value: 'SWCAX', label: 'Schwab Aggressive Allocation Fund', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'SWBGX', label: 'Schwab Balanced Index Fund', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'SWERX', label: 'Schwab Emerging Markets Equity Fund', category: 'stocks', group: 'Mutual Funds' },
+    { value: 'SWDRX', label: 'Schwab Developed International Value Fund', category: 'stocks', group: 'Mutual Funds' },
 ];
 
 const tickerGroups = availableTickers.reduce((acc, ticker) => {
@@ -508,5 +545,7 @@ export function PortfolioBuilder() {
     </div>
   );
 }
+
+    
 
     
