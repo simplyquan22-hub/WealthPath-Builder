@@ -222,41 +222,6 @@
         { "cap": "Medium", "weight": 5 }
     ]
   },
-  "AVUV": {
-    "name": "Avantis U.S. Small Cap Value ETF",
-    "topHoldings": [
-      { "ticker": "CIG", "weight": 1.2 },
-      { "ticker": "WFG", "weight": 1.1 },
-      { "ticker": "NTR", "weight": 1.0 },
-      { "ticker": "CMC", "weight": 0.9 },
-      { "ticker": "MATX", "weight": 0.8 },
-      { "ticker": "SF", "weight": 0.8 },
-      { "ticker": "WCC", "weight": 0.7 },
-      { "ticker": "UFPI", "weight": 0.7 },
-      { "ticker": "MTG", "weight": 0.7 },
-      { "ticker": "CR", "weight": 0.7 }
-    ],
-    "sectorExposure": [
-      { "sector": "Financials", "weight": 25.1 },
-      { "sector": "Industrials", "weight": 20.3 },
-      { "sector": "Consumer Discretionary", "weight": 15.2 },
-      { "sector": "Energy", "weight": 9.5 },
-      { "sector": "Materials", "weight": 8.4 },
-      { "sector": "Technology", "weight": 6.8 },
-      { "sector": "Real Estate", "weight": 5.5 },
-      { "sector": "Utilities", "weight": 5.2 },
-      { "sector": "Communication Services", "weight": 2.0 },
-      { "sector": "Healthcare", "weight": 1.5 },
-      { "sector": "Consumer Staples", "weight": 0.5 }
-    ],
-    "regionExposure": [
-        { "region": "North America", "weight": 100 }
-    ],
-    "marketCapExposure": [
-        { "cap": "Small", "weight": 90 },
-        { "cap": "Medium", "weight": 10 }
-    ]
-  },
   "VEA": {
     "name": "Vanguard FTSE Developed Markets ETF",
     "topHoldings": [
@@ -1205,7 +1170,420 @@
       { "cap": "Medium", "weight": 10 },
       { "cap": "Small", "weight": 90 }
     ]
+  },
+  "AVUV": {
+    "name": "Avantis U.S. Small Cap Value ETF",
+    "topHoldings": [
+      { "ticker": "LBRDA", "weight": 0.5 },
+      { "ticker": "EPR", "weight": 0.5 },
+      { "ticker": "PRDO", "weight": 0.5 },
+      { "ticker": "MDC", "weight": 0.5 },
+      { "ticker": "OXY", "weight": 0.4 },
+      { "ticker": "CVNA", "weight": 0.4 },
+      { "ticker": "DHI", "weight": 0.4 },
+      { "ticker": "HUBB", "weight": 0.4 },
+      { "ticker": "TOL", "weight": 0.4 },
+      { "ticker": "STLD", "weight": 0.4 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financials", "weight": 23.0 },
+      { "sector": "Industrials", "weight": 17.5 },
+      { "sector": "Consumer Discretionary", "weight": 14.0 },
+      { "sector": "Real Estate", "weight": 11.0 },
+      { "sector": "Energy", "weight": 9.5 },
+      { "sector": "Information Technology", "weight": 8.0 },
+      { "sector": "Materials", "weight": 5.5 },
+      { "sector": "Health Care", "weight": 5.0 },
+      { "sector": "Utilities", "weight": 3.5 },
+      { "sector": "Consumer Staples", "weight": 2.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 0 },
+      { "cap": "Medium", "weight": 10 },
+      { "cap": "Small", "weight": 90 }
+    ]
+  },
+  "AVUS": {
+    "name": "Avantis U.S. Equity ETF",
+    "topHoldings": [
+      { "ticker": "AAPL", "weight": 6.8 },
+      { "ticker": "MSFT", "weight": 6.3 },
+      { "ticker": "AMZN", "weight": 3.1 },
+      { "ticker": "NVDA", "weight": 3.0 },
+      { "ticker": "GOOGL", "weight": 2.0 },
+      { "ticker": "GOOG", "weight": 1.7 },
+      { "ticker": "META", "weight": 1.5 },
+      { "ticker": "LLY", "weight": 1.3 },
+      { "ticker": "JPM", "weight": 1.2 },
+      { "ticker": "XOM", "weight": 1.1 }
+    ],
+    "sectorExposure": [
+      { "sector": "Information Technology", "weight": 28.0 },
+      { "sector": "Financials", "weight": 13.0 },
+      { "sector": "Health Care", "weight": 12.5 },
+      { "sector": "Consumer Discretionary", "weight": 10.5 },
+      { "sector": "Industrials", "weight": 9.5 },
+      { "sector": "Communication Services", "weight": 8.0 },
+      { "sector": "Energy", "weight": 4.5 },
+      { "sector": "Consumer Staples", "weight": 4.5 },
+      { "sector": "Materials", "weight": 3.0 },
+      { "sector": "Utilities", "weight": 2.5 },
+      { "sector": "Real Estate", "weight": 2.5 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 70 },
+      { "cap": "Medium", "weight": 20 },
+      { "cap": "Small", "weight": 10 }
+    ]
+  },
+  "VFQY": {
+    "name": "Vanguard U.S. Quality Factor ETF",
+    "topHoldings": [
+      { "ticker": "AAPL", "weight": 6.0 },
+      { "ticker": "MSFT", "weight": 5.5 },
+      { "ticker": "AMZN", "weight": 3.0 },
+      { "ticker": "GOOGL", "weight": 2.5 },
+      { "ticker": "NVDA", "weight": 2.5 },
+      { "ticker": "GOOG", "weight": 2.0 },
+      { "ticker": "JPM", "weight": 1.5 },
+      { "ticker": "JNJ", "weight": 1.5 },
+      { "ticker": "V", "weight": 1.5 },
+      { "ticker": "MA", "weight": 1.4 }
+    ],
+    "sectorExposure": [
+      { "sector": "Information Technology", "weight": 28.0 },
+      { "sector": "Health Care", "weight": 17.0 },
+      { "sector": "Financials", "weight": 14.0 },
+      { "sector": "Industrials", "weight": 10.0 },
+      { "sector": "Consumer Discretionary", "weight": 9.0 },
+      { "sector": "Communication Services", "weight": 6.0 },
+      { "sector": "Consumer Staples", "weight": 7.0 },
+      { "sector": "Other", "weight": 7.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 95 },
+      { "cap": "Medium", "weight": 5 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "VFMF": {
+    "name": "Vanguard U.S. Multifactor ETF",
+    "topHoldings": [
+      { "ticker": "AAPL", "weight": 5.0 },
+      { "ticker": "MSFT", "weight": 4.5 },
+      { "ticker": "AMZN", "weight": 2.5 },
+      { "ticker": "GOOGL", "weight": 2.0 },
+      { "ticker": "NVDA", "weight": 2.0 },
+      { "ticker": "GOOG", "weight": 1.8 },
+      { "ticker": "JPM", "weight": 1.5 },
+      { "ticker": "UNH", "weight": 1.4 },
+      { "ticker": "JNJ", "weight": 1.3 },
+      { "ticker": "V", "weight": 1.2 }
+    ],
+    "sectorExposure": [
+      { "sector": "Information Technology", "weight": 26.0 },
+      { "sector": "Health Care", "weight": 14.0 },
+      { "sector": "Financials", "weight": 13.0 },
+      { "sector": "Industrials", "weight": 11.0 },
+      { "sector": "Consumer Discretionary", "weight": 9.0 },
+      { "sector": "Communication Services", "weight": 7.0 },
+      { "sector": "Energy", "weight": 5.0 },
+      { "sector": "Consumer Staples", "weight": 4.5 },
+      { "sector": "Other", "weight": 10.5 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 70 },
+      { "cap": "Medium", "weight": 20 },
+      { "cap": "Small", "weight": 10 }
+    ]
+  },
+  "IJS": {
+    "name": "iShares S&P Small-Cap 600 Value ETF",
+    "topHoldings": [
+      { "ticker": "FICO", "weight": 1.2 },
+      { "ticker": "ALLE", "weight": 1.1 },
+      { "ticker": "APTV", "weight": 1.0 },
+      { "ticker": "RL", "weight": 1.0 },
+      { "ticker": "C", "weight": 0.8 },
+      { "ticker": "FNF", "weight": 0.8 },
+      { "ticker": "TXT", "weight": 0.7 },
+      { "ticker": "WDC", "weight": 0.7 },
+      { "ticker": "ROL", "weight": 0.7 },
+      { "ticker": "BKR", "weight": 0.7 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financials", "weight": 23.5 },
+      { "sector": "Industrials", "weight": 21.0 },
+      { "sector": "Consumer Discretionary", "weight": 13.0 },
+      { "sector": "Real Estate", "weight": 11.5 },
+      { "sector": "Information Technology", "weight": 9.0 },
+      { "sector": "Energy", "weight": 7.0 },
+      { "sector": "Materials", "weight": 5.5 },
+      { "sector": "Health Care", "weight": 4.0 },
+      { "sector": "Utilities", "weight": 3.5 },
+      { "sector": "Consumer Staples", "weight": 2.5 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 0 },
+      { "cap": "Medium", "weight": 10 },
+      { "cap": "Small", "weight": 90 }
+    ]
+  },
+  "QUAL": {
+    "name": "iShares MSCI USA Quality Factor ETF",
+    "topHoldings": [
+      { "ticker": "AAPL", "weight": 8.0 },
+      { "ticker": "MSFT", "weight": 7.5 },
+      { "ticker": "AMZN", "weight": 4.0 },
+      { "ticker": "GOOGL", "weight": 3.5 },
+      { "ticker": "NVDA", "weight": 3.5 },
+      { "ticker": "GOOG", "weight": 3.0 },
+      { "ticker": "JPM", "weight": 2.5 },
+      { "ticker": "JNJ", "weight": 2.5 },
+      { "ticker": "V", "weight": 2.4 },
+      { "ticker": "MA", "weight": 2.3 }
+    ],
+    "sectorExposure": [
+      { "sector": "Information Technology", "weight": 32.0 },
+      { "sector": "Health Care", "weight": 17.0 },
+      { "sector": "Financials", "weight": 14.0 },
+      { "sector": "Industrials", "weight": 10.0 },
+      { "sector": "Consumer Discretionary", "weight": 9.0 },
+      { "sector": "Communication Services", "weight": 7.0 },
+      { "sector": "Consumer Staples", "weight": 6.0 },
+      { "sector": "Other", "weight": 5.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 95 },
+      { "cap": "Medium", "weight": 5 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "MTUM": {
+    "name": "iShares MSCI USA Momentum Factor ETF",
+    "topHoldings": [
+      { "ticker": "NVDA", "weight": 10.0 },
+      { "ticker": "LLY", "weight": 8.5 },
+      { "ticker": "MSFT", "weight": 7.0 },
+      { "ticker": "AVGO", "weight": 5.0 },
+      { "ticker": "GOOGL", "weight": 4.5 },
+      { "ticker": "JPM", "weight": 4.0 },
+      { "ticker": "V", "weight": 3.5 },
+      { "ticker": "UNH", "weight": 3.0 },
+      { "ticker": "META", "weight": 3.0 },
+      { "ticker": "MA", "weight": 2.8 }
+    ],
+    "sectorExposure": [
+      { "sector": "Information Technology", "weight": 35.0 },
+      { "sector": "Health Care", "weight": 18.0 },
+      { "sector": "Financials", "weight": 15.0 },
+      { "sector": "Consumer Discretionary", "weight": 10.0 },
+      { "sector": "Industrials", "weight": 8.0 },
+      { "sector": "Communication Services", "weight": 5.0 },
+      { "sector": "Other", "weight": 9.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 90 },
+      { "cap": "Medium", "weight": 10 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "USMV": {
+    "name": "iShares MSCI USA Min Vol Factor ETF",
+    "topHoldings": [
+      { "ticker": "PEP", "weight": 2.5 },
+      { "ticker": "PG", "weight": 2.5 },
+      { "ticker": "VZ", "weight": 2.0 },
+      { "ticker": "TSN", "weight": 2.0 },
+      { "ticker": "ABT", "weight": 1.8 },
+      { "ticker": "UNH", "weight": 1.7 },
+      { "ticker": "KO", "weight": 1.6 },
+      { "ticker": "MRK", "weight": 1.5 },
+      { "ticker": "MCD", "weight": 1.5 },
+      { "ticker": "CVS", "weight": 1.4 }
+    ],
+    "sectorExposure": [
+      { "sector": "Health Care", "weight": 22.0 },
+      { "sector": "Financials", "weight": 16.0 },
+      { "sector": "Consumer Staples", "weight": 15.0 },
+      { "sector": "Information Technology", "weight": 14.0 },
+      { "sector": "Utilities", "weight": 8.0 },
+      { "sector": "Industrials", "weight": 7.0 },
+      { "sector": "Communication Services", "weight": 6.0 },
+      { "sector": "Real Estate", "weight": 5.0 },
+      { "sector": "Other", "weight": 7.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 75 },
+      { "cap": "Medium", "weight": 25 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "RPV": {
+    "name": "Invesco S&P 500 Pure Value ETF",
+    "topHoldings": [
+      { "ticker": "CFG", "weight": 3.0 },
+      { "ticker": "DFS", "weight": 2.5 },
+      { "ticker": "AIG", "weight": 2.5 },
+      { "ticker": "VLO", "weight": 2.4 },
+      { "ticker": "F", "weight": 2.3 },
+      { "ticker": "WBA", "weight": 2.3 },
+      { "ticker": "KEY", "weight": 2.2 },
+      { "ticker": "TFC", "weight": 2.1 },
+      { "ticker": "HPE", "weight": 2.0 },
+      { "ticker": "ZION", "weight": 2.0 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financials", "weight": 38.0 },
+      { "sector": "Energy", "weight": 13.0 },
+      { "sector": "Industrials", "weight": 11.0 },
+      { "sector": "Consumer Discretionary", "weight": 10.0 },
+      { "sector": "Health Care", "weight": 9.0 },
+      { "sector": "Materials", "weight": 6.0 },
+      { "sector": "Information Technology", "weight": 5.0 },
+      { "sector": "Other", "weight": 8.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 90 },
+      { "cap": "Medium", "weight": 10 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "RPG": {
+    "name": "Invesco S&P 500 Pure Growth ETF",
+    "topHoldings": [
+      { "ticker": "NVDA", "weight": 8.0 },
+      { "ticker": "AMZN", "weight": 6.5 },
+      { "ticker": "META", "weight": 6.0 },
+      { "ticker": "LLY", "weight": 5.0 },
+      { "ticker": "AVGO", "weight": 4.5 },
+      { "ticker": "TSLA", "weight": 4.0 },
+      { "ticker": "CRM", "weight": 3.5 },
+      { "ticker": "ADBE", "weight": 3.0 },
+      { "ticker": "BKNG", "weight": 3.0 },
+      { "ticker": "NFLX", "weight": 2.5 }
+    ],
+    "sectorExposure": [
+      { "sector": "Information Technology", "weight": 37.0 },
+      { "sector": "Consumer Discretionary", "weight": 20.0 },
+      { "sector": "Health Care", "weight": 17.0 },
+      { "sector": "Communication Services", "weight": 10.0 },
+      { "sector": "Industrials", "weight": 7.0 },
+      { "sector": "Other", "weight": 9.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 90 },
+      { "cap": "Medium", "weight": 10 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "AVDV": {
+    "name": "Avantis International Small Cap Value ETF",
+    "topHoldings": [
+      { "ticker": "SMT", "weight": 0.5 },
+      { "ticker": "CIB", "weight": 0.5 },
+      { "ticker": "FLS", "weight": 0.5 },
+      { "ticker": "SXM", "weight": 0.4 },
+      { "ticker": "MTH", "weight": 0.4 },
+      { "ticker": "KBR", "weight": 0.4 },
+      { "ticker": "VLY", "weight": 0.4 },
+      { "ticker": "TOL", "weight": 0.4 },
+      { "ticker": "PFG", "weight": 0.4 },
+      { "ticker": "LBRDA", "weight": 0.4 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financials", "weight": 20.0 },
+      { "sector": "Industrials", "weight": 17.0 },
+      { "sector": "Consumer Discretionary", "weight": 13.0 },
+      { "sector": "Materials", "weight": 11.0 },
+      { "sector": "Real Estate", "weight": 9.0 },
+      { "sector": "Energy", "weight": 8.0 },
+      { "sector": "Information Technology", "weight": 7.0 },
+      { "sector": "Health Care", "weight": 6.0 },
+      { "sector": "Utilities", "weight": 4.0 },
+      { "sector": "Consumer Staples", "weight": 3.0 }
+    ],
+    "regionExposure": [
+      { "region": "Developed Europe", "weight": 40.0 },
+      { "region": "Developed Asia", "weight": 30.0 },
+      { "region": "Emerging Markets", "weight": 15.0 },
+      { "region": "Developed Pacific", "weight": 10.0 },
+      { "region": "North America", "weight": 5.0 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 0 },
+      { "cap": "Medium", "weight": 10 },
+      { "cap": "Small", "weight": 90 }
+    ]
+  },
+  "AVES": {
+    "name": "Avantis Emerging Markets Equity ETF",
+    "topHoldings": [
+      { "ticker": "TENCENT", "weight": 3.0 },
+      { "ticker": "TSMC", "weight": 2.5 },
+      { "ticker": "ALIBABA", "weight": 2.0 },
+      { "ticker": "SAMSUNG", "weight": 1.8 },
+      { "ticker": "MTZ", "weight": 1.5 },
+      { "ticker": "RELIANCE", "weight": 1.4 },
+      { "ticker": "INFY", "weight": 1.2 },
+      { "ticker": "CIB", "weight": 1.0 },
+      { "ticker": "BIDU", "weight": 0.9 },
+      { "ticker": "JD", "weight": 0.8 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financials", "weight": 22.0 },
+      { "sector": "Information Technology", "weight": 20.0 },
+      { "sector": "Consumer Discretionary", "weight": 14.0 },
+      { "sector": "Materials", "weight": 9.0 },
+      { "sector": "Communication Services", "weight": 8.0 },
+      { "sector": "Industrials", "weight": 7.0 },
+      { "sector": "Energy", "weight": 6.0 },
+      { "sector": "Health Care", "weight": 5.0 },
+      { "sector": "Real Estate", "weight": 4.0 },
+      { "sector": "Other", "weight": 5.0 }
+    ],
+    "regionExposure": [
+      { "region": "China", "weight": 30.0 },
+      { "region": "India", "weight": 15.0 },
+      { "region": "Taiwan", "weight": 12.0 },
+      { "region": "Brazil", "weight": 8.0 },
+      { "region": "South Korea", "weight": 7.0 },
+      { "region": "Other EM", "weight": 28.0 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 50 },
+      { "cap": "Medium", "weight": 30 },
+      { "cap": "Small", "weight": 20 }
+    ]
   }
 }
-
-    
