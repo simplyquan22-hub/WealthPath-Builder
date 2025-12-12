@@ -166,33 +166,33 @@
   "SCHD": {
     "name": "Schwab U.S. Dividend Equity ETF",
     "topHoldings": [
-        { "ticker": "AVGO", "weight": 4.2 },
-        { "ticker": "MRK", "weight": 4.1 },
-        { "ticker": "CVX", "weight": 4.0 },
-        { "ticker": "HD", "weight": 4.0 },
-        { "ticker": "ABBV", "weight": 3.9 },
-        { "ticker": "VZ", "weight": 3.8 },
-        { "ticker": "PEP", "weight": 3.8 },
-        { "ticker": "KO", "weight": 3.7 },
-        { "ticker": "CSCO", "weight": 3.6 },
-        { "ticker": "AMGN", "weight": 3.5 }
+      { "ticker": "AMGN", "weight": 4.5 },
+      { "ticker": "MRK", "weight": 4.3 },
+      { "ticker": "VZ", "weight": 4.2 },
+      { "ticker": "HD", "weight": 4.1 },
+      { "ticker": "PEP", "weight": 4.0 },
+      { "ticker": "PFE", "weight": 3.9 },
+      { "ticker": "AVGO", "weight": 3.8 },
+      { "ticker": "KO", "weight": 3.7 },
+      { "ticker": "MSFT", "weight": 3.6 },
+      { "ticker": "T", "weight": 3.5 }
     ],
     "sectorExposure": [
-        { "sector": "Financials", "weight": 20.5 },
-        { "sector": "Industrials", "weight": 17.1 },
-        { "sector": "Healthcare", "weight": 15.8 },
-        { "sector": "Consumer Staples", "weight": 12.4 },
-        { "sector": "Technology", "weight": 11.5 },
-        { "sector": "Energy", "weight": 9.9 },
-        { "sector": "Communication Services", "weight": 5.1 },
-        { "sector": "Consumer Discretionary", "weight": 5.0 },
-        { "sector": "Materials", "weight": 2.7 }
+      { "sector": "Financials", "weight": 20.0 },
+      { "sector": "Industrials", "weight": 18.0 },
+      { "sector": "Health Care", "weight": 15.0 },
+      { "sector": "Information Technology", "weight": 13.0 },
+      { "sector": "Consumer Staples", "weight": 12.0 },
+      { "sector": "Consumer Discretionary", "weight": 9.0 },
+      { "sector": "Energy", "weight": 6.0 },
+      { "sector": "Communication Services", "weight": 4.0 },
+      { "sector": "Materials", "weight": 3.0 }
     ],
     "regionExposure": [
-        { "region": "North America", "weight": 100 }
+      { "region": "North America", "weight": 100 }
     ],
     "marketCapExposure": [
-        { "cap": "Large", "weight": 100 }
+      { "cap": "Large", "weight": 100 }
     ]
   },
   "VGT": {
@@ -1584,6 +1584,138 @@
       { "cap": "Large", "weight": 50 },
       { "cap": "Medium", "weight": 30 },
       { "cap": "Small", "weight": 20 }
+    ]
+  },
+  "VYM": {
+    "name": "Vanguard High Dividend Yield ETF",
+    "topHoldings": [
+      { "ticker": "JPM", "weight": 3.9 },
+      { "ticker": "BRK.B", "weight": 3.8 },
+      { "ticker": "XOM", "weight": 3.7 },
+      { "ticker": "JNJ", "weight": 3.6 },
+      { "ticker": "UNH", "weight": 3.5 },
+      { "ticker": "PG", "weight": 3.4 },
+      { "ticker": "HD", "weight": 3.3 },
+      { "ticker": "CVX", "weight": 3.2 },
+      { "ticker": "PFE", "weight": 3.1 },
+      { "ticker": "BAC", "weight": 3.0 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financials", "weight": 21.0 },
+      { "sector": "Health Care", "weight": 17.0 },
+      { "sector": "Consumer Staples", "weight": 12.0 },
+      { "sector": "Industrials", "weight": 11.0 },
+      { "sector": "Energy", "weight": 10.0 },
+      { "sector": "Information Technology", "weight": 9.0 },
+      { "sector": "Consumer Discretionary", "weight": 8.0 },
+      { "sector": "Utilities", "weight": 5.0 },
+      { "sector": "Other", "weight": 7.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 85 },
+      { "cap": "Medium", "weight": 15 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "DGRO": {
+    "name": "iShares Core Dividend Growth ETF",
+    "topHoldings": [
+      { "ticker": "MSFT", "weight": 4.0 },
+      { "ticker": "AAPL", "weight": 3.8 },
+      { "ticker": "JPM", "weight": 3.0 },
+      { "ticker": "JNJ", "weight": 2.8 },
+      { "ticker": "XOM", "weight": 2.6 },
+      { "ticker": "UNH", "weight": 2.4 },
+      { "ticker": "PFE", "weight": 2.2 },
+      { "ticker": "PG", "weight": 2.0 },
+      { "ticker": "HD", "weight": 1.8 },
+      { "ticker": "ABT", "weight": 1.6 }
+    ],
+    "sectorExposure": [
+      { "sector": "Information Technology", "weight": 20.0 },
+      { "sector": "Health Care", "weight": 17.0 },
+      { "sector": "Financials", "weight": 16.0 },
+      { "sector": "Industrials", "weight": 13.0 },
+      { "sector": "Consumer Discretionary", "weight": 10.0 },
+      { "sector": "Consumer Staples", "weight": 9.0 },
+      { "sector": "Energy", "weight": 7.0 },
+      { "sector": "Other", "weight": 8.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 95 },
+      { "cap": "Medium", "weight": 5 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "SDY": {
+    "name": "SPDR S&P Dividend ETF",
+    "topHoldings": [
+      { "ticker": "TROW", "weight": 2.2 },
+      { "ticker": "IBM", "weight": 2.0 },
+      { "ticker": "MMM", "weight": 1.8 },
+      { "ticker": "XOM", "weight": 1.7 },
+      { "ticker": "PFE", "weight": 1.6 },
+      { "ticker": "T", "weight": 1.5 },
+      { "ticker": "LEG", "weight": 1.4 },
+      { "ticker": "MSFT", "weight": 1.3 },
+      { "ticker": "JNJ", "weight": 1.2 },
+      { "ticker": "KO", "weight": 1.1 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financials", "weight": 20.0 },
+      { "sector": "Industrials", "weight": 18.0 },
+      { "sector": "Consumer Discretionary", "weight": 14.0 },
+      { "sector": "Consumer Staples", "weight": 13.0 },
+      { "sector": "Energy", "weight": 10.0 },
+      { "sector": "Health Care", "weight": 9.0 },
+      { "sector": "Information Technology", "weight": 6.0 },
+      { "sector": "Other", "weight": 10.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 70 },
+      { "cap": "Medium", "weight": 30 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "NOBL": {
+    "name": "ProShares S&P 500 Dividend Aristocrats ETF",
+    "topHoldings": [
+      { "ticker": "MCD", "weight": 2.2 },
+      { "ticker": "APD", "weight": 2.1 },
+      { "ticker": "JNJ", "weight": 2.0 },
+      { "ticker": "TROW", "weight": 1.9 },
+      { "ticker": "SYY", "weight": 1.8 },
+      { "ticker": "WMT", "weight": 1.7 },
+      { "ticker": "FRC", "weight": 1.6 },
+      { "ticker": "ADM", "weight": 1.5 },
+      { "ticker": "MMM", "weight": 1.4 },
+      { "ticker": "CL", "weight": 1.3 }
+    ],
+    "sectorExposure": [
+      { "sector": "Industrials", "weight": 21.0 },
+      { "sector": "Consumer Staples", "weight": 19.0 },
+      { "sector": "Financials", "weight": 17.0 },
+      { "sector": "Health Care", "weight": 14.0 },
+      { "sector": "Materials", "weight": 10.0 },
+      { "sector": "Utilities", "weight": 9.0 },
+      { "sector": "Other", "weight": 10.0 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 95 },
+      { "cap": "Medium", "weight": 5 },
+      { "cap": "Small", "weight": 0 }
     ]
   }
 }
