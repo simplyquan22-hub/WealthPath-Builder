@@ -1,5 +1,4 @@
 
-
 {
   "VTI": {
     "name": "Vanguard Total Stock Market ETF",
@@ -171,28 +170,31 @@
   "VGT": {
     "name": "Vanguard Information Technology ETF",
     "topHoldings": [
-      { "ticker": "MSFT", "weight": 21.0 },
-      { "ticker": "AAPL", "weight": 17.5 },
-      { "ticker": "NVDA", "weight": 15.0 },
-      { "ticker": "AVGO", "weight": 5.0 },
-      { "ticker": "CRM", "weight": 2.0 },
-      { "ticker": "AMD", "weight": 1.8 },
-      { "ticker": "QCOM", "weight": 1.5 },
-      { "ticker": "ORCL", "weight": 1.4 },
-      { "ticker": "ADBE", "weight": 1.3 },
-      { "ticker": "INTC", "weight": 1.0 }
+      { "ticker": "AAPL", "weight": 14.88 },
+      { "ticker": "MSFT", "weight": 13.90 },
+      { "ticker": "NVDA", "weight": 9.92 },
+      { "ticker": "AVGO", "weight": 3.70 },
+      { "ticker": "CRM", "weight": 2.21 },
+      { "ticker": "ADBE", "weight": 2.10 },
+      { "ticker": "ACN", "weight": 1.77 },
+      { "ticker": "ORCL", "weight": 1.75 },
+      { "ticker": "AMD", "weight": 1.70 },
+      { "ticker": "INTC", "weight": 1.48 }
     ],
     "sectorExposure": [
-      { "sector": "Technology", "weight": 100 }
+      { "sector": "Technology", "weight": 99.80 },
+      { "sector": "Other", "weight": 0.20 }
     ],
     "regionExposure": [
-        { "region": "North America", "weight": 99.0 },
-        { "region": "Europe", "weight": 0.5 },
-        { "region": "Asia", "weight": 0.5 }
+      { "region": "North America", "weight": 98.90 },
+      { "region": "Other", "weight": 1.10 }
     ],
     "marketCapExposure": [
-        { "cap": "Large", "weight": 95 },
-        { "cap": "Medium", "weight": 5 }
+      { "cap": "Giant", "weight": 61.35 },
+      { "cap": "Large", "weight": 24.60 },
+      { "cap": "Mid", "weight": 10.70 },
+      { "cap": "Small", "weight": 3.00 },
+      { "cap": "Micro", "weight": 0.35 }
     ]
   },
   "VEA": {
@@ -1882,50 +1884,6 @@
       { "cap": "Micro", "weight": 0.13 }
     ]
   },
-  "IXUS": {
-    "name": "iShares Core MSCI Total International Stock ETF",
-    "topHoldings": [
-      { "ticker": "TSM", "weight": 3.06 },
-      { "ticker": "TCEHY", "weight": 1.30 },
-      { "ticker": "ASML", "weight": 1.13 },
-      { "ticker": "005930.KR", "weight": 0.91 },
-      { "ticker": "BABA", "weight": 0.87 },
-      { "ticker": "AZN", "weight": 0.73 },
-      { "ticker": "ROG", "weight": 0.72 },
-      { "ticker": "SAP", "weight": 0.67 },
-      { "ticker": "NOVN", "weight": 0.66 },
-      { "ticker": "NESN", "weight": 0.65 }
-    ],
-    "sectorExposure": [
-      { "sector": "Financials", "weight": 23.17 },
-      { "sector": "Industrials", "weight": 15.46 },
-      { "sector": "Information Technology", "weight": 14.20 },
-      { "sector": "Consumer Discretionary", "weight": 10.12 },
-      { "sector": "Health Care", "weight": 7.72 },
-      { "sector": "Materials", "weight": 7.53 },
-      { "sector": "Consumer Staples", "weight": 5.87 },
-      { "sector": "Communication", "weight": 5.45 },
-      { "sector": "Energy", "weight": 4.34 },
-      { "sector": "Utilities", "weight": 3.13 },
-      { "sector": "Real Estate", "weight": 2.61 }
-    ],
-    "regionExposure": [
-      { "region": "Asia", "weight": 41.49 },
-      { "region": "Europe", "weight": 39.56 },
-      { "region": "North America (Canada)", "weight": 9.24 },
-      { "region": "Oceania", "weight": 4.49 },
-      { "region": "Middle East", "weight": 2.81 },
-      { "region": "Latin America", "weight": 1.44 },
-      { "region": "Africa", "weight": 0.97 }
-    ],
-    "marketCapExposure": [
-      { "cap": "Giant", "weight": 47.36 },
-      { "cap": "Large", "weight": 31.41 },
-      { "cap": "Mid", "weight": 16.64 },
-      { "cap": "Small", "weight": 3.49 },
-      { "cap": "Micro", "weight": 0.11 }
-    ]
-  },
   "IEFA": {
     "name": "iShares Core MSCI EAFE ETF",
     "topHoldings": [
@@ -2026,6 +1984,50 @@
       { "cap": "Not Available", "weight": 100 }
     ]
   },
+  "IXUS": {
+    "name": "iShares Core MSCI Total International Stock ETF",
+    "topHoldings": [
+      { "ticker": "TSM", "weight": 3.06 },
+      { "ticker": "TCEHY", "weight": 1.30 },
+      { "ticker": "ASML", "weight": 1.13 },
+      { "ticker": "005930.KR", "weight": 0.91 },
+      { "ticker": "BABA", "weight": 0.87 },
+      { "ticker": "AZN", "weight": 0.73 },
+      { "ticker": "ROG", "weight": 0.72 },
+      { "ticker": "SAP", "weight": 0.67 },
+      { "ticker": "NOVN", "weight": 0.66 },
+      { "ticker": "NESN", "weight": 0.65 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financials", "weight": 23.17 },
+      { "sector": "Industrials", "weight": 15.46 },
+      { "sector": "Information Technology", "weight": 14.20 },
+      { "sector": "Consumer Discretionary", "weight": 10.12 },
+      { "sector": "Health Care", "weight": 7.72 },
+      { "sector": "Materials", "weight": 7.53 },
+      { "sector": "Consumer Staples", "weight": 5.87 },
+      { "sector": "Communication", "weight": 5.45 },
+      { "sector": "Energy", "weight": 4.34 },
+      { "sector": "Utilities", "weight": 3.13 },
+      { "sector": "Real Estate", "weight": 2.61 }
+    ],
+    "regionExposure": [
+      { "region": "Asia", "weight": 41.49 },
+      { "region": "Europe", "weight": 39.56 },
+      { "region": "North America (Canada)", "weight": 9.24 },
+      { "region": "Oceania", "weight": 4.49 },
+      { "region": "Middle East", "weight": 2.81 },
+      { "region": "Latin America", "weight": 1.44 },
+      { "region": "Africa", "weight": 0.97 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Giant", "weight": 47.36 },
+      { "cap": "Large", "weight": 31.41 },
+      { "cap": "Mid", "weight": 16.64 },
+      { "cap": "Small", "weight": 3.49 },
+      { "cap": "Micro", "weight": 0.11 }
+    ]
+  },
   "SCHE": {
     "name": "Schwab Emerging Markets Equity ETF",
     "topHoldings": [
@@ -2109,7 +2111,62 @@
       { "cap": "Medium", "weight": 19.88 },
       { "cap": "Small", "weight": 0.03 }
     ]
+  },
+  "FTEC": {
+    "name": "Fidelity MSCI Information Technology Index ETF",
+    "topHoldings": [
+      { "ticker": "AAPL", "weight": 15.01 },
+      { "ticker": "MSFT", "weight": 13.98 },
+      { "ticker": "NVDA", "weight": 9.99 },
+      { "ticker": "AVGO", "weight": 3.73 },
+      { "ticker": "CRM", "weight": 2.22 },
+      { "ticker": "ADBE", "weight": 2.12 },
+      { "ticker": "ACN", "weight": 1.78 },
+      { "ticker": "ORCL", "weight": 1.76 },
+      { "ticker": "AMD", "weight": 1.71 },
+      { "ticker": "INTC", "weight": 1.49 }
+    ],
+    "sectorExposure": [
+      { "sector": "Technology", "weight": 99.88 },
+      { "sector": "Other", "weight": 0.12 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 98.94 },
+      { "region": "Other", "weight": 1.06 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Giant", "weight": 61.45 },
+      { "cap": "Large", "weight": 24.62 },
+      { "cap": "Mid", "weight": 10.71 },
+      { "cap": "Small", "weight": 3.01 },
+      { "cap": "Micro", "weight": 0.21 }
+    ]
+  },
+  "XLK": {
+    "name": "Technology Select Sector SPDR Fund",
+    "topHoldings": [
+      { "ticker": "AAPL", "weight": 21.60 },
+      { "ticker": "MSFT", "weight": 21.50 },
+      { "ticker": "NVDA", "weight": 6.80 },
+      { "ticker": "AVGO", "weight": 3.60 },
+      { "ticker": "ADBE", "weight": 2.30 },
+      { "ticker": "CRM", "weight": 2.20 },
+      { "ticker": "ORCL", "weight": 2.10 },
+      { "ticker": "ACN", "weight": 1.80 },
+      { "ticker": "AMD", "weight": 1.70 },
+      { "ticker": "INTC", "weight": 1.60 }
+    ],
+    "sectorExposure": [
+      { "sector": "Technology", "weight": 100.00 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100.00 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Giant", "weight": 65.00 },
+      { "cap": "Large", "weight": 25.00 },
+      { "cap": "Mid", "weight": 10.00 },
+      { "cap": "Small", "weight": 0.00 }
+    ]
   }
 }
-
-    
