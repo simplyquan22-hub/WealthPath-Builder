@@ -526,7 +526,7 @@ export function PortfolioBuilder() {
                     <strong className="text-foreground">Allocate to Tickers:</strong> In the Portfolio Summary, assign a percentage to each ticker. The total allocation for all tickers in your portfolio must equal 100%.
                 </li>
                  <li>
-                    <strong className="text-foreground">Analyze Your Portfolio:</strong> Click the "Analyze Portfolio" button to get a detailed breakdown of your portfolio's diversification, overlap, and exposure.
+                    <strong className="text-foreground">Analyze Your Portfolio:</strong> Click the "Analyze Portfolio" button to get a detailed breakdown of your portfolio's diversification, overlap, and exposure. The analyzer is specifically designed to look up ETF data.
                 </li>
                 <li>
                     <strong className="text-foreground">Project Growth:</strong> Once you're done, click "<span className="text-primary">Project My Growth</span>" to see how your custom portfolio could perform over time in the calculator.
