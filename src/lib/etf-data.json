@@ -923,6 +923,113 @@
       { "cap": "Medium", "weight": 100 },
       { "cap": "Small", "weight": 0 }
     ]
+  },
+  "VO": {
+    "name": "Vanguard Mid-Cap ETF",
+    "topHoldings": [
+      { "ticker": "RPRX", "weight": 0.7 },
+      { "ticker": "PLD", "weight": 0.6 },
+      { "ticker": "TRMB", "weight": 0.6 },
+      { "ticker": "MSCI", "weight": 0.5 },
+      { "ticker": "WEC", "weight": 0.5 },
+      { "ticker": "AEP", "weight": 0.5 },
+      { "ticker": "PGR", "weight": 0.5 },
+      { "ticker": "CMS", "weight": 0.5 },
+      { "ticker": "DAL", "weight": 0.5 },
+      { "ticker": "TRV", "weight": 0.4 }
+    ],
+    "sectorExposure": [
+      { "sector": "Industrials", "weight": 19.5 },
+      { "sector": "Financials", "weight": 15.5 },
+      { "sector": "Information Technology", "weight": 15.0 },
+      { "sector": "Consumer Discretionary", "weight": 11.5 },
+      { "sector": "Health Care", "weight": 10.5 },
+      { "sector": "Real Estate", "weight": 7.0 },
+      { "sector": "Utilities", "weight": 6.5 },
+      { "sector": "Materials", "weight": 5.0 },
+      { "sector": "Energy", "weight": 5.0 },
+      { "sector": "Consumer Staples", "weight": 4.5 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 0 },
+      { "cap": "Medium", "weight": 100 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "IJH": {
+    "name": "iShares Core S&P Mid-Cap ETF",
+    "topHoldings": [
+      { "ticker": "C", "weight": 0.7 },
+      { "ticker": "ALLE", "weight": 0.7 },
+      { "ticker": "DAL", "weight": 0.6 },
+      { "ticker": "FNF", "weight": 0.6 },
+      { "ticker": "TXT", "weight": 0.6 },
+      { "ticker": "APTV", "weight": 0.6 },
+      { "ticker": "WDC", "weight": 0.5 },
+      { "ticker": "ROL", "weight": 0.5 },
+      { "ticker": "BKR", "weight": 0.5 },
+      { "ticker": "PGR", "weight": 0.5 }
+    ],
+    "sectorExposure": [
+      { "sector": "Industrials", "weight": 18.5 },
+      { "sector": "Financials", "weight": 17.5 },
+      { "sector": "Information Technology", "weight": 13.5 },
+      { "sector": "Consumer Discretionary", "weight": 12.0 },
+      { "sector": "Health Care", "weight": 10.0 },
+      { "sector": "Real Estate", "weight": 6.5 },
+      { "sector": "Energy", "weight": 6.0 },
+      { "sector": "Materials", "weight": 5.5 },
+      { "sector": "Utilities", "weight": 5.0 },
+      { "sector": "Communication Services", "weight": 3.0 },
+      { "sector": "Consumer Staples", "weight": 2.5 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 0 },
+      { "cap": "Medium", "weight": 100 },
+      { "cap": "Small", "weight": 0 }
+    ]
+  },
+  "MDY": {
+    "name": "SPDR S&P Midcap 400 ETF",
+    "topHoldings": [
+      { "ticker": "C", "weight": 0.7 },
+      { "ticker": "ALLE", "weight": 0.7 },
+      { "ticker": "DAL", "weight": 0.6 },
+      { "ticker": "FNF", "weight": 0.6 },
+      { "ticker": "TXT", "weight": 0.6 },
+      { "ticker": "APTV", "weight": 0.6 },
+      { "ticker": "WDC", "weight": 0.5 },
+      { "ticker": "ROL", "weight": 0.5 },
+      { "ticker": "BKR", "weight": 0.5 },
+      { "ticker": "PGR", "weight": 0.5 }
+    ],
+    "sectorExposure": [
+      { "sector": "Industrials", "weight": 18.5 },
+      { "sector": "Financials", "weight": 17.5 },
+      { "sector": "Information Technology", "weight": 13.5 },
+      { "sector": "Consumer Discretionary", "weight": 12.0 },
+      { "sector": "Health Care", "weight": 10.0 },
+      { "sector": "Real Estate", "weight": 6.5 },
+      { "sector": "Energy", "weight": 6.0 },
+      { "sector": "Materials", "weight": 5.5 },
+      { "sector": "Utilities", "weight": 5.0 },
+      { "sector": "Communication Services", "weight": 3.0 },
+      { "sector": "Consumer Staples", "weight": 2.5 }
+    ],
+    "regionExposure": [
+      { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Large", "weight": 0 },
+      { "cap": "Medium", "weight": 100 },
+      { "cap": "Small", "weight": 0 }
+    ]
   }
 }
     
