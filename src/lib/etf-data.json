@@ -192,9 +192,9 @@
     "marketCapExposure": [
       { "cap": "Giant", "weight": 61.35 },
       { "cap": "Large", "weight": 24.60 },
-      { "cap": "Mid", "weight": 10.70 },
-      { "cap": "Small", "weight": 3.00 },
-      { "cap": "Micro", "weight": 0.35 }
+      { "cap": "Mid", "weight": 10.71 },
+      { "cap": "Small", "weight": 3.01 },
+      { "cap": "Micro", "weight": 0.21 }
     ]
   },
   "VEA": {
@@ -2168,5 +2168,119 @@
       { "cap": "Mid", "weight": 10.00 },
       { "cap": "Small", "weight": 0.00 }
     ]
+  },
+  "VFH": {
+    "name": "Vanguard Financials ETF",
+    "topHoldings": [
+      { "ticker": "JPM", "weight": 10.20 },
+      { "ticker": "BRK/B", "weight": 7.63 },
+      { "ticker": "MA", "weight": 5.58 },
+      { "ticker": "BAC", "weight": 4.51 },
+      { "ticker": "V", "weight": 4.24 },
+      { "ticker": "WFC", "weight": 3.30 },
+      { "ticker": "GS", "weight": 2.86 },
+      { "ticker": "AXP", "weight": 2.39 },
+      { "ticker": "MS", "weight": 2.32 },
+      { "ticker": "C", "weight": 2.20 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financial Services", "weight": 96.49 },
+      { "sector": "Technology", "weight": 2.50 },
+      { "sector": "Real Estate", "weight": 0.69 },
+      { "sector": "Industrials", "weight": 0.26 },
+      { "sector": "Other/Cash", "weight": 0.06 }
+    ],
+    "regionExposure": [
+      { "region": "United States", "weight": 95.61 },
+      { "region": "Switzerland", "weight": 1.24 },
+      { "region": "Other/Cash", "weight": 3.15 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Giant Cap", "weight": 29.78 },
+      { "cap": "Large Cap", "weight": 35.71 },
+      { "cap": "Mid Cap", "weight": 23.34 },
+      { "cap": "Small Cap", "weight": 8.05 },
+      { "cap": "Micro Cap", "weight": 3.12 }
+    ]
+  },
+  "XLF": {
+    "name": "Financial Select Sector SPDR Fund",
+    "topHoldings": [
+      { "ticker": "BRK.B", "weight": 11.60 },
+      { "ticker": "JPM", "weight": 11.00 },
+      { "ticker": "V", "weight": 7.14 },
+      { "ticker": "MA", "weight": 5.74 },
+      { "ticker": "BAC", "weight": 4.76 },
+      { "ticker": "WFC", "weight": 3.75 },
+      { "ticker": "GS", "weight": 3.47 },
+      { "ticker": "MS", "weight": 2.81 },
+      { "ticker": "C", "weight": 2.64 },
+      { "ticker": "AXP", "weight": 2.63 }
+    ],
+    "sectorExposure": [
+      { "sector": "Financial Services", "weight": 97.94 },
+      { "sector": "Technology", "weight": 1.81 },
+      { "sector": "Industrials", "weight": 0.25 }
+    ],
+    "regionExposure": [
+      { "region": "United States", "weight": 98.41 },
+      { "region": "Non-U.S. Equity", "weight": 1.46 },
+      { "region": "Cash", "weight": 0.13 }
+    ],
+    "marketCapExposure": []
+  },
+  "VHT": {
+    "name": "Vanguard Health Care ETF",
+    "topHoldings": [
+      { "ticker": "UNH", "weight": 8.44 },
+      { "ticker": "JNJ", "weight": 7.32 },
+      { "ticker": "LLY", "weight": 6.70 },
+      { "ticker": "MRK", "weight": 4.51 },
+      { "ticker": "ABBV", "weight": 3.79 },
+      { "ticker": "PFE", "weight": 3.73 },
+      { "ticker": "TMO", "weight": 3.25 },
+      { "ticker": "DHR", "weight": 2.88 },
+      { "ticker": "AMGN", "weight": 2.86 },
+      { "ticker": "BMY", "weight": 2.76 }
+    ],
+    "sectorExposure": [
+      { "sector": "Healthcare Equipment & Services", "weight": 45.47 },
+      { "sector": "Pharmaceuticals & Biotechnology", "weight": 37.10 },
+      { "sector": "Life Sciences Tools & Services", "weight": 17.30 }
+    ],
+    "regionExposure": [
+      { "region": "United States", "weight": 97.40 },
+      { "region": "Other", "weight": 2.60 }
+    ],
+    "marketCapExposure": [
+      { "cap": "Giant", "weight": 42.60 },
+      { "cap": "Large", "weight": 35.50 },
+      { "cap": "Mid", "weight": 15.60 },
+      { "cap": "Small", "weight": 5.00 },
+      { "cap": "Micro", "weight": 1.30 }
+    ]
+  },
+  "XLV": {
+    "name": "Health Care Select Sector SPDR Fund",
+    "topHoldings": [
+      { "ticker": "UNH", "weight": 9.38 },
+      { "ticker": "JNJ", "weight": 7.77 },
+      { "ticker": "LLY", "weight": 7.08 },
+      { "ticker": "MRK", "weight": 5.43 },
+      { "ticker": "ABBV", "weight": 4.14 },
+      { "ticker": "PFE", "weight": 4.13 },
+      { "ticker": "DHR", "weight": 3.18 },
+      { "ticker": "TMO", "weight": 3.12 },
+      { "ticker": "AMGN", "weight": 3.09 },
+      { "ticker": "BMY", "weight": 2.92 }
+    ],
+    "sectorExposure": [
+      { "sector": "Health Care", "weight": 100.00 }
+    ],
+    "regionExposure": [
+      { "region": "United States", "weight": 100.00 }
+    ],
+    "marketCapExposure": []
   }
 }
+    
