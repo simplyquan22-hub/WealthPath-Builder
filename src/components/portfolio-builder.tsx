@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import * as React from "react";
@@ -65,7 +66,7 @@ const categoryBgColors = {
     alternatives: "bg-purple-900/20",
 };
 
-const availableTickers = [
+const allAvailableTickers = [
     // CORE U.S. MARKET ETFs
     { value: 'VTI', label: 'Vanguard Total Stock Market', category: 'stocks', group: 'Core U.S. Market' },
     { value: 'ITOT', label: 'iShares Core S&P Total U.S. Stock Market', category: 'stocks', group: 'Core U.S. Market' },
@@ -176,128 +177,13 @@ const availableTickers = [
     { value: 'VCIT', label: 'Vanguard Intermediate-Term Corporate Bond ETF', category: 'bonds', group: 'Bond ETFs' },
     { value: 'HYG', label: 'iShares iBoxx $ High Yield Corporate Bond ETF', category: 'bonds', group: 'Bond ETFs' },
 
-    // COMMODITIES & HEDGES
-    { value: 'GLD', label: 'SPDR Gold Shares', category: 'alternatives', group: 'Commodities & Hedges' },
-    { value: 'IAU', label: 'iShares Gold Trust', category: 'alternatives', group: 'Commodities & Hedges' },
-    { value: 'SLV', label: 'iShares Silver Trust', category: 'alternatives', group: 'Commodatives & Hedges' },
-    { value: 'PDBC', label: 'Invesco Optimum Yield Diversified Commodity Strategy No K-1 ETF', category: 'alternatives', group: 'Commodities & Hedges' },
-    { value: 'DBC', label: 'Invesco DB Commodity Index Tracking Fund', category: 'alternatives', group: 'Commododies & Hedges' },
-
     // THEME ETFs
     { value: 'ARKK', label: 'ARK Innovation ETF', category: 'stocks', group: 'Theme ETFs' },
-    { value: 'ARKG', label: 'ARK Genomic Revolution ETF', category: 'stocks', group: 'Theme ETFs' },
-    { value: 'BOTZ', label: 'Global X Robotics & Artificial Intelligence ETF', category: 'stocks', group: 'Theme ETFs' },
-    { value: 'CIBR', label: 'First Trust NASDAQ Cybersecurity ETF', category: 'stocks', group: 'Theme ETFs' },
-    { value: 'TAN', label: 'Invesco Solar ETF', category: 'stocks', group: 'Theme ETFs' },
-    { value: 'PBW', label: 'Invesco WilderHill Clean Energy ETF', category: 'stocks', group: 'Theme ETFs' },
-
-    // Individual Stocks
-    { value: 'AAPL', label: 'Apple Inc.', category: 'stocks', group: 'Stocks' },
-    { value: 'MSFT', label: 'Microsoft Corp.', category: 'stocks', group: 'Stocks' },
-    { value: 'GOOGL', label: 'Alphabet Inc.', category: 'stocks', group: 'Stocks' },
-    { value: 'AMZN', label: 'Amazon.com Inc.', category: 'stocks', group: 'Stocks' },
-    { value: 'NVDA', label: 'NVIDIA Corp.', category: 'stocks', group: 'Stocks' },
-    { value: 'META', label: 'Meta Platforms Inc.', category: 'stocks', group: 'Stocks' },
-    { value: 'TSLA', label: 'Tesla Inc.', category: 'stocks', group: 'Stocks' },
-    { value: 'JPM', label: 'JPMorgan Chase & Co.', category: 'stocks', group: 'Stocks' },
-    { value: 'UNH', label: 'UnitedHealth Group', category: 'stocks', group: 'Stocks' },
-    { value: 'XOM', label: 'Exxon Mobil Corp.', category: 'stocks', group: 'Stocks' },
-    { value: 'V', label: 'Visa Inc.', category: 'stocks', group: 'Stocks' },
-    { value: 'PG', label: 'Procter & Gamble', category: 'stocks', group: 'Stocks' },
-    { value: 'JNJ', label: 'Johnson & Johnson', category: 'stocks', group: 'Stocks' },
-    { value: 'NKE', label: 'Nike Inc.', category: 'stocks', group: 'Stocks' },
-    { value: 'DIS', label: 'Walt Disney Co.', category: 'stocks', group: 'Stocks' },
-
-    // Vanguard Mutual Funds
-    { value: 'VTSAX', label: 'Vanguard Total Stock Market Index Fund', category: 'stocks', group: 'Vanguard Mutual Funds' },
-    { value: 'VFIAX', label: 'Vanguard 500 Index Fund Admiral Shares', category: 'stocks', group: 'Vanguard Mutual Funds' },
-    { value: 'VSMAX', label: 'Vanguard Small-Cap Index Fund', category: 'stocks', group: 'Vanguard Mutual Funds' },
-    { value: 'VIMAX', label: 'Vanguard Mid-Cap Index Fund', category: 'stocks', group: 'Vanguard Mutual Funds' },
-    { value: 'VVIAX', label: 'Vanguard Value Index Fund Admiral Shares', category: 'stocks', group: 'Vanguard Mutual Funds' },
-    { value: 'VIGAX', label: 'Vanguard Growth Index Fund', category: 'stocks', group: 'Vanguard Mutual Funds' },
-    { value: 'VINIX', label: 'Vanguard Institutional Index Fund', category: 'stocks', group: 'Vanguard Mutual Funds' },
-    { value: 'VFWAX', label: 'Vanguard FTSE All-World ex-US Index Fund', category: 'stocks', group: 'Vanguard Mutual Funds' },
-    { value: 'VTMGX', label: 'Vanguard Developed Markets Index Fund', category: 'stocks', group: 'Vanguard Mutual Funds' },
-    { value: 'VEMAX', label: 'Vanguard Emerging Markets Stock Index Fund', category: 'stocks', group: 'Vanguard Mutual Funds' },
-    { value: 'VBTLX', label: 'Vanguard Total Bond Market Index Fund', category: 'bonds', group: 'Vanguard Mutual Funds' },
-    { value: 'VTABX', label: 'Vanguard Total International Bond Index Fund', category: 'bonds', group: 'Vanguard Mutual Funds' },
-    { value: 'VWIAX', label: 'Vanguard Wellington Fund Admiral Shares', category: 'stocks', group: 'Vanguard Mutual Funds' },
-    { value: 'VWENX', label: 'Vanguard Wellington Fund Admiral Shares', category: 'stocks', group: 'Vanguard Mutual Funds' },
-    { value: 'VGHAX', label: 'Vanguard Health Care Fund Admiral Shares', category: 'stocks', group: 'Vanguard Mutual Funds' },
-    { value: 'VGSIX', label: 'Vanguard Real Estate Index Fund Admiral Shares', category: 'alternatives', group: 'Vanguard Mutual Funds' },
-    { value: 'VFSTX', label: 'Vanguard Short-Term Investment-Grade Fund', category: 'bonds', group: 'Vanguard Mutual Funds' },
-    { value: 'VMMXX', label: 'Vanguard Prime Money Market Fund', category: 'bonds', group: 'Vanguard Mutual Funds' },
-    { value: 'VWAHX', label: 'Vanguard High-Yield Corporate Fund Admiral Shares', category: 'bonds', group: 'Vanguard Mutual Funds' },
-    { value: 'VWUSX', label: 'Vanguard U.S. Growth Fund Admiral Shares', category: 'stocks', group: 'Vanguard Mutual Funds' },
-
-    // Fidelity Mutual Funds
-    { value: 'FSKAX', label: 'Fidelity Total Market Index Fund', category: 'stocks', group: 'Fidelity Mutual Funds' },
-    { value: 'FXAIX', label: 'Fidelity 500 Index Fund', category: 'stocks', group: 'Fidelity Mutual Funds' },
-    { value: 'FZROX', label: 'Fidelity ZERO Total Market Index Fund', category: 'stocks', group: 'Fidelity Mutual Funds' },
-    { value: 'FZILX', label: 'Fidelity ZERO International Index Fund', category: 'stocks', group: 'Fidelity Mutual Funds' },
-    { value: 'FSMDX', label: 'Fidelity Mid Cap Index Fund', category: 'stocks', group: 'Fidelity Mutual Funds' },
-    { value: 'FSSNX', label: 'Fidelity Small Cap Index Fund', category: 'stocks', group: 'Fidelity Mutual Funds' },
-    { value: 'FISVX', label: 'Fidelity Small Cap Value Index Fund', category: 'stocks', group: 'Fidelity Mutual Funds' },
-    { value: 'FLCOX', label: 'Fidelity Corporate Bond Fund', category: 'bonds', group: 'Fidelity Mutual Funds' },
-    { value: 'FIPDX', label: 'Fidelity Inflation-Protected Bond Index Fund', category: 'bonds', group: 'Fidelity Mutual Funds' },
-    { value: 'FNILX', label: 'Fidelity ZERO Large Cap Index Fund', category: 'stocks', group: 'Fidelity Mutual Funds' },
-
-    // Schwab Mutual Funds
-    { value: 'SWTSX', label: 'Schwab Total Stock Market Index', category: 'stocks', group: 'Schwab Mutual Funds' },
-    { value: 'SWPPX', label: 'Schwab S&P 500 Index Fund', category: 'stocks', group: 'Schwab Mutual Funds' },
-    { value: 'SWISX', label: 'Schwab International Index Fund', category: 'stocks', group: 'Schwab Mutual Funds' },
-    { value: 'SWAGX', label: 'Schwab U.S. Aggregate Bond Index Fund', category: 'bonds', group: 'Schwab Mutual Funds' },
-    { value: 'SWLGX', label: 'Schwab U.S. Large-Cap Growth Index Fund', category: 'stocks', group: 'Schwab Mutual Funds' },
-    { value: 'SWLVX', label: 'Schwab U.S. Large-Cap Value Index Fund', category: 'stocks', group: 'Schwab Mutual Funds' },
-    { value: 'SWRSX', label: 'Schwab Global Real Estate Fund', category: 'alternatives', group: 'Schwab Mutual Funds' },
-    { value: 'SWEMX', label: 'Schwab Emerging Markets Equity ETF', category: 'stocks', group: 'Schwab Mutual Funds' },
-    { value: 'SWTIX', label: 'Schwab Treasury Inflation Protected Securities Index', category: 'bonds', group: 'Schwab Mutual Funds' },
-    { value: 'SWMIX', label: 'Schwab U.S. Mid-Cap Index Fund', category: 'stocks', group: 'Schwab Mutual Funds' },
-    { value: 'SWSMX', label: 'Schwab Small-Cap Index Fund', category: 'stocks', group: 'Schwab Mutual Funds' },
-    { value: 'SWOBX', label: 'Schwab Short-Term Bond Index Fund', category: 'bonds', group: 'Schwab Mutual Funds' },
-    { value: 'SWYMX', label: 'Schwab Municipal Bond Fund', category: 'bonds', group: 'Schwab Mutual Funds' },
-    { value: 'SWCRX', label: 'Schwab Commodity Index Fund', category: 'alternatives', group: 'Schwab Mutual Funds' },
-    { value: 'SWPSX', label: 'Schwab U.S. Dividend Equity ETF', category: 'stocks', group: 'Schwab Mutual Funds' },
-    { value: 'SWPRX', label: 'Schwab International Bond Fund', category: 'bonds', group: 'Schwab Mutual Funds' },
-    { value: 'SWCAX', label: 'Schwab Aggressive Allocation Fund', category: 'stocks', group: 'Schwab Mutual Funds' },
-    { value: 'SWBGX', label: 'Schwab Balanced Index Fund', category: 'stocks', group: 'Schwab Mutual Funds' },
-    { value: 'SWERX', label: 'Schwab Emerging Markets Equity Fund', category: 'stocks', group: 'Schwab Mutual Funds' },
-    { value: 'SWDRX', label: 'Schwab Developed International Value Fund', category: 'stocks', group: 'Schwab Mutual Funds' },
-
-    // Real Estate
-    { value: 'VNQ', label: 'Vanguard Real Estate ETF', category: 'alternatives', group: 'Real Estate' },
-    { value: 'SCHH', label: 'Schwab U.S. REIT ETF', category: 'alternatives', group: 'Real Estate' },
-    { value: 'IYR', label: 'iShares U.S. Real Estate ETF', category: 'alternatives', group: 'Real Estate' },
-    { value: 'XLRE', label: 'Real Estate Select Sector SPDR Fund', category: 'alternatives', group: 'Real Estate' },
-    { value: 'O', label: 'Realty Income Corp.', category: 'alternatives', group: 'Real Estate' },
-    { value: 'AMT', label: 'American Tower Corp.', category: 'alternatives', group: 'Real Estate' },
-    { value: 'PLD', label: 'Prologis Inc.', category: 'alternatives', group: 'Real Estate' },
-    { value: 'SPG', label: 'Simon Property Group', category: 'alternatives', group: 'Real Estate' },
-    { value: 'CCI', label: 'Crown Castle Inc.', category: 'alternatives', group: 'Real Estate' },
-    { value: 'PSA', label: 'Public Storage', category: 'alternatives', group: 'Real Estate' },
-    { value: 'EQR', label: 'Equity Residential', category: 'alternatives', group: 'Real Estate' },
-    { value: 'WELL', label: 'Welltower Inc.', category: 'alternatives', group: 'Real Estate' },
-    { value: 'AVB', label: 'AvalonBay Communities', category: 'alternatives', group: 'Real Estate' },
-    { value: 'NLY', label: 'Annaly Capital Management', category: 'alternatives', group: 'Real Estate' },
-    { value: 'STAG', label: 'STAG Industrial Inc.', category: 'alternatives', group: 'Real Estate' },
-
-    // Crypto
-    { value: 'BTC-USD', label: 'Bitcoin', category: 'alternatives', group: 'Crypto' },
-    { value: 'ETH-USD', label: 'Ethereum', category: 'alternatives', group: 'Crypto' },
-    { value: 'SOL-USD', label: 'Solana', category: 'alternatives', group: 'Crypto' },
-    { value: 'ADA-USD', label: 'Cardano', category: 'alternatives', group: 'Crypto' },
-    { value: 'AVAX-USD', label: 'Avalanche', category: 'alternatives', group: 'Crypto' },
-    { value: 'XRP-USD', label: 'Ripple', category: 'alternatives', group: 'Crypto' },
-    { value: 'DOGE-USD', label: 'Dogecoin', category: 'alternatives', group: 'Crypto' },
-    { value: 'DOT-USD', label: 'Polkadot', category: 'alternatives', group: 'Crypto' },
-    { value: 'LTC-USD', label: 'Litecoin', category: 'alternatives', group: 'Crypto' },
-    { value: 'LINK-USD', label: 'Chainlink', category: 'alternatives', group: 'Crypto' },
-    { value: 'MATIC-USD', label: 'Polygon', category: 'alternatives', group: 'Crypto' },
-    { value: 'TRX-USD', label: 'TRON', category: 'alternatives', group: 'Crypto' },
-    { value: 'BCH-USD', label: 'Bitcoin Cash', category: 'alternatives', group: 'Crypto' },
-    { value: 'NEAR-USD', label: 'Near Protocol', category: 'alternatives', group: 'Crypto' },
-    { value: 'ICP-USD', label: 'Internet Computer', category: 'alternatives', group: 'Crypto' },
 ];
+
+const availableForAnalysis = Object.keys(etfData);
+const availableTickers = allAvailableTickers.filter(t => availableForAnalysis.includes(t.value));
+
 
 const uniqueTickers = Array.from(new Set(availableTickers.map(t => t.value)))
   .map(value => {
@@ -314,7 +200,7 @@ const tickerGroups = uniqueTickers.reduce((acc, ticker) => {
     return acc;
 }, {} as Record<string, typeof uniqueTickers>);
 
-const availableForAnalysis = Object.keys(etfData);
+
 
 
 export type Allocation = {
@@ -682,5 +568,8 @@ export function PortfolioBuilder() {
 }
 
     
+
+    
+
 
     
