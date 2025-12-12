@@ -301,7 +301,7 @@
         { "ticker": "ALIBABA", "weight": 2.0 },
         { "ticker": "RELIANCE", "weight": 1.5 },
         { "ticker": "PDD", "weight": 1.1 },
-        { "tickerVALE", "weight": 0.8 },
+        { "ticker": "VALE", "weight": 0.8 },
         { "ticker": "INFOSYS", "weight": 0.8 },
         { "ticker": "MEITUAN", "weight": 0.7 },
         { "ticker": "ICICI BANK", "weight": 0.7 },
@@ -546,5 +546,59 @@
     "marketCapExposure": [
         { "cap": "Large", "weight": 100 }
     ]
+  },
+  "AGG": {
+    "name": "iShares Core U.S. Aggregate Bond ETF",
+    "topHoldings": [],
+    "sectorExposure": [
+        { "sector": "US Treasury", "weight": 42.1 },
+        { "sector": "Mortgage-Backed", "weight": 27.2 },
+        { "sector": "Industrial", "weight": 12.0 },
+        { "sector": "Financial", "weight": 10.5 },
+        { "sector": "Other", "weight": 8.2 }
+    ],
+    "regionExposure": [
+        { "region": "North America", "weight": 100 }
+    ],
+    "marketCapExposure": []
+  },
+  "VT": {
+      "name": "Vanguard Total World Stock ETF",
+      "topHoldings": [
+          { "ticker": "MSFT", "weight": 3.5 },
+          { "ticker": "AAPL", "weight": 3.1 },
+          { "ticker": "NVDA", "weight": 2.6 },
+          { "ticker": "AMZN", "weight": 1.9 },
+          { "ticker": "META", "weight": 1.2 },
+          { "ticker": "GOOGL", "weight": 1.1 },
+          { "ticker": "GOOG", "weight": 0.9 },
+          { "ticker": "TSMC", "weight": 0.8 },
+          { "ticker": "LLY", "weight": 0.8 },
+          { "ticker": "NOVO B", "weight": 0.7 }
+      ],
+      "sectorExposure": [
+          { "sector": "Technology", "weight": 25.4 },
+          { "sector": "Financials", "weight": 15.2 },
+          { "sector": "Healthcare", "weight": 11.2 },
+          { "sector": "Consumer Discretionary", "weight": 10.9 },
+          { "sector": "Industrials", "weight": 10.3 },
+          { "sector": "Communication Services", "weight": 7.0 },
+          { "sector": "Consumer Staples", "weight": 6.1 },
+          { "sector": "Energy", "weight": 4.6 },
+          { "sector": "Materials", "weight": 4.1 },
+          { "sector": "Real Estate", "weight": 2.6 },
+          { "sector": "Utilities", "weight": 2.6 }
+      ],
+      "regionExposure": [
+          { "region": "North America", "weight": 63.3 },
+          { "region": "Europe", "weight": 17.5 },
+          { "region": "Asia-Pacific", "weight": 11.8 },
+          { "region": "Emerging Markets", "weight": 7.4 }
+      ],
+      "marketCapExposure": [
+          { "cap": "Large", "weight": 88 },
+          { "cap": "Medium", "weight": 9 },
+          { "cap": "Small", "weight": 3 }
+      ]
   }
 }

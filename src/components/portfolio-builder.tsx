@@ -13,6 +13,8 @@ import { cn } from "@/lib/utils";
 import { AnimatedButton } from "./ui/animated-button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
+import { analyzePortfolio, PortfolioAnalysis } from "@/lib/portfolio-analyzer";
+import { PortfolioAnalysisDisplay } from "./portfolio-analysis";
 
 const glassCardClasses = "border border-white/10 bg-card/50 backdrop-blur-sm shadow-[0_0_15px_2px_rgba(0,100,255,0.35)]";
 
@@ -60,12 +62,6 @@ const categoryBgColors = {
     bonds: "bg-green-900/20",
     alternatives: "bg-purple-900/20",
 };
-
-const categoryHexColors: Record<string, string[]> = {
-  stocks: ["#2563eb", "#3b82f6", "#60a5fa", "#93c5fd", "#bfdbfe"],
-  bonds: ["#16a34a", "#22c55e", "#4ade80", "#86efac", "#bbf7d0"],
-  alternatives: ["#7c3aed", "#8b5cf6", "#a78bfa", "#c4b5fd", "#ddd6fe"],
-}
 
 const availableTickers = [
     // CORE U.S. MARKET ETFs
@@ -183,7 +179,7 @@ const availableTickers = [
     { value: 'IAU', label: 'iShares Gold Trust', category: 'alternatives', group: 'Commodities & Hedges' },
     { value: 'SLV', label: 'iShares Silver Trust', category: 'alternatives', group: 'Commodities & Hedges' },
     { value: 'PDBC', label: 'Invesco Optimum Yield Diversified Commodity Strategy No K-1 ETF', category: 'alternatives', group: 'Commodities & Hedges' },
-    { value: 'DBC', label: 'Invesco DB Commodity Index Tracking Fund', category: 'alternatives', group: 'Commodities & Hedges' },
+    { value: 'DBC', label: 'Invesco DB Commodity Index Tracking Fund', category: 'alternatives', group: 'Commododies & Hedges' },
 
     // THEME ETFs
     { value: 'ARKK', label: 'ARK Innovation ETF', category: 'stocks', group: 'Theme ETFs' },
@@ -317,13 +313,13 @@ const tickerGroups = uniqueTickers.reduce((acc, ticker) => {
 }, {} as Record<string, typeof uniqueTickers>);
 
 
-type Allocation = {
+export type Allocation = {
   stocks: number;
   bonds: number;
   alternatives: number;
 };
 
-type Ticker = {
+export type Ticker = {
   id: string;
   name: string;
   category: "stocks" | "bonds" | "alternatives";
@@ -338,6 +334,8 @@ export function PortfolioBuilder() {
   const [allocation, setAllocation] = React.useState<Allocation>({ stocks: 60, bonds: 30, alternatives: 10 });
   const [selectedTickers, setSelectedTickers] = React.useState<Ticker[]>([]);
   const [comboboxOpen, setComboboxOpen] = React.useState(false);
+  const [analysis, setAnalysis] = React.useState<PortfolioAnalysis | null>(null);
+  const [isAnalyzing, setIsAnalyzing] = React.useState(false);
   const allocationRef = React.useRef<HTMLDivElement>(null);
   const summaryRef = React.useRef<HTMLDivElement>(null);
 
@@ -362,6 +360,8 @@ export function PortfolioBuilder() {
     } catch (error) {
         console.error("Failed to save portfolio state to localStorage", error);
     }
+    // Clear analysis when portfolio changes
+    setAnalysis(null);
   }, [portfolioName, allocation, selectedTickers]);
 
 
@@ -410,14 +410,12 @@ export function PortfolioBuilder() {
         }
     }
 
-
     setAllocation({
       stocks: Math.round(newAllocation.stocks),
       bonds: Math.round(newAllocation.bonds),
       alternatives: Math.round(newAllocation.alternatives),
     });
 };
-
 
   const handleAddTicker = (tickerValue: string) => {
     const tickerData = uniqueTickers.find(t => t.value === tickerValue);
@@ -438,6 +436,17 @@ export function PortfolioBuilder() {
     setSelectedTickers(prev => prev.map(t => t.id === tickerId ? { ...t, allocation: newAllocation } : t));
   };
 
+  const handleAnalyzePortfolio = () => {
+    setIsAnalyzing(true);
+    setAnalysis(null);
+    // Simulate async operation
+    setTimeout(() => {
+        const result = analyzePortfolio(selectedTickers);
+        setAnalysis(result);
+        setIsAnalyzing(false);
+    }, 500);
+  };
+
   const getCategoryTickers = (category: keyof Allocation) => selectedTickers.filter(t => t.category === category);
   
   const getCategoryTotalAllocation = (category: keyof Allocation) => {
@@ -448,12 +457,14 @@ export function PortfolioBuilder() {
       const tickers = getCategoryTickers(category);
       const totalAllocation = getCategoryTotalAllocation(category);
 
+      const isAllocationInvalid = totalAllocation !== 100 && tickers.length > 0;
+
       return (
         <div>
             <div className="flex justify-between items-center mb-4">
                 <h4 className={cn("font-semibold text-lg", categoryColors[category])}>{title}</h4>
                 <div className="flex items-center gap-4">
-                    <span className={cn("text-sm", totalAllocation > 100 ? "text-destructive" : "text-muted-foreground")}>
+                    <span className={cn("text-sm", isAllocationInvalid ? "text-destructive" : "text-muted-foreground")}>
                         Total: {totalAllocation}%
                     </span>
                     <span className={cn("text-lg font-bold", categoryColors[category])}>{allocation[category]}%</span>
@@ -484,6 +495,9 @@ export function PortfolioBuilder() {
                     </div>
                 )}
             </div>
+             {isAllocationInvalid && (
+                <p className="text-destructive text-sm mt-2">The total allocation for {title} must equal 100%.</p>
+            )}
         </div>
       );
   }
@@ -494,7 +508,7 @@ export function PortfolioBuilder() {
       <Card className={glassCardClasses}>
         <CardHeader>
             <CardTitle className="text-2xl font-headline flex items-center gap-2">
-                <Info className="h-6 w-6" /> <span>How to Use the Portfolio Builder</span>
+                <Info className="h-6 w-6" /> How to Use the Portfolio Builder
             </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
@@ -516,6 +530,9 @@ export function PortfolioBuilder() {
                 </li>
                 <li>
                     <strong className="text-foreground">Allocate to Tickers:</strong> In the Portfolio Summary, assign a percentage to each ticker within its category. The total for each category must equal 100%.
+                </li>
+                 <li>
+                    <strong className="text-foreground">Analyze Your Portfolio:</strong> Click the "Analyze Portfolio" button to get a detailed breakdown of your portfolio's diversification, overlap, and exposure.
                 </li>
                 <li>
                     <strong className="text-foreground">Project Growth:</strong> Once you're done, click "<span className="text-primary">Project My Growth</span>" to see how your custom portfolio could perform over time in the calculator.
@@ -633,6 +650,10 @@ export function PortfolioBuilder() {
         </CardContent>
       </Card>
 
+        {analysis && (
+            <PortfolioAnalysisDisplay analysis={analysis} />
+        )}
+
       <div className="flex flex-col sm:flex-row justify-between gap-4">
          <AnimatedButton onClick={() => router.back()} >
             <div className="flex items-center">
@@ -640,12 +661,19 @@ export function PortfolioBuilder() {
               Back
             </div>
         </AnimatedButton>
-        <AnimatedButton onClick={() => router.push("/calculator")} className="w-full sm:w-auto">
-          <div className="flex items-center">
-            Project My Growth
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </div>
-        </AnimatedButton>
+        <div className="flex flex-col sm:flex-row gap-4">
+            <AnimatedButton onClick={handleAnalyzePortfolio} disabled={isAnalyzing || selectedTickers.length === 0} className="w-full sm:w-auto">
+                <div className="flex items-center">
+                    {isAnalyzing ? "Analyzing..." : "Analyze Portfolio"}
+                </div>
+            </AnimatedButton>
+            <AnimatedButton onClick={() => router.push("/calculator")} className="w-full sm:w-auto">
+                <div className="flex items-center">
+                    Project My Growth
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                </div>
+            </AnimatedButton>
+        </div>
       </div>
     </div>
   );
