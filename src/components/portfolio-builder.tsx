@@ -15,6 +15,9 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { analyzePortfolio, PortfolioAnalysis } from "@/lib/portfolio-analyzer";
 import { PortfolioAnalysisDisplay } from "./portfolio-analysis";
+import etfData from '@/lib/etf-data.json';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
+import { Badge } from "./ui/badge";
 
 const glassCardClasses = "border border-white/10 bg-card/50 backdrop-blur-sm shadow-[0_0_15px_2px_rgba(0,100,255,0.35)]";
 
@@ -177,7 +180,7 @@ const availableTickers = [
     // COMMODITIES & HEDGES
     { value: 'GLD', label: 'SPDR Gold Shares', category: 'alternatives', group: 'Commodities & Hedges' },
     { value: 'IAU', label: 'iShares Gold Trust', category: 'alternatives', group: 'Commodities & Hedges' },
-    { value: 'SLV', label: 'iShares Silver Trust', category: 'alternatives', group: 'Commodities & Hedges' },
+    { value: 'SLV', label: 'iShares Silver Trust', category: 'alternatives', group: 'Commodatives & Hedges' },
     { value: 'PDBC', label: 'Invesco Optimum Yield Diversified Commodity Strategy No K-1 ETF', category: 'alternatives', group: 'Commodities & Hedges' },
     { value: 'DBC', label: 'Invesco DB Commodity Index Tracking Fund', category: 'alternatives', group: 'Commododies & Hedges' },
 
@@ -311,6 +314,8 @@ const tickerGroups = uniqueTickers.reduce((acc, ticker) => {
     acc[group].push(ticker);
     return acc;
 }, {} as Record<string, typeof uniqueTickers>);
+
+const availableForAnalysis = Object.keys(etfData);
 
 
 export type Allocation = {
@@ -447,27 +452,24 @@ export function PortfolioBuilder() {
     }, 500);
   };
 
-  const getCategoryTickers = (category: keyof Allocation) => selectedTickers.filter(t => t.category === category);
-  
-  const getCategoryTotalAllocation = (category: keyof Allocation) => {
-    return getCategoryTickers(category).reduce((total, ticker) => total + ticker.allocation, 0);
-  };
+  const totalPortfolioAllocation = selectedTickers.reduce((sum, t) => sum + t.allocation, 0);
+  const isAllocationInvalid = selectedTickers.length > 0 && totalPortfolioAllocation !== 100;
 
   const renderCategorySection = (category: keyof Allocation, title: string) => {
-      const tickers = getCategoryTickers(category);
-      const totalAllocation = getCategoryTotalAllocation(category);
+      const tickers = selectedTickers.filter(t => t.category === category);
+      if (allocation[category] === 0 && tickers.length === 0) return null;
 
-      const isAllocationInvalid = totalAllocation !== 100 && tickers.length > 0;
+      const categoryTotalFromTickers = tickers.reduce((total, ticker) => total + ticker.allocation, 0);
 
       return (
         <div>
             <div className="flex justify-between items-center mb-4">
                 <h4 className={cn("font-semibold text-lg", categoryColors[category])}>{title}</h4>
                 <div className="flex items-center gap-4">
-                    <span className={cn("text-sm", isAllocationInvalid ? "text-destructive" : "text-muted-foreground")}>
-                        Total: {totalAllocation}%
+                    <span className={cn("text-sm", "text-muted-foreground")}>
+                        Portfolio Total: {categoryTotalFromTickers}%
                     </span>
-                    <span className={cn("text-lg font-bold", categoryColors[category])}>{allocation[category]}%</span>
+                    <span className={cn("text-lg font-bold", categoryColors[category])}>{allocation[category]}% Target</span>
                 </div>
             </div>
              <div className="space-y-2">
@@ -495,13 +497,9 @@ export function PortfolioBuilder() {
                     </div>
                 )}
             </div>
-             {isAllocationInvalid && (
-                <p className="text-destructive text-sm mt-2">The total allocation for {title} must equal 100%.</p>
-            )}
         </div>
       );
   }
-
 
   return (
     <div className="space-y-8">
@@ -540,7 +538,7 @@ export function PortfolioBuilder() {
             </ul>
         </CardContent>
       </Card>
-
+      
       <Card className={glassCardClasses}>
         <CardHeader>
           <CardTitle className="text-2xl font-headline">1. Name Your Portfolio</CardTitle>
@@ -634,12 +632,40 @@ export function PortfolioBuilder() {
                     </Command>
                 </PopoverContent>
             </Popover>
+            <Accordion type="single" collapsible className="w-full mt-4">
+              <AccordionItem value="item-1">
+                <AccordionTrigger>View Tickers Available for Full Analysis</AccordionTrigger>
+                <AccordionContent>
+                  <p className="text-sm text-muted-foreground mb-4">The following tickers have detailed data for in-depth analysis. You can add data for more tickers in <code>src/lib/etf-data.json</code>.</p>
+                  <div className="max-h-60 overflow-y-auto pr-2">
+                    {Object.entries(
+                        availableForAnalysis.reduce((acc, ticker) => {
+                          const category = uniqueTickers.find(t => t.value === ticker)?.category || 'alternatives';
+                          if (!acc[category]) acc[category] = [];
+                          acc[category].push(ticker);
+                          return acc;
+                        }, {} as Record<string, string[]>)
+                      ).map(([category, tickers]) => (
+                        <div key={category} className="mb-4">
+                          <h4 className={cn("font-semibold capitalize mb-2", categoryColors[category as keyof typeof categoryColors])}>{category}</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {tickers.sort().map(ticker => <Badge key={ticker} variant="secondary">{ticker}</Badge>)}
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
         </CardContent>
       </Card>
       
       <Card className={glassCardClasses} ref={summaryRef}>
         <CardHeader>
           <CardTitle className="text-2xl font-headline">5. Portfolio Summary</CardTitle>
+          {isAllocationInvalid && (
+              <p className="text-destructive text-sm pt-2">The total allocation for all tickers must equal 100%. Current total: {totalPortfolioAllocation}%.</p>
+          )}
         </CardHeader>
         <CardContent>
             <div className="space-y-8">
@@ -662,7 +688,7 @@ export function PortfolioBuilder() {
             </div>
         </AnimatedButton>
         <div className="flex flex-col sm:flex-row gap-4">
-            <AnimatedButton onClick={handleAnalyzePortfolio} disabled={isAnalyzing || selectedTickers.length === 0} className="w-full sm:w-auto">
+            <AnimatedButton onClick={handleAnalyzePortfolio} disabled={isAnalyzing || selectedTickers.length === 0 || totalPortfolioAllocation !== 100} className="w-full sm:w-auto">
                 <div className="flex items-center">
                     {isAnalyzing ? "Analyzing..." : "Analyze Portfolio"}
                 </div>
@@ -678,3 +704,5 @@ export function PortfolioBuilder() {
     </div>
   );
 }
+
+    
