@@ -45,13 +45,25 @@ const CustomTooltip = ({ active, payload }: any) => {
 const ExposureChart: React.FC<{ data: { name: string; value: number }[], title: string }> = ({ data, title }) => (
     <div>
         <h3 className="text-center font-semibold mb-2">{title}</h3>
-        <div style={{ width: '100%', height: 200 }}>
+        <div style={{ width: '100%', height: 250 }}>
             <ResponsiveContainer>
                 <PieChart>
                     <RechartsTooltip content={<CustomTooltip />} />
-                    <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={60} fill="#8884d8" label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`} labelLine={false} className="text-xs">
+                    <Pie 
+                        data={data} 
+                        dataKey="value" 
+                        nameKey="name" 
+                        cx="50%" 
+                        cy="50%" 
+                        outerRadius={80} 
+                        fill="#8884d8"
+                    >
                         {data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)}
                     </Pie>
+                    <Legend 
+                        iconSize={10} 
+                        wrapperStyle={{ fontSize: '12px' }}
+                    />
                 </PieChart>
             </ResponsiveContainer>
         </div>
