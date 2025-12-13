@@ -376,7 +376,7 @@ export function PortfolioBuilder() {
                     </div>
                 )) : (
                     <div className="flex items-center justify-center h-full text-muted-foreground text-sm p-4 rounded-md bg-background/20">
-                        Add tickers to this category to see allocation details.
+                        Add ETFs to this category to see allocation details.
                     </div>
                 )}
             </div>
@@ -389,12 +389,12 @@ export function PortfolioBuilder() {
       <Card className={glassCardClasses}>
         <CardHeader>
             <CardTitle className="text-2xl font-headline flex items-center gap-2">
-                <Info className="h-6 w-6" /> How to Use the Portfolio Builder
+                <Info className="h-6 w-6" /> How to Use the ETF Portfolio Builder
             </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
             <p>
-                This tool helps you design a custom investment portfolio. Follow these steps to create a portfolio that aligns with your financial goals and risk tolerance.
+                This tool helps you design a custom Exchange-Traded Fund (ETF) portfolio. Follow these steps to create a portfolio that aligns with your financial goals and risk tolerance.
             </p>
             <ul className="space-y-3 list-decimal list-inside">
                 <li>
@@ -404,16 +404,16 @@ export function PortfolioBuilder() {
                     <strong className="text-foreground">Choose a Template:</strong> Select a <span className="text-primary">beginner-friendly</span> template to get started. This will automatically load a recommended set of ETFs and their allocations.
                 </li>
                 <li>
-                    <strong className="text-foreground">Adjust Allocation:</strong> Fine-tune the percentage of your portfolio dedicated to each asset class using the sliders. The total must equal 100%.
+                    <strong className="text-foreground">Adjust Asset Allocation:</strong> Fine-tune the percentage of your portfolio dedicated to each asset class (e.g., Stocks, Bonds) using the sliders. The total must equal 100%.
                 </li>
                 <li>
-                    <strong className="text-foreground">Add or Remove Tickers:</strong> Customize the portfolio by adding new stocks, ETFs, or funds, or by removing ones you don't want.
+                    <strong className="text-foreground">Add or Remove ETFs:</strong> Customize the portfolio by searching for and adding new ETFs, or by removing ones you don't want.
                 </li>
                 <li>
-                    <strong className="text-foreground">Allocate to Tickers:</strong> In the Portfolio Summary, assign a percentage to each ticker. The total allocation for all tickers in your portfolio must equal 100%.
+                    <strong className="text-foreground">Allocate to ETFs:</strong> In the Portfolio Summary, assign a percentage to each ETF. The total allocation for all ETFs in your portfolio must equal 100%.
                 </li>
                  <li>
-                    <strong className="text-foreground">Analyze Your Portfolio:</strong> Click the "Analyze Portfolio" button to get a detailed breakdown of your portfolio's diversification, overlap, and exposure. The analyzer is specifically designed to look up ETF data.
+                    <strong className="text-foreground">Analyze Your Portfolio:</strong> Click the "Analyze Portfolio" button to get a detailed breakdown. The analyzer is specifically designed to look up data for the ETFs in this builder and may not work for all tickers.
                 </li>
                 <li>
                     <strong className="text-foreground">Project Growth:</strong> Once you're done, click "<span className="text-primary">Project My Growth</span>" to see how your custom portfolio could perform over time in the calculator.
@@ -454,20 +454,20 @@ export function PortfolioBuilder() {
 
       <Card className={glassCardClasses} ref={allocationRef}>
         <CardHeader>
-          <CardTitle className="text-2xl font-headline">3. Adjust Allocation</CardTitle>
+          <CardTitle className="text-2xl font-headline">3. Adjust Asset Allocation</CardTitle>
            <p className="text-sm text-muted-foreground">Total Allocation: {allocation.stocks + allocation.bonds + allocation.alternatives}%</p>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-2">
-            <Label className={cn("flex justify-between text-base", categoryColors.stocks)}><span>Stocks</span><span>{allocation.stocks}%</span></Label>
+            <Label className={cn("flex justify-between text-base", categoryColors.stocks)}><span>Stock ETFs</span><span>{allocation.stocks}%</span></Label>
             <Slider value={[allocation.stocks]} onValueChange={(v) => handleSingleSliderChange("stocks", v[0])} max={100} step={1} />
           </div>
           <div className="space-y-2">
-            <Label className={cn("flex justify-between text-base", categoryColors.bonds)}><span>Bonds</span><span>{allocation.bonds}%</span></Label>
+            <Label className={cn("flex justify-between text-base", categoryColors.bonds)}><span>Bond ETFs</span><span>{allocation.bonds}%</span></Label>
             <Slider value={[allocation.bonds]} onValueChange={(v) => handleSingleSliderChange("bonds", v[0])} max={100} step={1} />
           </div>
           <div className="space-y-2">
-            <Label className={cn("flex justify-between text-base", categoryColors.alternatives)}><span>Alternatives</span><span>{allocation.alternatives}%</span></Label>
+            <Label className={cn("flex justify-between text-base", categoryColors.alternatives)}><span>Alternative ETFs (e.g., Gold, Real Estate)</span><span>{allocation.alternatives}%</span></Label>
             <Slider value={[allocation.alternatives]} onValueChange={(v) => handleSingleSliderChange("alternatives", v[0])} max={100} step={1} />
           </div>
         </CardContent>
@@ -475,7 +475,7 @@ export function PortfolioBuilder() {
 
        <Card className={glassCardClasses}>
         <CardHeader>
-          <CardTitle className="text-2xl font-headline">4. Add Tickers</CardTitle>
+          <CardTitle className="text-2xl font-headline">4. Add ETFs</CardTitle>
         </CardHeader>
         <CardContent>
             <Popover open={comboboxOpen} onOpenChange={setComboboxOpen}>
@@ -486,15 +486,15 @@ export function PortfolioBuilder() {
                         aria-expanded={comboboxOpen}
                         className="w-full justify-between h-12 text-base md:text-sm"
                     >
-                        Search and add a ticker...
+                        Search and add an ETF...
                         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
                     <Command>
-                        <CommandInput placeholder="Search ticker..." />
+                        <CommandInput placeholder="Search ETF..." />
                         <CommandList>
-                            <CommandEmpty>No ticker found.</CommandEmpty>
+                            <CommandEmpty>No ETF found.</CommandEmpty>
                             {Object.entries(tickerGroups).map(([group, tickers]) => (
                                 <CommandGroup key={group} heading={group}>
                                     {tickers.map(t => (
@@ -520,16 +520,16 @@ export function PortfolioBuilder() {
       
       <Card className={glassCardClasses} ref={summaryRef}>
         <CardHeader>
-          <CardTitle className="text-2xl font-headline">5. Portfolio Summary</CardTitle>
+          <CardTitle className="text-2xl font-headline">5. ETF Portfolio Summary</CardTitle>
           {isAllocationInvalid && (
-              <p className="text-destructive text-sm pt-2">The total allocation for all tickers must equal 100%. Current total: {totalPortfolioAllocation}%.</p>
+              <p className="text-destructive text-sm pt-2">The total allocation for all ETFs must equal 100%. Current total: {totalPortfolioAllocation}%.</p>
           )}
         </CardHeader>
         <CardContent>
             <div className="space-y-8">
-                {renderCategorySection("stocks", "Stocks")}
-                {renderCategorySection("bonds", "Bonds")}
-                {renderCategorySection("alternatives", "Alternatives")}
+                {renderCategorySection("stocks", "Stock ETFs")}
+                {renderCategorySection("bonds", "Bond ETFs")}
+                {renderCategorySection("alternatives", "Alternative ETFs")}
             </div>
         </CardContent>
         <CardFooter className="flex justify-end text-right">
@@ -553,7 +553,7 @@ export function PortfolioBuilder() {
         <div className="flex flex-col sm:flex-row gap-4">
             <AnimatedButton onClick={handleAnalyzePortfolio} disabled={isAnalyzing || selectedTickers.length === 0 || totalPortfolioAllocation !== 100} className="w-full sm:w-auto">
                 <div className="flex items-center">
-                    {isAnalyzing ? "Analyzing..." : "Analyze Portfolio"}
+                    {isAnalyzing ? "Analyzing..." : "Analyze ETF Portfolio"}
                 </div>
             </AnimatedButton>
             <AnimatedButton onClick={() => router.push("/calculator")} className="w-full sm:w-auto">
@@ -574,3 +574,4 @@ export function PortfolioBuilder() {
 
 
     
+
