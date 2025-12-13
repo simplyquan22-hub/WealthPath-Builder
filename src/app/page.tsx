@@ -435,22 +435,22 @@ export default function PortfolioBuilder() {
                 </p>
                 <ul className="space-y-3 list-decimal list-inside">
                     <li>
-                        <strong className="text-foreground">Choose a Template:</strong> Select a beginner-friendly template. This will automatically load a recommended set of ETFs and their allocations to get started, or you can choose to build a <span className="text-green-400">custom</span> portfolio .
+                        <strong className="text-foreground">Choose a Template:</strong> Select a <span className="text-primary">beginner-friendly</span> template. This will automatically load a recommended set of ETFs and their allocations to get started, or you can choose to build a <span className="text-green-400">custom</span> portfolio .
                     </li>
                     <li>
-                        <strong className="text-foreground">Adjust Asset Allocation:</strong> Fine-tune the percentage of your portfolio dedicated to each asset class (e.g., Stocks, Bonds) using the sliders. The total must equal 100%.
+                        <strong className="text-foreground">Adjust Asset Allocation:</strong> Fine-tune the percentage of your portfolio dedicated to each <span className="text-purple-400">asset class</span> (e.g., Stocks, Bonds) using the sliders. The total must equal 100%.
                     </li>
                     <li>
                         <strong className="text-foreground">Add or Remove ETFs:</strong> Customize the portfolio by searching for and adding new ETFs, or by removing ones you don't want.
                     </li>
                     <li>
-                        <strong className="text-foreground">Allocate to ETFs:</strong> In the Portfolio Summary, assign a percentage to each ETF. The total allocation for all ETFs in your portfolio must equal 100%.
+                        <strong className="text-foreground">Allocate to ETFs:</strong> In the Portfolio Summary, assign a <span className="text-yellow-400">percentage</span> to each ETF. The total allocation for all ETFs in your portfolio must equal 100%.
                     </li>
                     <li>
-                        <strong className="text-foreground">Analyze Your Portfolio:</strong> Click the "Analyze Portfolio" button to get a detailed breakdown. The analyzer is specifically designed to look up data for the ETFs in this builder and may not work for all tickers.
+                        <strong className="text-foreground">Analyze Your Portfolio:</strong> Click the <span className="text-blue-400">"Analyze Portfolio"</span> button to get a detailed breakdown. The analyzer is specifically designed to look up data for the ETFs in this builder and may not work for all tickers.
                     </li>
                     <li>
-                        <strong className="text-foreground">Project Growth:</strong> Once you're done, click "<span className="text-primary">Project My Growth</span>" to see how your custom portfolio could perform over time in the calculator.
+                        <strong className="text-foreground">Project Growth:</strong> Once you're done, click "<span className="text-brand">Project My Growth</span>" to see how your custom portfolio could perform over time in the calculator.
                     </li>
                 </ul>
             </CardContent>
