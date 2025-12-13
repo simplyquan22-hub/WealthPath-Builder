@@ -638,7 +638,7 @@ export function WealthCalculator() {
                      <Tooltip>
                         <TooltipTrigger asChild>
                             <div className="flex items-center justify-center gap-2 cursor-pointer">
-                                <p className={`text-4xl font-bold ${isCrashSimulated ? 'text-destructive' : 'text-brand'}`}>
+                                <p className={`text-4xl font-bold ${isCrashSimulated ? 'text-destructive' : 'text-foreground'}`}>
                                     {formatCurrency(finalProjectedValue)}
                                 </p>
                                 <Info className="h-5 w-5 text-muted-foreground" />
@@ -735,5 +735,7 @@ export function WealthCalculator() {
     </TooltipProvider>
   );
 }
+
+    
 
     
