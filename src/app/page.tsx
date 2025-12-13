@@ -247,7 +247,6 @@ const STORAGE_KEY = 'wealthpath-portfolio-state';
 
 export default function PortfolioBuilder() {
   const router = useRouter();
-  const [portfolioName, setPortfolioName] = React.useState("");
   const [allocation, setAllocation] = React.useState<Allocation>({ stocks: 60, bonds: 30, alternatives: 10 });
   const [selectedTickers, setSelectedTickers] = React.useState<Ticker[]>([]);
   const [comboboxOpen, setComboboxOpen] = React.useState(false);
@@ -260,8 +259,7 @@ export default function PortfolioBuilder() {
     try {
         const savedState = localStorage.getItem(STORAGE_KEY);
         if (savedState) {
-            const { portfolioName, allocation, selectedTickers } = JSON.parse(savedState);
-            if (portfolioName) setPortfolioName(portfolioName);
+            const { allocation, selectedTickers } = JSON.parse(savedState);
             if (allocation) setAllocation(allocation);
             if (selectedTickers) setSelectedTickers(selectedTickers);
         }
@@ -272,14 +270,14 @@ export default function PortfolioBuilder() {
 
   React.useEffect(() => {
     try {
-        const stateToSave = JSON.stringify({ portfolioName, allocation, selectedTickers });
+        const stateToSave = JSON.stringify({ allocation, selectedTickers });
         localStorage.setItem(STORAGE_KEY, stateToSave);
     } catch (error) {
         console.error("Failed to save portfolio state to localStorage", error);
     }
     // Clear analysis when portfolio changes
     setAnalysis(null);
-  }, [portfolioName, allocation, selectedTickers]);
+  }, [allocation, selectedTickers]);
 
 
   const handleTemplateSelect = (templateKey: "simple-beginner" | "advanced-beginner" | "aggressive") => {
@@ -292,7 +290,6 @@ export default function PortfolioBuilder() {
   const handleCustomTemplate = () => {
     setAllocation({ stocks: 60, bonds: 30, alternatives: 10 });
     setSelectedTickers([]);
-    setPortfolioName("My Custom Portfolio");
     allocationRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -592,3 +589,5 @@ export default function PortfolioBuilder() {
     </main>
   );
 }
+
+    
