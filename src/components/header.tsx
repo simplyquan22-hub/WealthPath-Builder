@@ -24,18 +24,14 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-primary/20 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2">
-          {/* 
-            STEP 1: Add your logo file (e.g., "my-logo.png") to the `public` folder in your project root.
-            STEP 2: The code below will then display it. You can adjust width and height as needed.
-          */}
           <Image 
             src="/my-logo.png" 
             alt="WealthPath Logo" 
             width={42} 
             height={42} 
-            className="[filter:drop-shadow(0_0_8px_hsl(var(--primary)))]"
+            className="[filter:drop-shadow(0_0_8px_hsl(var(--brand)))]"
           />
-          <span className="font-bold font-headline text-lg [text-shadow:0_0_8px_hsl(var(--primary)))]">WealthPath</span>
+          <span className="font-bold font-headline text-lg [text-shadow:0_0_8px_hsl(var(--brand)))]">WealthPath</span>
         </Link>
         <div>
           <Sheet>
@@ -47,7 +43,7 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="right">
               <SheetHeader className="text-left">
-                <SheetTitle>Menu</SheetTitle>
+                <SheetTitle>WealthPath Menu</SheetTitle>
               </SheetHeader>
               <Separator className="my-4" />
               <div className="flex flex-col space-y-2">
@@ -60,8 +56,14 @@ export function Header() {
                       rel={link.external ? 'noopener noreferrer' : undefined}
                     >
                       <Button
-                        variant={pathname === link.href && !link.external ? "secondary" : "ghost"}
-                        className="w-full justify-start text-base gap-3"
+                        variant="ghost"
+                        className={cn(
+                          "w-full justify-start text-base gap-3 transition-colors duration-200",
+                          "hover:bg-brand/20 hover:text-brand",
+                          pathname === link.href && !link.external 
+                            ? "bg-brand/10 text-brand font-semibold" 
+                            : ""
+                        )}
                       >
                         {link.icon}
                         {link.label}
