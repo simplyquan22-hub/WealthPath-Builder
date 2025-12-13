@@ -10,9 +10,9 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --brand: 45 100% 51%; /* Solaris Gold */
+    --brand: 250 80% 60%; /* Vibrant Purple */
     --brand-foreground: 210 40% 98%;
-    --primary: 45 100% 51%; /* Solaris Gold */
+    --primary: 220 90% 60%; /* Bright Blue */
     --primary-foreground: 224 71% 4%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
@@ -24,36 +24,36 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 45 100% 51%;
+    --ring: 220 90% 60%; /* Bright Blue */
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 224 71% 4%; /* Deep Navy */
+    --background: 220 20% 5%; /* Dark Charcoal Blue */
     --foreground: 210 40% 98%;
-    --card: 224 71% 9%;
+    --card: 220 20% 10%;
     --card-foreground: 210 40% 98%;
-    --popover: 224 71% 4%;
+    --popover: 220 20% 5%;
     --popover-foreground: 210 40% 98%;
-    --brand: 45 100% 51%; /* Solaris Gold */
-    --brand-foreground: 224 71% 4%;
-    --primary: 45 100% 51%; /* Solaris Gold */
-    --primary-foreground: 224 71% 4%;
-    --secondary: 215 28% 17%;
+    --brand: 250 80% 60%; /* Vibrant Purple */
+    --brand-foreground: 210 40% 98%;
+    --primary: 220 90% 60%; /* Bright Blue */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 220 20% 15%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 215 28% 17%;
+    --muted: 220 20% 15%;
     --muted-foreground: 215 20% 65%;
-    --accent: 215 28% 27%;
+    --accent: 220 20% 20%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 215 28% 17%;
-    --input: 215 28% 17%;
-    --ring: 45 100% 51%;
-    --chart-1: 38 92% 50%; /* Gold */
-    --chart-2: 150 60% 40%; /* Green */
-    --chart-3: 200 70% 50%; /* Blue */
-    --chart-4: 340 80% 60%; /* Pink */
+    --border: 220 20% 15%;
+    --input: 220 20% 15%;
+    --ring: 220 90% 60%; /* Bright Blue */
+    --chart-1: 250 80% 60%; /* Purple */
+    --chart-2: 220 90% 60%; /* Blue */
+    --chart-3: 190 80% 55%; /* Cyan */
+    --chart-4: 280 70% 65%; /* Magenta */
     --chart-5: 27 87% 67%;
   }
 }
@@ -70,25 +70,25 @@
 @layer components {
   .card-glow {
     box-shadow:
-        0 0 26px hsla(45, 100%, 51%, 0.35),
-        0 0 48px hsla(45, 100%, 51%, 0.25),
-        inset 0 0 18px hsla(45, 100%, 51%, 0.15) !important;
+      0 0 26px hsla(250, 80%, 60%, 0.35), /* Purple Glow */
+      0 0 48px hsla(220, 90%, 60%, 0.25), /* Blue Glow */
+      inset 0 0 18px hsla(220, 90%, 60%, 0.15) !important;
   }
 }
 
-/* From Uiverse.io by Ashon-G */
+/* From Uiverse.io by Ashon-G - Modified for Gradient Theme */
 .uiverse {
   --duration: 7s;
   --easing: linear;
-  --c-color-1: hsl(var(--primary));
-  --c-color-2: hsl(var(--primary));
-  --c-color-3: #FFD700; /* Lighter Gold */
-  --c-color-4: #FFD700; /* Lighter Gold */
-  --c-shadow: hsla(45, 100%, 51%, 0.5);
-  --c-shadow-inset-top: hsla(45, 100%, 51%, 0.9);
-  --c-shadow-inset-bottom: hsla(45, 100%, 70%, 0.8);
-  --c-radial-inner: hsl(var(--primary));
-  --c-radial-outer: #FFD700;
+  --c-color-1: hsl(var(--primary)); /* Blue */
+  --c-color-2: hsl(var(--brand)); /* Purple */
+  --c-color-3: #8A2BE2; /* BlueViolet */
+  --c-color-4: #4169E1; /* RoyalBlue */
+  --c-shadow: hsla(235, 90%, 65%, 0.5);
+  --c-shadow-inset-top: hsla(250, 80%, 70%, 0.9);
+  --c-shadow-inset-bottom: hsla(220, 90%, 70%, 0.8);
+  --c-radial-inner: hsl(var(--brand)); /* Purple */
+  --c-radial-outer: hsl(var(--primary)); /* Blue */
   --c-color: hsl(var(--primary-foreground));
   -webkit-tap-highlight-color: transparent;
   -webkit-appearance: none;
