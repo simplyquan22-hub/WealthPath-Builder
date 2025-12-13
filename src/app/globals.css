@@ -70,9 +70,9 @@
 @layer components {
   .card-glow {
     box-shadow:
-        0 0 26px rgba(59,130,246,0.55),
-        0 0 48px rgba(59,130,246,0.35),
-        inset 0 0 18px rgba(59,130,246,0.25);
+        0 0 26px rgba(59,130,246,0.6),
+        0 0 48px rgba(59,130,246,0.4),
+        inset 0 0 18px rgba(59,130,246,0.3);
   }
 }
 
