@@ -56,7 +56,7 @@ const templates: Record<string, { allocation: Allocation; tickers: TickerTemplat
 const categoryColors = {
     stocks: "text-blue-400",
     bonds: "text-green-400",
-    alternatives: "text-purple-400",
+    alternatives: "text-orange-400",
 };
 
 const categoryBgColors = {
@@ -295,11 +295,42 @@ export default function PortfolioBuilder() {
   };
 
   const handleSingleSliderChange = (name: keyof Allocation, value: number) => {
-    setAllocation(prev => ({
-        ...prev,
-        [name]: value
-    }));
-  };
+    const oldValue = allocation[name];
+    const diff = value - oldValue;
+    let newAllocation = { ...allocation, [name]: value };
+
+    const otherKeys = (Object.keys(allocation) as (keyof Allocation)[]).filter(k => k !== name);
+
+    let firstKey = otherKeys[0];
+    let secondKey = otherKeys[1];
+    let total = newAllocation.stocks + newAllocation.bonds + newAllocation.alternatives;
+    
+    if (total > 100) {
+        const excess = total - 100;
+        if(newAllocation[firstKey] >= excess) {
+            newAllocation[firstKey] -= excess;
+        } else {
+            const remaining = excess - newAllocation[firstKey];
+            newAllocation[firstKey] = 0;
+            newAllocation[secondKey] -= remaining;
+        }
+    } else if (total < 100) {
+        const deficit = 100 - total;
+         if(newAllocation[firstKey] + deficit <= 100) {
+            newAllocation[firstKey] += deficit;
+        } else {
+            const remaining = (newAllocation[firstKey] + deficit) - 100;
+            newAllocation[firstKey] = 100;
+            newAllocation[secondKey] += remaining;
+        }
+    }
+
+    setAllocation({
+      stocks: Math.round(newAllocation.stocks),
+      bonds: Math.round(newAllocation.bonds),
+      alternatives: Math.round(newAllocation.alternatives),
+    });
+};
 
   const handleAddTicker = (tickerValue: string) => {
     const tickerData = uniqueTickers.find(t => t.value === tickerValue);
@@ -559,5 +590,7 @@ export default function PortfolioBuilder() {
     </main>
   );
 }
+
+    
 
     
