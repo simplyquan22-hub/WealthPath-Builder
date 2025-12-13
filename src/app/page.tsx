@@ -296,32 +296,50 @@ export default function PortfolioBuilder() {
   const handleSingleSliderChange = (name: keyof Allocation, value: number) => {
     const oldValue = allocation[name];
     const diff = value - oldValue;
+
+    const otherKeys = (
+      Object.keys(allocation) as (keyof Allocation)[]
+    ).filter((k) => k !== name);
+    
     let newAllocation = { ...allocation, [name]: value };
 
-    const otherKeys = (Object.keys(allocation) as (keyof Allocation)[]).filter(k => k !== name);
+    // Distribute the difference among the other sliders
+    const otherTotal = otherKeys.reduce((sum, key) => newAllocation[key], 0);
 
-    let firstKey = otherKeys[0];
-    let secondKey = otherKeys[1];
-    let total = newAllocation.stocks + newAllocation.bonds + newAllocation.alternatives;
+    if (otherTotal > 0) {
+      const ratio1 = newAllocation[otherKeys[0]] / otherTotal;
+      const ratio2 = newAllocation[otherKeys[1]] / otherTotal;
+
+      let change1 = diff * ratio1;
+      let change2 = diff * ratio2;
+      
+      newAllocation[otherKeys[0]] -= change1;
+      newAllocation[otherKeys[1]] -= change2;
+    }
     
-    if (total > 100) {
-        const excess = total - 100;
-        if(newAllocation[firstKey] >= excess) {
-            newAllocation[firstKey] -= excess;
-        } else {
-            const remaining = excess - newAllocation[firstKey];
-            newAllocation[firstKey] = 0;
-            newAllocation[secondKey] -= remaining;
-        }
-    } else if (total < 100) {
-        const deficit = 100 - total;
-         if(newAllocation[firstKey] + deficit <= 100) {
-            newAllocation[firstKey] += deficit;
-        } else {
-            const remaining = (newAllocation[firstKey] + deficit) - 100;
-            newAllocation[firstKey] = 100;
-            newAllocation[secondKey] += remaining;
-        }
+    // Ensure total is exactly 100 and handle floating point inaccuracies
+    let currentTotal = newAllocation.stocks + newAllocation.bonds + newAllocation.alternatives;
+    if (currentTotal !== 100) {
+      const roundingError = 100 - currentTotal;
+      // Apply rounding error to the slider that was NOT changed, and has the largest value.
+      const keyToAdjust = otherKeys.sort((a,b) => newAllocation[b] - newAllocation[a])[0];
+      newAllocation[keyToAdjust] += roundingError;
+    }
+
+    // Clamp values between 0 and 100
+    Object.keys(newAllocation).forEach((key) => {
+        const k = key as keyof Allocation;
+        if (newAllocation[k] < 0) newAllocation[k] = 0;
+        if (newAllocation[k] > 100) newAllocation[k] = 100;
+    });
+
+
+    // Final check and redistribution if necessary due to clamping
+    currentTotal = newAllocation.stocks + newAllocation.bonds + newAllocation.alternatives;
+    if (currentTotal !== 100) {
+       const finalError = 100 - currentTotal;
+       const keyToAdjust = otherKeys.find(k => newAllocation[k] + finalError >= 0 && newAllocation[k] + finalError <= 100) || otherKeys[0];
+       newAllocation[keyToAdjust] += finalError;
     }
 
     setAllocation({
@@ -329,7 +347,7 @@ export default function PortfolioBuilder() {
       bonds: Math.round(newAllocation.bonds),
       alternatives: Math.round(newAllocation.alternatives),
     });
-};
+  };
 
   const handleAddTicker = (tickerValue: string) => {
     const tickerData = uniqueTickers.find(t => t.value === tickerValue);
@@ -589,3 +607,5 @@ export default function PortfolioBuilder() {
     </main>
   );
 }
+
+    
