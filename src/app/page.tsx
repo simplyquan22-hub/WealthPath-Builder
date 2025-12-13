@@ -431,7 +431,7 @@ export default function PortfolioBuilder() {
             </CardHeader>
             <CardContent className="space-y-4 text-muted-foreground">
                 <p>
-                    This tool helps you design a custom Exchange-Traded Fund (ETF) portfolio. Follow these steps to create a portfolio that aligns with your financial goals and risk tolerance. The analyzer is specifically designed to look up ETF data.
+                    This tool helps you design a custom (ETF) practice portfolio. Follow these steps to create a portfolio. The analyzer is specifically designed to look up ETF data only to help you understand what you think you own vs what you truly own. ETF overlap is a common mistake investors make but this tool is designed for practice and learning purposes.
                 </p>
                 <ul className="space-y-3 list-decimal list-inside">
                     <li>
