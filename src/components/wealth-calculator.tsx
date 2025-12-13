@@ -112,7 +112,7 @@ interface PortfolioState {
     selectedTickers: any[]; // You might want to type this more strictly
 }
 
-const glassCardClasses = "border border-white/10 bg-card/50 backdrop-blur-sm shadow-[0_0_15px_2px_rgba(0,100,255,0.35)]";
+const glassCardClasses = "border border-white/10 bg-card/50 backdrop-blur-sm card-glow";
 const CALCULATOR_STORAGE_KEY = 'wealthpath-calculator-state';
 const PORTFOLIO_STORAGE_KEY = 'wealthpath-portfolio-state';
 
