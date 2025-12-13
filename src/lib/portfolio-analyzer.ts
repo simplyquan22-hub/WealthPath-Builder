@@ -1,6 +1,6 @@
 
 import etfData from './etf-data.json';
-import { Ticker } from '@/components/portfolio-builder';
+import { Ticker } from '@/app/page';
 
 // Type definitions
 type etfData = typeof etfData;

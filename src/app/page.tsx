@@ -359,7 +359,7 @@ export default function PortfolioBuilder() {
     // Simulate async operation
     setTimeout(() => {
         const analyzablePortfolio = selectedTickers.filter(t => availableForAnalysis.includes(t.id));
-        const result = analyzePortfolio(analyzablePortfolio, selectedTickers);
+        const result = analyzePortfolio(analyzablePortfolio);
         setAnalysis(result);
         setIsAnalyzing(false);
     }, 500);

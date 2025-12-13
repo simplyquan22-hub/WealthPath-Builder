@@ -426,10 +426,7 @@ export function PortfolioBuilder() {
             </p>
             <ul className="space-y-3 list-decimal list-inside">
                 <li>
-                    <strong className="text-foreground">Name Your Portfolio:</strong> Give your portfolio a descriptive name, like "My First Roth IRA" or "Aggressive Growth Plan."
-                </li>
-                <li>
-                    <strong className="text-foreground">Choose a Template:</strong> Select a <span className="text-primary">beginner-friendly</span> template to get started. This will automatically load a recommended set of ETFs and their allocations.
+                    <strong className="text-foreground">Choose a Template:</strong> Select a <span className="text-primary">beginner-friendly</span> template to get started with a pre-made set of ETFs.
                 </li>
                 <li>
                     <strong className="text-foreground">Adjust Asset Allocation:</strong> Fine-tune the percentage of your portfolio dedicated to each asset class (e.g., Stocks, Bonds) using the sliders. The total must equal 100%.
@@ -452,21 +449,7 @@ export function PortfolioBuilder() {
       
       <Card className={glassCardClasses}>
         <CardHeader>
-          <CardTitle className="text-2xl font-headline">1. Name Your Portfolio</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Input
-            placeholder="My First Roth IRA Portfolio"
-            value={portfolioName}
-            onChange={(e) => setPortfolioName(e.target.value)}
-            className="h-12 text-base md:text-sm"
-          />
-        </CardContent>
-      </Card>
-
-      <Card className={glassCardClasses}>
-        <CardHeader>
-          <CardTitle className="text-2xl font-headline">2. Choose a Template</CardTitle>
+          <CardTitle className="text-2xl font-headline">1. Choose a Template</CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <AnimatedButton onClick={() => handleTemplateSelect("simple-beginner")}>⭐ Super Simple Beginner</AnimatedButton>
@@ -482,7 +465,7 @@ export function PortfolioBuilder() {
 
       <Card className={glassCardClasses} ref={allocationRef}>
         <CardHeader>
-          <CardTitle className="text-2xl font-headline">3. Adjust Asset Allocation</CardTitle>
+          <CardTitle className="text-2xl font-headline">2. Adjust Asset Allocation</CardTitle>
            <p className="text-sm text-muted-foreground">Total Allocation: {allocation.stocks + allocation.bonds + allocation.alternatives}%</p>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -503,7 +486,7 @@ export function PortfolioBuilder() {
 
        <Card className={glassCardClasses}>
         <CardHeader>
-          <CardTitle className="text-2xl font-headline">4. Add ETFs</CardTitle>
+          <CardTitle className="text-2xl font-headline">3. Add ETFs</CardTitle>
         </CardHeader>
         <CardContent>
             <Popover open={comboboxOpen} onOpenChange={setComboboxOpen}>
@@ -548,7 +531,7 @@ export function PortfolioBuilder() {
       
       <Card className={glassCardClasses} ref={summaryRef}>
         <CardHeader>
-          <CardTitle className="text-2xl font-headline">5. ETF Portfolio Summary</CardTitle>
+          <CardTitle className="text-2xl font-headline">4. ETF Portfolio Summary</CardTitle>
           {isAllocationInvalid && (
               <p className="text-destructive text-sm pt-2">The total allocation for all ETFs must equal 100%. Current total: {totalPortfolioAllocation}%.</p>
           )}
@@ -602,6 +585,7 @@ export function PortfolioBuilder() {
 
 
     
+
 
 
 
