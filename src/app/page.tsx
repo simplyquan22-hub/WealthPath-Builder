@@ -179,7 +179,7 @@ const allAvailableTickers = [
     // COMMODITIES & HEDGES
     { value: 'GLD', label: 'SPDR Gold Shares', category: 'alternatives', group: 'Commodities & Hedges' },
     { value: 'IAU', label: 'iShares Gold Trust', category: 'alternatives', group: 'Commodities & Hedges' },
-    { value: 'SLV', label: 'iShares Silver Trust', category: 'alternatives', group: 'Commodities & Hedges' },
+    { value: 'SLV', label: 'iShares Silver Trust', category: 'alternatives', group: 'Commodatives & Hedges' },
     { value: 'PDBC', label: 'Invesco Optimum Yield Diversified Commodity Strategy No K-1 ETF', category: 'alternatives', group: 'Commodities & Hedges' },
     { value: 'DBC', label: 'Invesco DB Commodity Index Tracking Fund', category: 'alternatives', group: 'Commodities & Hedges' },
     
@@ -416,10 +416,10 @@ export default function PortfolioBuilder() {
       <div className="container mx-auto px-4 py-8 md:py-12">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-headline font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-400">
-            Portfolio Builder
+            ETF Portfolio Builder
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
-            Design a portfolio that matches your risk tolerance and financial goals.
+            Design your custom ETF portfolio, analyze its diversification, and project its growth.
           </p>
         </div>
         <div className="space-y-8">
@@ -528,7 +528,16 @@ export default function PortfolioBuilder() {
                         </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
-                        <Command>
+                        <Command
+                          filter={(value, search) => {
+                            const [label, ticker] = value.split('__');
+                            const lowerSearch = search.toLowerCase();
+                            if (label.toLowerCase().includes(lowerSearch) || ticker.toLowerCase().includes(lowerSearch)) {
+                              return 1;
+                            }
+                            return 0;
+                          }}
+                        >
                             <CommandInput placeholder="Search ETF..." />
                             <CommandList>
                                 <CommandEmpty>No ETF found.</CommandEmpty>
@@ -537,7 +546,7 @@ export default function PortfolioBuilder() {
                                         {tickers.map(t => (
                                             <CommandItem
                                                 key={t.value}
-                                                value={`${t.label} (${t.value})`}
+                                                value={`${t.label}__${t.value}`}
                                                 onSelect={() => handleAddTicker(t.value)}
                                             >
                                                 <div className="flex items-center gap-2">
@@ -600,5 +609,3 @@ export default function PortfolioBuilder() {
     </main>
   );
 }
-
-    
