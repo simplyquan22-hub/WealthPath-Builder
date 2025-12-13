@@ -10,10 +10,10 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --brand: 24 95% 53%; /* Orange */
-    --brand-foreground: 0 0% 100%;
-    --primary: 217 91% 60%; /* Blue */
-    --primary-foreground: 210 40% 98%;
+    --brand: 45 100% 51%; /* Solaris Gold */
+    --brand-foreground: 210 40% 98%;
+    --primary: 45 100% 51%; /* Solaris Gold */
+    --primary-foreground: 224 71% 4%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
@@ -24,32 +24,32 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 215 20.2% 65.1%;
+    --ring: 45 100% 51%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 240 10% 3.9%; /* Deep Black */
-    --foreground: 150 10% 90%;
-    --card: 240 5% 8%;
-    --card-foreground: 150 10% 90%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 150 10% 90%;
-    --brand: 24 95% 53%; /* Orange for highlights */
-    --brand-foreground: 150 10% 10%;
-    --primary: 217 91% 60%; /* Blue for buttons */
-    --primary-foreground: 210 40% 98%;
-    --secondary: 150 15% 20%;
-    --secondary-foreground: 150 10% 90%;
-    --muted: 150 15% 20%;
-    --muted-foreground: 150 10% 60%;
-    --accent: 217 91% 60%; /* Blue for hover */
-    --accent-foreground: 0 0% 100%;
+    --background: 224 71% 4%; /* Deep Navy */
+    --foreground: 210 40% 98%;
+    --card: 224 71% 9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 210 40% 98%;
+    --brand: 45 100% 51%; /* Solaris Gold */
+    --brand-foreground: 224 71% 4%;
+    --primary: 45 100% 51%; /* Solaris Gold */
+    --primary-foreground: 224 71% 4%;
+    --secondary: 215 28% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 215 28% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 215 28% 27%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 150 15% 25%;
-    --input: 150 15% 25%;
-    --ring: 217 91% 60%; /* Blue for ring */
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 45 100% 51%;
     --chart-1: 38 92% 50%; /* Gold */
     --chart-2: 150 60% 40%; /* Green */
     --chart-3: 200 70% 50%; /* Blue */
@@ -70,9 +70,9 @@
 @layer components {
   .card-glow {
     box-shadow:
-        0 0 26px rgba(59,130,246,0.35),
-        0 0 48px rgba(59,130,246,0.25),
-        inset 0 0 18px rgba(59,130,246,0.15) !important;
+        0 0 26px hsla(45, 100%, 51%, 0.35),
+        0 0 48px hsla(45, 100%, 51%, 0.25),
+        inset 0 0 18px hsla(45, 100%, 51%, 0.15) !important;
   }
 }
 
@@ -80,16 +80,16 @@
 .uiverse {
   --duration: 7s;
   --easing: linear;
-  --c-color-1: #3b82f6; /* Blue */
-  --c-color-2: #3b82f6; /* Blue */
-  --c-color-3: #60a5fa; /* Lighter Blue */
-  --c-color-4: #60a5fa; /* Lighter Blue */
-  --c-shadow: rgba(59, 130, 246, 0.5);
-  --c-shadow-inset-top: rgba(59, 130, 246, 0.9);
-  --c-shadow-inset-bottom: rgba(96, 165, 250, 0.8);
-  --c-radial-inner: #3b82f6;
-  --c-radial-outer: #60a5fa;
-  --c-color: #fff;
+  --c-color-1: hsl(var(--primary));
+  --c-color-2: hsl(var(--primary));
+  --c-color-3: #FFD700; /* Lighter Gold */
+  --c-color-4: #FFD700; /* Lighter Gold */
+  --c-shadow: hsla(45, 100%, 51%, 0.5);
+  --c-shadow-inset-top: hsla(45, 100%, 51%, 0.9);
+  --c-shadow-inset-bottom: hsla(45, 100%, 70%, 0.8);
+  --c-radial-inner: hsl(var(--primary));
+  --c-radial-outer: #FFD700;
+  --c-color: hsl(var(--primary-foreground));
   -webkit-tap-highlight-color: transparent;
   -webkit-appearance: none;
   outline: none;

@@ -4,7 +4,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu } from 'lucide-react';
+import { Menu, Building2, Calculator, Home } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Button } from './ui/button';
@@ -12,9 +12,9 @@ import { Separator } from './ui/separator';
 import Image from 'next/image';
 
 const navLinks = [
-  { href: '/', label: 'ETF Portfolio Builder', description: 'Design your perfect portfolio.', emoji: '🏗️' },
-  { href: '/calculator', label: 'Calculator', description: 'Project your financial future.', emoji: '🧮' },
-  { href: 'https://mywealthpath.org', label: "WealthPath's Main Page", description: 'Visit our homepage.', emoji: '🏠', external: true },
+  { href: '/', label: 'ETF Portfolio Builder', icon: <Building2 className="h-5 w-5" /> },
+  { href: '/calculator', label: 'Calculator', icon: <Calculator className="h-5 w-5" /> },
+  { href: 'https://mywealthpath.org', label: "WealthPath's Main Page", icon: <Home className="h-5 w-5" />, external: true },
 ];
 
 export function Header() {
@@ -33,9 +33,9 @@ export function Header() {
             alt="WealthPath Logo" 
             width={42} 
             height={42} 
-            className="[filter:drop-shadow(0_0_8px_rgba(0,100,255,0.7))]"
+            className="[filter:drop-shadow(0_0_8px_hsl(var(--primary)))]"
           />
-          <span className="font-bold font-headline text-lg [text-shadow:0_0_8px_rgba(0,100,255,0.7)]">WealthPath</span>
+          <span className="font-bold font-headline text-lg [text-shadow:0_0_8px_hsl(var(--primary)))]">WealthPath</span>
         </Link>
         <div>
           <Sheet>
@@ -46,11 +46,11 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
-              <SheetHeader className="text-center">
-                <SheetTitle>WealthPath Menu</SheetTitle>
-                <Separator className="bg-brand h-[2px] mx-auto w-1/2" />
+              <SheetHeader className="text-left">
+                <SheetTitle>Menu</SheetTitle>
               </SheetHeader>
-              <div className="flex flex-col space-y-4 pt-8">
+              <Separator className="my-4" />
+              <div className="flex flex-col space-y-2">
                 {navLinks.map((link) => (
                   <SheetClose asChild key={link.href}>
                     <Link
@@ -60,16 +60,11 @@ export function Header() {
                       rel={link.external ? 'noopener noreferrer' : undefined}
                     >
                       <Button
-                        variant={pathname === link.href && !link.external ? "default" : "outline"}
-                        className="w-full justify-start text-left h-auto py-4"
+                        variant={pathname === link.href && !link.external ? "secondary" : "ghost"}
+                        className="w-full justify-start text-base gap-3"
                       >
-                        <div className="flex items-center gap-4">
-                           <span className="text-2xl">{link.emoji}</span>
-                           <div className="flex flex-col">
-                                <span className="text-base font-semibold whitespace-normal">{link.label}</span>
-                                <span className="text-sm font-normal text-muted-foreground whitespace-normal">{link.description}</span>
-                           </div>
-                        </div>
+                        {link.icon}
+                        {link.label}
                       </Button>
                     </Link>
                   </SheetClose>
