@@ -435,7 +435,7 @@ export default function PortfolioBuilder() {
                 </p>
                 <ul className="space-y-3 list-decimal list-inside">
                     <li>
-                        <strong className="text-foreground">Choose a Template:</strong> Select a <span className="text-primary">beginner-friendly</span> template to get started. This will automatically load a recommended set of ETFs and their allocations.
+                        <strong className="text-foreground">Choose a Template:</strong> Select a beginner-friendly template. This will automatically load a recommended set of ETFs and their allocations to get started, or you can choose to build a <span className="text-green-400">custom</span> portfolio .
                     </li>
                     <li>
                         <strong className="text-foreground">Adjust Asset Allocation:</strong> Fine-tune the percentage of your portfolio dedicated to each asset class (e.g., Stocks, Bonds) using the sliders. The total must equal 100%.
