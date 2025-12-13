@@ -185,9 +185,9 @@ const availableForAnalysis = Object.keys(etfData);
 const availableTickers = allAvailableTickers.filter(t => availableForAnalysis.includes(t.value));
 
 
-const uniqueTickers = Array.from(new Set(availableTickers.map(t => t.value)))
+const uniqueTickers = Array.from(new Set(allAvailableTickers.map(t => t.value)))
   .map(value => {
-    return availableTickers.find(t => t.value === value)!;
+    return allAvailableTickers.find(t => t.value === value)!;
   });
 
 
@@ -331,7 +331,8 @@ export function PortfolioBuilder() {
     setAnalysis(null);
     // Simulate async operation
     setTimeout(() => {
-        const result = analyzePortfolio(selectedTickers);
+        const analyzablePortfolio = selectedTickers.filter(t => availableForAnalysis.includes(t.id));
+        const result = analyzePortfolio(analyzablePortfolio);
         setAnalysis(result);
         setIsAnalyzing(false);
     }, 500);
