@@ -190,14 +190,16 @@ function generateRecommendations(
     }
     
     // Overlap recommendation
-    const vtiInPortfolio = overlappingHoldings.some(o => o.heldIn.includes('VTI'));
-    const vooInPortfolio = overlappingHoldings.some(o => o.heldIn.includes('VOO'));
+    const vtiInPortfolio = portfolio.some(t => t.id === 'VTI');
+    const vooInPortfolio = portfolio.some(t => t.id === 'VOO');
     if (vtiInPortfolio && vooInPortfolio) {
-        recommendations.push("Your portfolio includes both VTI and VOO. Since VOO (S&P 500) is already about 85% of VTI (Total US Market), holding both creates significant overlap and doesn't add much diversification. Consider choosing one or the other.");
+        recommendations.push("Your portfolio includes both VTI and VOO. Since VOO (S&P 500) makes up about 85% of VTI (Total US Market), holding both creates significant overlap and doesn't add much diversification. Consider choosing one or simplifying to VTI to include small and mid-caps.");
     } else {
         const significantOverlap = overlappingHoldings.find(o => o.percentage > 3);
         if (significantOverlap) {
-            recommendations.push(`There is significant overlap between your chosen ETFs. For example, ${significantOverlap.ticker} is found in multiple funds. This can make your portfolio less diversified than it appears.`);
+            recommendations.push(`There is significant overlap between your chosen ETFs. For example, ${significantOverlap.ticker} is found in multiple funds (${significantOverlap.heldIn.join(', ')}). This can make your portfolio less diversified than it appears.`);
+        } else if (portfolio.length > 1) {
+            recommendations.push("Great job! There are no significant holding overlaps between your selected ETFs, which is key to effective diversification.");
         }
     }
     
