@@ -107,7 +107,7 @@ export function analyzePortfolio(portfolio: Ticker[]): PortfolioAnalysis {
     const diversificationScore = calculateDiversificationScore(top10Holdings, sectorExposure, regionExposure, assetClassExposure);
 
     // Generate recommendations
-    const recommendations = generateRecommendations(diversificationScore, sectorExposure, regionExposure, top10Holdings, overlappingHoldings, assetClassExposure);
+    const recommendations = generateRecommendations(diversificationScore, sectorExposure, regionExposure, top10Holdings, overlappingHoldings, assetClassExposure, portfolio);
 
     return {
         diversificationScore,
@@ -162,7 +162,8 @@ function generateRecommendations(
     regionExposure: Exposure,
     topHoldings: Holding[],
     overlappingHoldings: { ticker: string; percentage: number; heldIn: string[] }[],
-    assetClassExposure: Exposure
+    assetClassExposure: Exposure,
+    portfolio: Ticker[]
 ): string[] {
     const recommendations: string[] = [];
 
