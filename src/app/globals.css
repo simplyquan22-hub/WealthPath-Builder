@@ -67,6 +67,15 @@
   }
 }
 
+@layer components {
+  .card-glow {
+    box-shadow:
+        0 0 26px rgba(59,130,246,0.65),
+        0 0 48px rgba(59,130,246,0.45),
+        inset 0 0 18px rgba(59,130,246,0.35) !important;
+  }
+}
+
 /* From Uiverse.io by Ashon-G */
 .uiverse {
   --duration: 7s;

@@ -18,7 +18,7 @@ import { PortfolioAnalysisDisplay } from "@/components/portfolio-analysis";
 import etfData from '@/lib/etf-data.json';
 import { Badge } from "@/components/ui/badge";
 
-const glassCardClasses = "border border-white/10 bg-card/50 backdrop-blur-sm shadow-[0_0_15px_2px_rgba(0,100,255,0.35)]";
+const glassCardClasses = "border border-white/10 bg-card/50 backdrop-blur-sm card-glow";
 
 type TickerTemplate = {
   id: string;
@@ -269,13 +269,14 @@ export default function PortfolioBuilder() {
   }, []);
 
   React.useEffect(() => {
+    // This effect now ONLY runs when allocation or selectedTickers change,
+    // preventing the infinite loop.
     try {
         const stateToSave = JSON.stringify({ allocation, selectedTickers });
         localStorage.setItem(STORAGE_KEY, stateToSave);
     } catch (error) {
         console.error("Failed to save portfolio state to localStorage", error);
     }
-    // Clear analysis when portfolio changes
     setAnalysis(null);
   }, [allocation, selectedTickers]);
 
