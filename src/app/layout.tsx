@@ -6,7 +6,7 @@ import { Header } from "@/components/header";
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'WealthPath Portfolio Builder',
+  title: 'WealthPath ETF Portfolio Builder',
   description: 'Design your custom ETF portfolio and project its growth.',
 };
 
