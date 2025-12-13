@@ -14,7 +14,7 @@ import Image from 'next/image';
 const navLinks = [
   { href: '/', label: 'ETF Portfolio Builder', icon: <Building2 className="h-5 w-5" /> },
   { href: '/calculator', label: 'Calculator', icon: <Calculator className="h-5 w-5" /> },
-  { href: 'https://mywealthpath.org', label: "WealthPath's Main Page", icon: <Home className="h-5 w-5" />, external: true },
+  { href: 'https://mywealthpath.org', label: "Main Page", icon: <Home className="h-5 w-5" />, external: true },
 ];
 
 export function Header() {
