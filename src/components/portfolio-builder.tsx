@@ -189,17 +189,6 @@ const allAvailableTickers = [
     { value: 'SCHH', label: 'Schwab U.S. REIT ETF', category: 'alternatives', group: 'Real Estate' },
     { value: 'IYR', label: 'iShares U.S. Real Estate ETF', category: 'alternatives', group: 'Real Estate' },
     { value: 'XLRE', label: 'Real Estate Select Sector SPDR Fund', category: 'alternatives', group: 'Real Estate' },
-    { value: 'O', label: 'Realty Income Corp.', category: 'alternatives', group: 'Real Estate' },
-    { value: 'AMT', label: 'American Tower Corp.', category: 'alternatives', group: 'Real Estate' },
-    { value: 'PLD', label: 'Prologis Inc.', category: 'alternatives', group: 'Real Estate' },
-    { value: 'SPG', label: 'Simon Property Group', category: 'alternatives', group: 'Real Estate' },
-    { value: 'CCI', label: 'Crown Castle Inc.', category: 'alternatives', group: 'Real Estate' },
-    { value: 'PSA', label: 'Public Storage', category: 'alternatives', group: 'Real Estate' },
-    { value: 'EQR', label: 'Equity Residential', category: 'alternatives', group: 'Real Estate' },
-    { value: 'WELL', label: 'Welltower Inc.', category: 'alternatives', group: 'Real Estate' },
-    { value: 'AVB', label: 'AvalonBay Communities', category: 'alternatives', group: 'Real Estate' },
-    { value: 'NLY', label: 'Annaly Capital Management', category: 'alternatives', group: 'Real Estate' },
-    { value: 'STAG', label: 'STAG Industrial Inc.', category: 'alternatives', group: 'Real Estate' },
 
     // Crypto
     { value: 'BTC-USD', label: 'Bitcoin', category: 'alternatives', group: 'Crypto' },
@@ -371,7 +360,7 @@ export function PortfolioBuilder() {
     // Simulate async operation
     setTimeout(() => {
         const analyzablePortfolio = selectedTickers.filter(t => availableForAnalysis.includes(t.id));
-        const result = analyzePortfolio(analyzablePortfolio);
+        const result = analyzePortfolio(analyzablePortfolio, selectedTickers);
         setAnalysis(result);
         setIsAnalyzing(false);
     }, 500);
@@ -613,5 +602,6 @@ export function PortfolioBuilder() {
 
 
     
+
 
 
