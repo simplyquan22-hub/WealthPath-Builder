@@ -177,8 +177,47 @@ const allAvailableTickers = [
     { value: 'VCIT', label: 'Vanguard Intermediate-Term Corporate Bond ETF', category: 'bonds', group: 'Bond ETFs' },
     { value: 'HYG', label: 'iShares iBoxx $ High Yield Corporate Bond ETF', category: 'bonds', group: 'Bond ETFs' },
 
-    // THEME ETFs
-    { value: 'ARKK', label: 'ARK Innovation ETF', category: 'stocks', group: 'Theme ETFs' },
+    // COMMODITIES & HEDGES
+    { value: 'GLD', label: 'SPDR Gold Shares', category: 'alternatives', group: 'Commodities & Hedges' },
+    { value: 'IAU', label: 'iShares Gold Trust', category: 'alternatives', group: 'Commodities & Hedges' },
+    { value: 'SLV', label: 'iShares Silver Trust', category: 'alternatives', group: 'Commodities & Hedges' },
+    { value: 'PDBC', label: 'Invesco Optimum Yield Diversified Commodity Strategy No K-1 ETF', category: 'alternatives', group: 'Commodities & Hedges' },
+    { value: 'DBC', label: 'Invesco DB Commodity Index Tracking Fund', category: 'alternatives', group: 'Commodities & Hedges' },
+    
+    // Real Estate
+    { value: 'VNQ', label: 'Vanguard Real Estate ETF', category: 'alternatives', group: 'Real Estate' },
+    { value: 'SCHH', label: 'Schwab U.S. REIT ETF', category: 'alternatives', group: 'Real Estate' },
+    { value: 'IYR', label: 'iShares U.S. Real Estate ETF', category: 'alternatives', group: 'Real Estate' },
+    { value: 'XLRE', label: 'Real Estate Select Sector SPDR Fund', category: 'alternatives', group: 'Real Estate' },
+    { value: 'O', label: 'Realty Income Corp.', category: 'alternatives', group: 'Real Estate' },
+    { value: 'AMT', label: 'American Tower Corp.', category: 'alternatives', group: 'Real Estate' },
+    { value: 'PLD', label: 'Prologis Inc.', category: 'alternatives', group: 'Real Estate' },
+    { value: 'SPG', label: 'Simon Property Group', category: 'alternatives', group: 'Real Estate' },
+    { value: 'CCI', label: 'Crown Castle Inc.', category: 'alternatives', group: 'Real Estate' },
+    { value: 'PSA', label: 'Public Storage', category: 'alternatives', group: 'Real Estate' },
+    { value: 'EQR', label: 'Equity Residential', category: 'alternatives', group: 'Real Estate' },
+    { value: 'WELL', label: 'Welltower Inc.', category: 'alternatives', group: 'Real Estate' },
+    { value: 'AVB', label: 'AvalonBay Communities', category: 'alternatives', group: 'Real Estate' },
+    { value: 'NLY', label: 'Annaly Capital Management', category: 'alternatives', group: 'Real Estate' },
+    { value: 'STAG', label: 'STAG Industrial Inc.', category: 'alternatives', group: 'Real Estate' },
+
+    // Crypto
+    { value: 'BTC-USD', label: 'Bitcoin', category: 'alternatives', group: 'Crypto' },
+    { value: 'ETH-USD', label: 'Ethereum', category: 'alternatives', group: 'Crypto' },
+    { value: 'SOL-USD', label: 'Solana', category: 'alternatives', group: 'Crypto' },
+    { value: 'ADA-USD', label: 'Cardano', category: 'alternatives', group: 'Crypto' },
+    { value: 'AVAX-USD', label: 'Avalanche', category: 'alternatives', group: 'Crypto' },
+    { value: 'XRP-USD', label: 'Ripple', category: 'alternatives', group: 'Crypto' },
+    { value: 'DOGE-USD', label: 'Dogecoin', category: 'alternatives', group: 'Crypto' },
+    { value: 'DOT-USD', label: 'Polkadot', category: 'alternatives', group: 'Crypto' },
+    { value: 'LTC-USD', label: 'Litecoin', category: 'alternatives', group: 'Crypto' },
+    { value: 'LINK-USD', label: 'Chainlink', category: 'alternatives', group: 'Crypto' },
+    { value: 'MATIC-USD', label: 'Polygon', category: 'alternatives', group: 'Crypto' },
+    { value: 'TRX-USD', label: 'TRON', category: 'alternatives', group: 'Crypto' },
+    { value: 'BCH-USD', label: 'Bitcoin Cash', category: 'alternatives', group: 'Crypto' },
+    { value: 'NEAR-USD', label: 'Near Protocol', category: 'alternatives', group: 'Crypto' },
+    { value: 'ICP-USD', label: 'Internet Computer', category: 'alternatives', group: 'Crypto' },
+
 ];
 
 const availableForAnalysis = Object.keys(etfData);
@@ -394,7 +433,7 @@ export function PortfolioBuilder() {
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
             <p>
-                This tool helps you design a custom Exchange-Traded Fund (ETF) portfolio. Follow these steps to create a portfolio that aligns with your financial goals and risk tolerance.
+                This tool helps you design a custom Exchange-Traded Fund (ETF) portfolio. Follow these steps to create a portfolio that aligns with your financial goals and risk tolerance. The analyzer is specifically designed to look up ETF data.
             </p>
             <ul className="space-y-3 list-decimal list-inside">
                 <li>
@@ -574,4 +613,5 @@ export function PortfolioBuilder() {
 
 
     
+
 
