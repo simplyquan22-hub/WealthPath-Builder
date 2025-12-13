@@ -12,7 +12,7 @@ import { Separator } from './ui/separator';
 import Image from 'next/image';
 
 const navLinks = [
-  { href: '/portfolio-builder', label: 'Portfolio Builder', description: 'Design your perfect portfolio.', emoji: '🏗️' },
+  { href: '/', label: 'ETF Portfolio Builder', description: 'Design your perfect portfolio.', emoji: '🏗️' },
   { href: '/calculator', label: 'Calculator', description: 'Project your financial future.', emoji: '🧮' },
   { href: 'https://mywealthpath.org', label: "WealthPath's Main Page", description: 'Visit our homepage.', emoji: '🏠', external: true },
 ];
@@ -60,7 +60,7 @@ export function Header() {
                       rel={link.external ? 'noopener noreferrer' : undefined}
                     >
                       <Button
-                        variant={pathname === link.href ? "default" : "outline"}
+                        variant={pathname === link.href && !link.external ? "default" : "outline"}
                         className="w-full justify-start text-left h-auto py-4"
                       >
                         <div className="flex items-center gap-4">
