@@ -6,8 +6,8 @@ import { Header } from "@/components/header";
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'WealthPath Calculator',
-  description: 'Project your investment growth with the WealthPath compound interest calculator.',
+  title: 'WealthPath Portfolio Builder',
+  description: 'Design your custom ETF portfolio and project its growth.',
 };
 
 export default function RootLayout({

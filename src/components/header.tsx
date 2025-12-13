@@ -12,7 +12,6 @@ import { Separator } from './ui/separator';
 import Image from 'next/image';
 
 const navLinks = [
-  { href: '/', label: 'Risk Quiz', description: 'Find your investment style.', emoji: '🤔' },
   { href: '/portfolio-builder', label: 'Portfolio Builder', description: 'Design your perfect portfolio.', emoji: '🏗️' },
   { href: '/calculator', label: 'Calculator', description: 'Project your financial future.', emoji: '🧮' },
   { href: 'https://mywealthpath.org', label: "WealthPath's Main Page", description: 'Visit our homepage.', emoji: '🏠', external: true },
